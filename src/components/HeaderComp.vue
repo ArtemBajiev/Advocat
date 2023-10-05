@@ -5,15 +5,19 @@
         <nav class="header__menu">
             <ul class="header__menu-all">
                 <li class="header__menu-item ">
-                    <router-link class="header__menu-item__link header__menu-item-active"
+                    <router-link class="header__menu-item__link"
+                    :class="{'header__menu-item-active': $route.path === '/'}"
                      to="/">
                         Главная</router-link> </li>
                 <li class="header__menu-item">
-                    <router-link class="header__menu-item__link" to="" >
+                    <router-link class="header__menu-item__link" to=""
+                    :class="{'header__menu-item-active': $route.path === ''}" >
                         Научно-Правовой Центр</router-link></li>
                 <li class="header__menu-item"
                 v-for="lawyer in $store.state.advocatsInfo" :key="lawyer.id">
                     <router-link class="header__menu-item__link"
+                    :class="{'header__menu-item-active':
+                     $route.path === '/lawyer/'+lawyer.id}"
                     :to="{name:'lawyer', params:{id: lawyer.id}}"
                     >Адвокат {{ lawyer.name }}</router-link></li>
             </ul>
@@ -78,7 +82,7 @@ margin-top: 10px;
     border-bottom: 2px solid transparent;
     color: white;
     text-decoration: none;
-    font-size: calc(var(--index)*0.8);
+    font-size: 24px;
 }
 .header__menu-item__link:hover
 {
