@@ -10,8 +10,8 @@
                      to="/">
                         Главная</router-link> </li>
                 <li class="header__menu-item">
-                    <router-link class="header__menu-item__link" to=""
-                    :class="{'header__menu-item-active': $route.path === ''}" >
+                    <router-link class="header__menu-item__link" to="/Legal_center"
+                    :class="{'header__menu-item-active': $route.path === '/Legal_center'}" >
                         Научно-Правовой Центр</router-link></li>
                 <li class="header__menu-item"
                 v-for="lawyer in $store.state.advocatsInfo" :key="lawyer.id">

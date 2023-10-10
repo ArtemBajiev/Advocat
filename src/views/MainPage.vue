@@ -2,7 +2,7 @@
 <template>
     <HeaderComp></HeaderComp>
   <div class="main__slider__container">
-    <SliderMain/>
+    <SliderMain :slide-data="$store.state.slide"></SliderMain>
   </div>
 
   <ArticlesMain/>
@@ -21,6 +21,8 @@ export default {
 .main__slider__container
 {
   overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 .slide-container
 {

@@ -21,12 +21,12 @@ export default
 .slide-container
 {
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 }
 .slide {
-  height: 100vh;
-  min-width: 100vw;
+  height: 100%;
+  min-width: 100%;
   background-size: 100% auto;
   background-position: top;
   overflow: hidden;

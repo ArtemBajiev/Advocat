@@ -9,8 +9,28 @@
     </div>
     <div class="lawyer__container">
       <div class="lawyer__menu-block">
-        <lawyerMenu >
-        </lawyerMenu>
+        <MenuPage >
+          <li class="lawyer__menu__item">
+        <router-link class="lawyer__menu__item__link" to="/">Инофрмация об адвокате</router-link>
+      </li>
+      <li class="lawyer__menu__item">
+        <router-link class="lawyer__menu__item__link" to="/">Контакты</router-link>
+      </li>
+      <li class="lawyer__menu__item">
+        <router-link class="lawyer__menu__item__link" to="/">Судебная практика</router-link>
+      </li>
+      <li class="lawyer__menu__item">
+        <router-link class="lawyer__menu__item__link" to="/">Законодательство</router-link>
+      </li>
+      <li class="lawyer__menu__item">
+        <router-link  class="lawyer__menu__item__link" to="/">Статьи</router-link>
+      </li>
+      <li class="lawyer__menu__item">
+        <router-link class="lawyer__menu__item__link" to="/">
+          Научно-правовой центр. Общественная приёмная
+        </router-link>
+      </li>
+        </MenuPage>
       </div>
       <div class="lawyer__text-and-img">
       <img
@@ -46,11 +66,11 @@
       </ul></div>
 </template>
 <script>
-import lawyerMenu from '@/components/lawyerMenu.vue';
+import MenuPage from '@/components/MenuPage.vue';
 import HeaderSlot from '@/components/HeaderSlot.vue';
 
 export default {
-  components: { lawyerMenu, HeaderSlot },
+  components: { MenuPage, HeaderSlot },
   data() {
     return {
       lawyerData: {},
@@ -74,6 +94,7 @@ export default {
 {
   background-color: var(--bodyColor);
   border-radius: 0px 0px 30px 30px;
+  padding-bottom: 30px;
 }
 .lawyer__header__background {
   background-color: var(--twoColor);

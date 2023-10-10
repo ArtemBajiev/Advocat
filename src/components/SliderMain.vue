@@ -1,8 +1,8 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <!-- eslint-disable max-len -->
 <template>
-    <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'vw)',  transition: 'all .8s ease'}" >
-            <SlideMain v-for="slide in $store.state.slide" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
+    <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'%)',  transition: 'all .8s ease'}" >
+            <SlideMain v-for="slide in slideData" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
 </div>
 <div class="control-slide">
       <div class="control-btn">
@@ -22,6 +22,7 @@
 import SlideMain from './SlideMain.vue';
 
 export default {
+  props: ['slideData'],
   components: { SlideMain },
   data() {
     return {
