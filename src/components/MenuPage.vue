@@ -23,7 +23,8 @@ export default {};
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 0px;
+  padding: 5px 0px;
+  text-align: center;
 }
 .lawyer__menu__item__link
 {
@@ -37,12 +38,14 @@ export default {};
 }
 .lawyer__menu__item {
   font-size: calc(var(--index) * 1);
-  padding: 11px 11px 11px 21px;
-  border-bottom: 2px solid var(--twoColor);
+  padding: 8px;
   display: block;
   width: 100%;
 
   transition: color 0.3s ease-in;
+}
+.lawyer__menu__item:not(:last-child) {
+  border-bottom: 2px solid var(--twoColor);
 }
 
 </style>
