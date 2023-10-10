@@ -18,7 +18,7 @@ export default {
     height: 315px;
     padding: 15px;
     border-radius: 20px;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

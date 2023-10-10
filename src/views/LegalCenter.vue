@@ -31,7 +31,7 @@
         </MenuPage>
         <div class="slider-and-name-slide">
           <div class="legal-center__slider__container">
-            <SliderMain :slide-data="$store.state.slide"></SliderMain>
+            <SliderMain :slide-data="$store.state.slideEvents"></SliderMain>
           </div>
           <span class="legal-center__name-slide">Название презентации</span>
         </div>
@@ -106,5 +106,9 @@ export default {
   min-height: 400px;
   width: 100%;
   padding: 0px 5%;
+}
+.legal-center__event
+{
+  margin-bottom: 30px;
 }
 </style>

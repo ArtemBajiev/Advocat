@@ -54,6 +54,7 @@ export default {
     background-position: center;
     background-size: 110%;
     border-radius: 20px;
+    margin-bottom: 25px;
   }
   .event-card__details
   {
