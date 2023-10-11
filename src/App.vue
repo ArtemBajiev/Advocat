@@ -1,5 +1,6 @@
 <template>
-<HeaderComp></HeaderComp>
+  <div class="wrapper">
+    <HeaderComp></HeaderComp>
 <router-view v-slot="{ Component, route }">
   <transition name="anim-page" mode="out-in">
     <div :key="route.path">
@@ -7,22 +8,32 @@
     </div>
   </transition>
 </router-view>
+<CastomDevT></CastomDevT>
+  </div>
 
-  <FooterComp></FooterComp>
 </template>
 <script>
 import FooterComp from '@/components/FooterComp.vue';
 import HeaderComp from '@/components/HeaderComp.vue';
+import CastomDevT from './components/CastomDevT.vue';
 
 export default {
   components: {
     HeaderComp,
     // eslint-disable-next-line vue/no-unused-components
     FooterComp,
+    CastomDevT,
   },
 };
 </script>
 <style>
+.wrapper
+{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
 .container
 {
   max-width: 1250px;

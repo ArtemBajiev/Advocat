@@ -2,7 +2,9 @@
 <template>
   <header class="header">
     <transition name="phone">
-        <div class="header__phone" v-if="getWidth == false" v-show="PhoneMenu">
+        <div class="header__phone" v-if="getWidth == false" v-show="PhoneMenu"
+        @touchstart="touchStart($event.touches[0].clientX)"
+         @touchend="touchEnd($event.changedTouches[0].clientX)">
       <div class="header__phone__background" @click="PhoneMenu = !PhoneMenu"></div>
       <nav class="header__menu__phone">
         <ul class="header__menu-all__phone">
@@ -77,7 +79,7 @@
         </ul>
       </nav>
       <div class="header__language">Rus Eng</div>
-      <button class="header__button-menu" @click="PhoneMenu = !PhoneMenu">=x</button>
+      <button class="header__button-menu" @click="PhoneMenu = !PhoneMenu"></button>
     </div>
 
   </header>
@@ -87,11 +89,25 @@ export default {
   data() {
     return {
       PhoneMenu: false,
+      touchStartData: 0,
+      touchEndData: 0,
     };
   },
   computed: {
     getWidth() {
-      return window.innerWidth > 900;
+      return window.innerWidth > 768;
+    },
+  },
+  methods: {
+    touchStart(event) {
+      this.touchStartData = event;
+    },
+    touchEnd(event) {
+      this.touchEndData = event;
+      this.closeMenu();
+    },
+    closeMenu() {
+      if (this.touchStartData < this.touchEndData * 0.9) { this.PhoneMenu = false; }
     },
   },
 };
@@ -138,7 +154,7 @@ export default {
   border-bottom: 2px solid transparent;
   color: white;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 22px;
 }
 .header__menu-item__link:hover {
   border-bottom: 2px solid white;
@@ -149,7 +165,21 @@ export default {
 }
 .header__language {
   font-size: calc(var(--index) * 1);
-  margin-left: 3%;
+  margin-left: auto;
+  padding: 0px 20px;
+}
+.header__button-menu
+{
+background-image: url('../assets/img/burger.svg');
+width: 25px;
+height: 25px;
+background-color: transparent;
+border: 0px;
+background-position: center;
+background-size: contain;
+background-repeat: no-repeat;
+margin: 0px 10px;
+display: none;
 }
 /*Anim*/
 .phone-enter-from {
@@ -195,25 +225,37 @@ opacity: 0;
 .header__phone__background {
   background-color: rgba(0, 0, 0, 0.411);
   z-index: 1;
-  width: 100vw;
+  width: 200vw;
   position: absolute;
   height: 100vh;
   top: 0;
+  right: 0;
 }
 .header__phone__background::before {
-  content: "x";
+  content: "";
   position: absolute;
   left: 23px;
   top: 15px;
+  background-image: url('../assets/img/close.svg');
+  height: 20px;
+  width: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 0px;
+  background-color: transparent;
 }
 @media (max-width: 1180px) {
   .header__menu-item__link {
-    font-size: 16px;
+    font-size: var(--index);
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .header {
     padding: 0px;
+  }
+  .header__button-menu
+  {
+    display: block;
   }
 }
 </style>

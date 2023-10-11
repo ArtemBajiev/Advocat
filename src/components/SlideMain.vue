@@ -62,7 +62,7 @@ export default
   bottom: 0;
   margin: auto 0;
   left: 10%;
-  font-size: 38px;
+  font-size: calc(var(--index)*2);
 }
 }
 </style>

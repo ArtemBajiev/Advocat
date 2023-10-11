@@ -1,7 +1,23 @@
 <template>
   <nav class="lawyer__menu">
     <ul class="lawyer__menu__all-link">
-     <slot></slot>
+      <li class="lawyer__menu__item">
+            <router-link class="lawyer__menu__item__link" to="/">Мероприятия</router-link>
+          </li>
+          <li
+            class="lawyer__menu__item"
+            v-for="lawyer in $store.state.advocatsInfo"
+            :key="lawyer.id"
+          >
+            <router-link class="lawyer__menu__item__link" to="/">
+              Адвокат&nbsp;{{ lawyer.name }}
+            </router-link>
+          </li>
+          <li class="lawyer__menu__item">
+            <router-link class="lawyer__menu__item__link" to="/">
+              Научно-правовой центр. Общественная приёмная
+            </router-link>
+          </li>
     </ul>
   </nav>
 </template>
@@ -11,7 +27,7 @@ export default {};
 <style lang="scss" >
 .lawyer__menu {
   background-color: #e8e2d8;
-
+  flex: 1 1 40%;
   width: 100%;
   max-width: 374px;
   border-radius: 30px;
@@ -46,6 +62,15 @@ export default {};
 }
 .lawyer__menu__item:not(:last-child) {
   border-bottom: 2px solid var(--twoColor);
+}
+@media (max-width: 768px) {
+.lawyer__menu
+{
+  margin: 0px;
+  width: 100%;
+  max-width: 100%;
+}
+
 }
 
 </style>

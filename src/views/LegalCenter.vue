@@ -8,26 +8,6 @@
 
       <div class="legal-center__menu-slider">
         <MenuPage>
-          <li class="lawyer__menu__item">
-            <router-link class="lawyer__menu__item__link" to="/">Мероприятия</router-link>
-          </li>
-          <li
-            class="lawyer__menu__item"
-            v-for="lawyer in $store.state.advocatsInfo"
-            :key="lawyer.id"
-          >
-            <router-link class="lawyer__menu__item__link" to="/">
-              Адвокат&nbsp;{{ lawyer.name }}
-            </router-link>
-          </li>
-          <li class="lawyer__menu__item">
-            <router-link class="lawyer__menu__item__link" to="/">Статьи</router-link>
-          </li>
-          <li class="lawyer__menu__item">
-            <router-link class="lawyer__menu__item__link" to="/">
-              Научно-правовой центр. Общественная приёмная
-            </router-link>
-          </li>
         </MenuPage>
         <div class="slider-and-name-slide">
           <div class="legal-center__slider__container">
@@ -39,8 +19,10 @@
       <div class="legal-center__event">
       <div class="row">
         <div class="col-md-6 g-5" v-for="item in $store.state.lawyerEvents" :key="item.id">
-          <EventCard :item="item">
-          </EventCard>
+          <router-link :to="{name: 'event', params:{id: item.id}} ">
+            <EventCard :item="item">
+            </EventCard>
+          </router-link>
         </div>
       </div>
       </div>
@@ -105,10 +87,25 @@ export default {
 .slider-and-name-slide {
   min-height: 400px;
   width: 100%;
-  padding: 0px 5%;
+  padding-left: 5% ;
 }
 .legal-center__event
 {
   margin-bottom: 30px;
 }
+@media (max-width:768px) {
+  .legal-center__menu-slider
+  {
+    flex-direction: column;
+  }
+  .lawyer__menu
+  {
+    margin-bottom: 40px;
+  }
+  .slider-and-name-slide
+  {
+    padding: 0px;
+  }
+}
+
 </style>

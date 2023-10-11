@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import MainPage from '@/views/MainPage.vue';
 import lawyerItem from '@/views/lawyerItem.vue';
 import LegalCenter from '@/views/LegalCenter.vue';
+import EventPage from '@/views/EventPage.vue';
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/Legal_center',
     name: 'legalCenter',
     component: LegalCenter,
+  },
+  {
+    path: '/Event/:id',
+    name: 'event',
+    component: EventPage,
   },
 ];
 

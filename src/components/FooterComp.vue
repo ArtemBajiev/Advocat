@@ -55,8 +55,26 @@ right: 25%;
 }
 .footer__map img{
   height: 80%;
+  width: 100%;
   margin: 0px auto;
   display: block;
   position: relative;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .footer__container
+  {
+    flex-direction: column;
+    align-items: center;
+    text-align: center
+  }
+  .footer__map
+  {
+    width: 100%;
+  }
+  .footer__left
+  {
+    width: 100%;
+  }
 }
 </style>

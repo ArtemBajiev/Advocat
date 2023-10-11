@@ -10,28 +10,6 @@
       <div class="lawyer__container">
         <div class="lawyer__menu-block">
           <MenuPage>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/"
-                >Инофрмация об адвокате</router-link
-              >
-            </li>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/">Контакты</router-link>
-            </li>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/">Судебная практика</router-link>
-            </li>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/">Законодательство</router-link>
-            </li>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/">Статьи</router-link>
-            </li>
-            <li class="lawyer__menu__item">
-              <router-link class="lawyer__menu__item__link" to="/">
-                Научно-правовой центр. Общественная приёмная
-              </router-link>
-            </li>
           </MenuPage>
         </div>
         <div class="lawyer__text-and-img">
@@ -115,23 +93,22 @@ export default {
 .lawyer__container img {
   margin: 5px;
   height: auto;
-  width: calc(var(--index) * 17.2);
+  width: 60%;
   float: right;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.166);
   border-radius: 15px;
 }
-.lawyer__menu-block {
-  width: 100%;
-  margin-right: calc(var(--index) * 0.9);
-}
 .lawyer__text {
-  font-size: calc(var(--index) * 1.3);
-  line-height: calc(var(--index) * 1.33);
+  font-size: 32px;
+  line-height: 32px;
+  word-break:normal;
 }
 .lawyer__text-and-img {
   flex: 1 2 auto;
 }
 .lawyer__menu-block {
+  width: 100%;
+  margin-right: calc(var(--index) * 0.9);
   flex: 1 1 100%;
   max-width: 400px;
 }
@@ -178,5 +155,24 @@ export default {
 .lawyer__contact__item a {
   font-size: 20px;
   margin-left: 10px;
+}
+@media (max-width: 768px) {
+  .lawyer__menu-block
+  {
+    margin: 0px;
+  }
+  .lawyer__container
+  {
+    flex-direction: column;
+    align-items: center;
+  }
+  .lawyer__header__background
+  {
+    margin: 0px;
+  }
+  .lawyer__contact__all
+  {
+    max-width: 100%;
+  }
 }
 </style>

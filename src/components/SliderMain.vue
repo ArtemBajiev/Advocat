@@ -1,7 +1,7 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <!-- eslint-disable max-len -->
 <template>
-    <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'%)',  transition: 'all .8s ease'}" >
+    <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'%)',  transition: 'all .8s ease'}" @touchstart="swaipStart($event.touches[0].clientX)" @touchend="swaipEnd($event.changedTouches[0].clientX)" >
             <SlideMain v-for="slide in slideData" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
 </div>
 <div class="control-slide">
@@ -28,6 +28,8 @@ export default {
     return {
       slideActive: 0,
       slidePosition: 0,
+      swaipeStartData: 0,
+      swaipeEndData: 0,
     };
   },
   computed: {
@@ -46,6 +48,20 @@ export default {
       if (this.slidePosition < 0) {
         this.slidePosition += 100;
         this.slideActive = Math.abs(this.slidePosition) / 100;
+      }
+    },
+    swaipStart(event) {
+      this.swaipeStartData = event / document.querySelector('.slide-container').offsetWidth;
+    },
+    swaipEnd(event) {
+      this.swaipeEndData = event / document.querySelector('.slide-container').offsetWidth;
+      this.swaip();
+    },
+    swaip() {
+      if (this.swaipeStartData * 0.9 > this.swaipeEndData) {
+        this.slideRight();
+      } else if (this.swaipeStartData < this.swaipeEndData * 0.9) {
+        this.slideLeft();
       }
     },
   },
@@ -134,6 +150,14 @@ justify-content: center;
 {
     background-color: rgba(255, 255, 255, 0.8);
     transform: scale(1.2);
+}
+@media (max-width: 768px) {
+  .control-btn *
+{
+  padding:10px;
+  margin: 5px;
+
+}
 }
 
 </style>
