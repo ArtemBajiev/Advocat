@@ -72,8 +72,7 @@ body
 }
 .app-container
 {
-  max-width: 100vw;
-  overflow: hidden
+
 }
 
 .r-link{

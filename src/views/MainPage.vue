@@ -1,6 +1,5 @@
 <!-- eslint-disable max-len -->
 <template>
-    <HeaderComp></HeaderComp>
   <div class="main__slider__container">
     <SliderMain :slide-data="$store.state.slide"></SliderMain>
   </div>
@@ -8,12 +7,11 @@
   <ArticlesMain/>
 </template>
 <script>
-import HeaderComp from '@/components/HeaderComp.vue';
 import SliderMain from '@/components/SliderMain.vue';
 import ArticlesMain from '@/components/ArticlesMain.vue';
 
 export default {
-  components: { SliderMain, ArticlesMain, HeaderComp },
+  components: { SliderMain, ArticlesMain },
 
 };
 </script>

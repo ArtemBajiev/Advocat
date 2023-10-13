@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import MainPage from '@/views/MainPage.vue';
 import lawyerItem from '@/views/lawyerItem.vue';
-import LegalCenter from '@/views/LegalCenter.vue';
-import EventPage from '@/views/EventPage.vue';
+import EventsPage from '@/views/EventsPage.vue';
+import EventItem from '@/views/EventItem.vue';
 
 const routes = [
   {
@@ -18,17 +18,21 @@ const routes = [
   {
     path: '/Legal_center',
     name: 'legalCenter',
-    component: LegalCenter,
+    component: EventsPage,
   },
   {
     path: '/Event/:id',
     name: 'event',
-    component: EventPage,
+    component: EventItem,
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
+
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes,
 });
 

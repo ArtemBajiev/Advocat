@@ -2,7 +2,11 @@
 <template>
     <div class="articles">
          <div class="articles__header">
-                <div class="line-header"></div><h2 class="articles__header__text">Статьи</h2><div class="line-header"></div>
+                <div class="line-header"></div>
+                <h2 class="articles__header__text">
+                    {{ $store.state.allContent.main.headerArticles[$store.state.language] }}
+                </h2>
+                <div class="line-header"></div>
             </div>
         <div class="container" >
             <div class="all-articles">

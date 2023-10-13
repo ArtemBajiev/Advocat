@@ -3,7 +3,9 @@
   <div class="legalCenter">
     <div class="container">
       <div class="legal-center__header__container">
-        <h2 class="legal-center__header">Мероприятия</h2>
+        <h2 class="legal-center__header">
+          {{ $store.state.allContent.EventsPage.header[$store.state.language] }}
+        </h2>
       </div>
 
       <div class="legal-center__menu-slider">
