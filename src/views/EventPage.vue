@@ -2,8 +2,8 @@
 <HeaderSlot/>
     <div class="event-page">
         <div class="container">
-            <h1 class="event-page__header">{{ getEventData.cardHeader }}</h1>
-            <p class="event-page__text" v-html="getEventData.content"></p>
+            <h1 class="event-page__header">{{ getEventData.cardHeader[$store.state.language] }}</h1>
+            <p class="event-page__text" v-html="getEventData.content[$store.state.language]"></p>
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
        <div class="slide" :style="{ backgroundImage: 'url(' + require(`@/assets/img/${itemSlide.slideImg}`) + ')'}">
-      <h2 class="slide__text" v-html="itemSlide.slideText">
+      <h2 class="slide__text" v-html="itemSlide.slideText[$store.state.language]">
 
       </h2>
     </div>

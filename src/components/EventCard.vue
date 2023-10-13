@@ -4,8 +4,8 @@
         <div class="event-card__img">
 
 </div>
-        <h3 class="event-card__header">{{ item.cardHeader }}</h3>
-        <p class="event-card__discription">{{ item.cardText }}</p>
+        <h3 class="event-card__header">{{ item.cardHeader[$store.state.language] }}</h3>
+        <p class="event-card__discription">{{ item.cardText[$store.state.language] }}</p>
       </div>
       <div class="event-card__details">Подробнее <span class="arrow-black"></span></div>
     </div>

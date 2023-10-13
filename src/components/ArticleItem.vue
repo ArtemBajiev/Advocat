@@ -1,8 +1,8 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="article-item">
-        <div class="article-item__header">{{ article.header }} {{ article.id }}</div>
-        <div class="article-item__text">{{ article.text }}</div>
+        <div class="article-item__header">{{ article.header[$store.state.language] }} {{ article.id }}</div>
+        <div class="article-item__text">{{ article.text[$store.state.language] }}</div>
         <router-link :to="article.link" class="r-link more-detaile-article">Подробнее ></router-link>
     </div>
 </template>

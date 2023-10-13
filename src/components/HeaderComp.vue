@@ -35,7 +35,7 @@
               class="header__menu-item__link__phone"
               :class="{ 'header__menu-item-active': $route.path === '/lawyer/' + lawyer.id }"
               :to="{ name: 'lawyer', params: { id: lawyer.id } }"
-              >Адвокат {{ lawyer.name }}</router-link
+              >Адвокат {{ lawyer.name[$store.state.language] }}</router-link
             >
           </li>
         </ul>
@@ -52,7 +52,7 @@
               :class="{ 'header__menu-item-active': $route.path === '/' }"
               to="/"
             >
-              Главная</router-link
+              {{ $store.state.allContent.header.main[$store.state.language] }}</router-link
             >
           </li>
           <li class="header__menu-item">
@@ -61,7 +61,8 @@
               to="/Legal_center"
               :class="{ 'header__menu-item-active': $route.path === '/Legal_center' }"
             >
-              Научно-Правовой Центр</router-link
+            {{ $store.state.allContent.header.ScientificAndLegalCenter[$store.state.language] }}
+            </router-link
             >
           </li>
           <li
@@ -73,12 +74,16 @@
               class="header__menu-item__link"
               :class="{ 'header__menu-item-active': $route.path === '/lawyer/' + lawyer.id }"
               :to="{ name: 'lawyer', params: { id: lawyer.id } }"
-              >Адвокат {{ lawyer.name }}</router-link
+              >{{ $store.state.allContent.lawyer[$store.state.language] }}
+               {{ lawyer.name[$store.state.language] }}</router-link
             >
           </li>
         </ul>
       </nav>
-      <div class="header__language">Rus Eng</div>
+      <button class="header__language"
+       @click.prevent="$store.commit('languageUpdate', 'rus')">РУС</button>
+      <button class="header__language"
+      @click.prevent="$store.commit('languageUpdate', 'eng')">ENG</button>
       <button class="header__button-menu" @click="PhoneMenu = !PhoneMenu"></button>
     </div>
 

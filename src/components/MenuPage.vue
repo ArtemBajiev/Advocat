@@ -10,7 +10,7 @@
             :key="lawyer.id"
           >
             <router-link class="lawyer__menu__item__link" to="/">
-              Адвокат&nbsp;{{ lawyer.name }}
+              Адвокат&nbsp;{{ lawyer.name[$store.state.language] }}
             </router-link>
           </li>
           <li class="lawyer__menu__item">

@@ -4,7 +4,9 @@
     <div class="container">
       <div class="lawyer__header__container">
         <div class="lawyer__header__background">
-          <h1 class="lawyer__header">Адвокат {{ getLawyerData.fullName }}</h1>
+          <h1 class="lawyer__header">{{ $store.state.allContent.lawyer[$store.state.language] }}
+             {{ getLawyerData.fullName[$store.state.language] }}
+          </h1>
         </div>
       </div>
       <div class="lawyer__container">
@@ -14,26 +16,31 @@
         </div>
         <div class="lawyer__text-and-img">
           <img class="lawyer__img" :src="require(`@/assets/img/${getLawyerData.img}`)" alt="" />
-          <p class="lawyer__text" v-html="getLawyerData.info"></p>
+          <p class="lawyer__text" v-html="getLawyerData.info[$store.state.language]"></p>
         </div>
       </div>
     </div>
   </div>
   <div class="lawyer__contact">
-    <h3 class="lawyer__contact__header">Как можно связаться со мной</h3>
+    <h3 class="lawyer__contact__header">
+      {{ $store.state.allContent.contact.header[$store.state.language] }}
+    </h3>
 
     <ul class="lawyer__contact__all">
       <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title"> Номер телефона: </span>
+        <span class="lawyer__contact__item__title">
+          {{$store.state.allContent.contact.numberPhone[$store.state.language]}} </span>
         <a :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
       </li>
       <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title"> Почта:</span>
+        <span class="lawyer__contact__item__title">
+          {{$store.state.allContent.contact.email[$store.state.language]}}:</span>
         <a :href="getLawyerData.email">{{ getLawyerData.email }}</a>
       </li>
       <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title"> Адрес:</span
-        ><a href="">{{ getLawyerData.address }}</a>
+        <span class="lawyer__contact__item__title">
+          {{$store.state.allContent.contact.address[$store.state.language]}}:</span
+        ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
       </li>
     </ul>
   </div>
