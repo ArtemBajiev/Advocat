@@ -13,7 +13,7 @@ export default {
 </script>
 <style scoped>
 .article-item{
-    background-color: #8C6843;
+    background-color: var(--colorHeaderEl);
     width: 260px;
     height: 315px;
     padding: 15px;
@@ -32,7 +32,12 @@ export default {
 }
 .article-item__header
 {
-    color:#BF976F ;
+    color:var(--fontColor);
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+
 }
 .more-detaile-article
 {

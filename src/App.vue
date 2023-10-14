@@ -48,6 +48,7 @@ a{
   --bodyColorTwo:#f7f5f2 ;
   --twoColor: #8F755B;
   --threeColor: #E8E2D8;
+  --colorHeaderEl: #A98D6F;
   --articlesColor:#AF855B;
   --fontColor: white;
   --fontColorTwo: black;
