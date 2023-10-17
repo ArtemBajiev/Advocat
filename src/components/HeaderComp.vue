@@ -59,15 +59,6 @@
               {{ $store.state.allContent.header.main[$store.state.language] }}</router-link
             >
           </li>
-          <li class="header__menu-item">
-            <router-link
-              class="header__menu-item__link"
-              to="/Legal_center"
-              :class="{ 'header__menu-item-active': $route.path === '/Legal_center' }"
-            >
-              {{ $store.state.allContent.header.ScientificAndLegalCenter[$store.state.language] }}
-            </router-link>
-          </li>
           <li
             class="header__menu-item"
             v-for="lawyer in $store.state.advocatsInfo"
@@ -80,6 +71,24 @@
               >{{ $store.state.allContent.lawyer[$store.state.language] }}
               {{ lawyer.name[$store.state.language] }}</router-link
             >
+          </li>
+          <li class="header__menu-item">
+            <router-link
+              class="header__menu-item__link"
+              to="/LegalCenter"
+              :class="{ 'header__menu-item-active': $route.path === '/LegalCenter' }"
+            >
+              {{ $store.state.allContent.header.ScientificAndLegalCenter[$store.state.language] }}
+            </router-link>
+          </li>
+          <li class="header__menu-item">
+            <router-link
+              class="header__menu-item__link"
+              to="/Events"
+              :class="{ 'header__menu-item-active': $route.path === '/Events' }"
+            >
+              {{ $store.state.allContent.header.Events[$store.state.language] }}
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -131,7 +140,8 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
+
 .header {
   height: 100px;
   position: absolute;
@@ -168,13 +178,15 @@ export default {
 }
 .header__menu-item {
   margin: 0px 5px;
+  list-style: none;
 }
 .header__menu-item__link {
   transition: all 0.3s ease-in-out;
   border-bottom: 2px solid transparent;
   color: white;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 20px;
+  white-space: nowrap;
 }
 .header__menu-item__link:hover {
   border-bottom: 2px solid white;
@@ -184,9 +196,9 @@ export default {
   border-bottom: 2px solid white;
 }
 .header__language {
-  font-size: calc(var(--index) * 1);
+  font-size: 16px;
   margin-left: auto;
-  padding: 0px 20px;
+  padding-left:30px;
 }
 .header__button-menu {
   background-image: url("../assets/img/burger.svg");
@@ -277,7 +289,7 @@ border-bottom: 2px solid black;
 }
 @media (max-width: 1180px) {
   .header__menu-item__link {
-    font-size: var(--index);
+    font-size: calc(var(--index)*0.9);
   }
 }
 @media (max-width: 768px) {

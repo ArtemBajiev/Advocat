@@ -35,6 +35,12 @@ export default {
       height: 100%;
       padding: 20px;
       position: relative;
+      transition: background-color 0.3s ease-in-out;
+  }
+  .event-card:hover
+  {
+    background-color:#97755352;
+
   }
   .event-card__header
   {

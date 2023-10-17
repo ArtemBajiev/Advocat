@@ -17,7 +17,6 @@ export default {
         display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 60px;
 }
 
 .header-item {
@@ -44,22 +43,24 @@ export default {
   content: "";
   position: absolute;
   height: 120%;
-  width: 30%;
+  width: 20%;
   background-color: var(--colorHeaderEl);
   z-index: -1;
   top: -10%;
-  left: -5%;
+  left: -3%;
   border-radius: 15px;
+  max-width:100px;
 }
 .header-item::after {
   content: "";
   position: absolute;
   height: 120%;
-  width: 30%;
+  width: 20%;
   background-color: var(--colorHeaderEl);
   z-index: -1;
   top: -10%;
-  right: -5%;
+  right: -3%;
   border-radius: 15px;
+  max-width:100px;
 }
 </style>

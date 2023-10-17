@@ -59,12 +59,9 @@ a{
   margin: 0px;
   color: var(--fontColorTwo);
   font-family: 'Roboto', sans-serif;
-  text-decoration: none;
-  list-style: none;
+
 }
-ul{
-  padding: 0;
-}
+
 body
 {
   width: 100vw;

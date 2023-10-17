@@ -23,5 +23,9 @@ export default {
 };
 </script>
 <style lang="scss">
-
+.event-page__text
+{
+  font-size: 32px;
+  margin: 5vh 0;
+}
 </style>

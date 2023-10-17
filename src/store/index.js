@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    language: 'eng',
+    language: 'rus',
     slide: [
       {
         slideText: {
@@ -67,10 +67,6 @@ export default createStore({
     ],
     articles: [
       {
-        header: {
-          rus: 'Критерии жалобы в Европейский суд по правам человека',
-          eng: 'Criteria for a complaint to the European Court of Human Rights',
-        },
         text: {
           rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
         неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
@@ -79,14 +75,9 @@ export default createStore({
         unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
         unacceptable for consideration on the merits. This statistic, as well as...`,
         },
-        link: '',
         id: 1,
       },
       {
-        header: {
-          rus: 'Критерии жалобы в Европейский суд по правам человека',
-          eng: 'Criteria for a complaint to the European Court of Human Rights',
-        },
         text: {
           rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
         неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
@@ -95,8 +86,73 @@ export default createStore({
         unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
         unacceptable for consideration on the merits. This statistic, as well as...`,
         },
-        link: '',
         id: 2,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 3,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 4,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 5,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 6,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 7,
+      },
+      {
+        text: {
+          rus: `Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как  Европейский Суд по правам человека отказывает в приеме более 90% жалоб как
+        неприемлемых для рассмотрения по существу. Данная статистика, равно как...`,
+          eng: `The European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as the European Court of Human Rights refuses to accept more than 90% of complaints as
+        unacceptable for consideration on the merits. This statistic, as well as...`,
+        },
+        id: 8,
       },
     ],
 
@@ -156,6 +212,7 @@ export default createStore({
         telLink: '8932244231',
         email: 'sadural@mail.ru',
         address: { rus: 'ЕКБ', eng: 'EKB' },
+        tgNikname: '',
       },
       {
         id: 'Abraamov_V_V',
@@ -223,6 +280,7 @@ export default createStore({
         telLink: '8932244231',
         email: 'sadural@mail.ru',
         address: { rus: 'ЕКБ', eng: 'EKB' },
+        tgNikname: '',
       },
     ],
     lawyerEvents: [
@@ -316,11 +374,66 @@ export default createStore({
       },
 
     ],
+    LegalCenter: {
+      header: {
+        rus: `Автономная некоммерческая организация <br/> «Научно-Правовой Центр» <br/>
+      ( АНО НПЦ )`,
+        eng: `Autonomous non-profit organization <br/>"Scientific and Legal Center" <br/>
+    (ANO NPC)`,
+      },
+      text: {
+        rus: `Целью деятельности организации является:
+      Деятельность, направленная на получение и применение новых знаний, для решения общественных, гуманитарных и иных проблем;
+Оказание услуг в области науки, образования и права;
+Содействие процессу формирования и развития правового информационного пространства;
+Участие в научных исследованиях в области общественных и гуманитарных наук; 
+Содействие повышению правосознания общества.
+Предметом деятельности организации являются:
+Распространение правовой информации;
+Преподавательская деятельность; 
+Содействие в переподготовке и повышении квалификации юристов;
+Содействие развитию профессиональных качеств начинающих юристов; 
+Участие в установленном порядке в законотворческой деятельности и общественной экспертизе законопроектов и действующих нормативных актов;
+Содействие в оказании правовой помощи государственным, некоммерческим и коммерческим организациям, физическим лицам; 
+Дача правовых заключений и проведение правовых экспертиз;
+Оказание услуг по вопросу подготовки к сдаче экзаменов на статус адвоката, на статус судьи;
+Консультирование по вопросам подготовки научных статей, авторефератов диссертационных работ;
+Повышение и укрепление престижа профессии адвоката, правовых знаний; 
+Содействие по внедрению в практику разрешения споров физических и юридических лиц с помощью деятельности третейского суда и медиации.
+Осуществляет на основании лицензии образовательную деятельность.
+
+В рамках Автономной некоммерческой организации «Научно-Правовой Центр» создана первая в России «Школа практического права». Целью создания Школы является подготовка квалифицированных юристов практиков. В основе подготовки лежат авторские разработки по вопросам ведения гражданских и уголовных  дел. 
+В рамках функционирования АНО «Научно-Правовой Центр» и «Школы практического права» проводятся круглые столы и научно-практические форумы, с участием адвокатов, судей, сотрудников правоохранительных органов, на которых обсуждаются практические вопросы правоприменения и разрабатываются практические рекомендации.
+      `,
+        eng: `The purpose of the organization is:
+      Activities aimed at obtaining and applying new knowledge to solve social, humanitarian and other problems;
+      Provision of services in the field of science, education and law;
+      Assistance to the process of formation and development of the legal information space;
+      Participation in scientific research in the field of social sciences and humanities;
+      Assistance in raising the legal awareness of society.
+      The subject of the organization's activities are:
+      Dissemination of legal information;
+      Teaching activities;
+      Assistance in retraining and advanced training of lawyers;
+      Assistance in the development of professional qualities of novice lawyers;
+      Participation in the prescribed manner in legislative activity and public examination of draft laws and existing regulations;
+      Assistance in providing legal assistance to state, non-profit and commercial organizations, individuals;
+      Giving legal opinions and conducting legal examinations;
+      Provision of services on the issue of preparation for exams for the status of a lawyer, for the status of a judge;
+      Consulting on the preparation of scientific articles, abstracts of dissertations;
+      Increasing and strengthening the prestige of the lawyer's profession, legal knowledge;
+      Assistance in the implementation of the practice of dispute resolution of individuals and legal entities through the activities of the arbitration court and mediation.
+      Carries out educational activities on the basis of a license.
+      
+      Within the framework of the Autonomous non-profit Organization "Scientific and Legal Center", the first "School of Practical Law" in Russia was created. The purpose of the School is to train qualified legal practitioners. The training is based on the author's developments on the conduct of civil and criminal cases.
+      Within the framework of the functioning of the ANO "Scientific and Legal Center" and the "School of Practical Law", round tables and scientific and practical forums are held with the participation of lawyers, judges, law enforcement officers, at which practical issues of law enforcement are discussed and practical recommendations are developed.`,
+      },
+    },
     allContent: {
       main: {
         headerArticles: {
-          rus: 'Статьи',
-          eng: 'Articles',
+          rus: 'Объявления',
+          eng: 'Advertisements',
         },
       },
       lawyer: {
@@ -362,8 +475,30 @@ export default createStore({
         },
         address: {
           rus: 'Адресс',
-          eng: 'address',
+          eng: 'Address',
         },
+      },
+      EducationalPublications: {
+        text: {
+          rus: `
+        Список опубликованных учебных изданий
+         и научных трудов доктора юридических наук,
+          адвоката Рудича Валерия Владимировича
+        `,
+          eng: `List of published educational publications
+        and scientific works of the Doctor of Law,
+        lawyer Rudich Valery Vladimirovich`,
+        },
+        textLink: {
+          rus: 'Ознакомиться со статьями:',
+          eng: 'Read the articles:',
+        },
+        button: {
+          rus: 'Открыть PDF файл',
+          eng: 'Open PDF file',
+        },
+        link: '',
+
       },
     },
   },

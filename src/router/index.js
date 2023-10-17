@@ -3,6 +3,8 @@ import MainPage from '@/views/MainPage.vue';
 import lawyerItem from '@/views/lawyerItem.vue';
 import EventsPage from '@/views/EventsPage.vue';
 import EventItem from '@/views/EventItem.vue';
+import LegalCenter from '@/views/LegalCenter.vue';
+import AdminMain from '@/views/AdminMain.vue';
 
 const routes = [
   {
@@ -16,14 +18,29 @@ const routes = [
     component: lawyerItem,
   },
   {
-    path: '/Legal_center',
-    name: 'legalCenter',
+    path: '/Events',
+    name: 'EventsPage',
     component: EventsPage,
   },
   {
     path: '/Event/:id',
     name: 'event',
     component: EventItem,
+  },
+  {
+    path: '/Event/:id',
+    name: 'event',
+    component: EventItem,
+  },
+  {
+    path: '/LegalCenter',
+    name: 'LegalCenter',
+    component: LegalCenter,
+  },
+  {
+    path: '/adminMain',
+    name: 'AdminMain',
+    component: AdminMain,
   },
 ];
 

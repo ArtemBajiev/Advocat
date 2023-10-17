@@ -1,4 +1,5 @@
 <template>
+  <div class="background">
   <HeaderSlot />
   <div class="lawyer__info">
     <div class="container">
@@ -10,10 +11,6 @@
         </div>
       </div>
       <div class="lawyer__container">
-        <div class="lawyer__menu-block">
-          <MenuPage>
-          </MenuPage>
-        </div>
         <div class="lawyer__text-and-img">
           <img class="lawyer__img" :src="require(`@/assets/img/${getLawyerData.img}`)" alt="" />
           <p class="lawyer__text" v-html="getLawyerData.info[$store.state.language]"></p>
@@ -21,7 +18,21 @@
       </div>
     </div>
   </div>
+  <div class="educational-publications">
+    <div class="container">
+    <p class="educational-publications__text">
+      {{ $store.state.allContent.EducationalPublications.text[$store.state.language] }}
+    </p>
+    <span class="educational-publications__text-link">
+      {{ $store.state.allContent.EducationalPublications.textLink[$store.state.language] }}
+    </span>
+    <a class="educational-publications__button">
+      {{ $store.state.allContent.EducationalPublications.button[$store.state.language] }}
+    </a>
+    </div>
+  </div>
   <div class="lawyer__contact">
+    <div class="container">
     <h3 class="lawyer__contact__header">
       {{ $store.state.allContent.contact.header[$store.state.language] }}
     </h3>
@@ -42,15 +53,21 @@
           {{$store.state.allContent.contact.address[$store.state.language]}}:</span
         ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
       </li>
+      <li class="messenger">
+        <div class="whats messenger__item"><a :href="`https://wa.me/${getLawyerData.telLink}`">WhatsApp</a></div>
+        <div class="tg messenger__item"><a :href="`tg://resolve?domain=${getLawyerData.tgNikname}`">Telegram</a></div>
+      </li>
     </ul>
   </div>
+</div>
+</div>
 </template>
 <script>
-import MenuPage from '@/components/MenuPage.vue';
+
 import HeaderSlot from '@/components/HeaderSlot.vue';
 
 export default {
-  components: { MenuPage, HeaderSlot },
+  components: { HeaderSlot },
   data() {
     return {
       lawyerData: {},
@@ -65,6 +82,10 @@ export default {
 };
 </script>
 <style lang="scss">
+.background
+{
+  background-color: #fff;
+}
 .lawyer__container {
   display: flex;
 }
@@ -93,17 +114,18 @@ export default {
   transform: skewX(13deg);
   border-radius: 5px;
   padding: 5px 25px;
-  font-size: calc(var(--index) * 1.5);
+  font-size: 42px;
   height: 100%;
   margin: 0;
 }
 .lawyer__container img {
   margin: 5px;
   height: auto;
-  width: 60%;
+  width: 35%;
   float: right;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.166);
   border-radius: 15px;
+  margin: 0px 0px 20px 20px;
 }
 .lawyer__text {
   font-size: 32px;
@@ -113,28 +135,43 @@ export default {
 .lawyer__text-and-img {
   flex: 1 2 auto;
 }
-.lawyer__menu-block {
-  width: 100%;
-  margin-right: calc(var(--index) * 0.9);
-  flex: 1 1 100%;
-  max-width: 400px;
+.educational-publications
+{
+  margin-top: 40px;
+  background-color: var(--bodyColor);
+  border-radius: 30px;
+  padding: 30px;
+
 }
-.lawyer__list-text {
-  padding-left: 8%;
+.educational-publications__text
+{
+  margin: 0px;
+  font-size: 34px;
 }
-.lawyer__list-text > li {
-  margin-bottom: 5%;
-  position: relative;
+.educational-publications__text-link
+{
+  display: block;
+  margin-top: 20px;
+  font-size: 28px;
 }
-.lawyer__list-text > li::before {
-  content: "";
-  height: 10px;
-  width: 10px;
-  position: absolute;
-  border-radius: 50%;
-  background-color: var(--fontColorTwo);
-  left: -6%;
-  top: 10%;
+.educational-publications__button
+{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 20px 40px;
+  background-color: #97755362;
+  color: white;
+  font-size: 24px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0px 2px 4px 3px rgba(0, 0, 0, 0.212);
+}
+.educational-publications__button:hover
+{
+  background-color: #97755388;
+  color: white;
+  cursor: pointer;
+
 }
 .lawyer__contact {
   margin-top: 40px;
@@ -155,6 +192,7 @@ export default {
   text-align: left;
   padding: 20px 0px;
   font-size: 16px;
+  list-style: none;
 }
 .lawyer__contact__item__title {
   font-size: 20px;
@@ -162,6 +200,55 @@ export default {
 .lawyer__contact__item a {
   font-size: 20px;
   margin-left: 10px;
+}
+.messenger
+{
+display: flex;
+}
+
+.messenger__item a
+{
+  display: block;
+  margin: 20px;
+  padding-top: 60px;
+  position: relative;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+
+}
+.messenger__item a::before
+{
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  filter: sepia(100%);
+  transition: filter 0.3s ease-in-out;
+}
+.messenger__item a:hover::before
+{
+  filter: sepia(0%);
+}
+.whats a::before{
+  content: '';
+  background-image: url('../assets/img/whats.png');
+
+}
+.whats a{
+}
+.whats a:hover {
+  color: green;
+}
+.tg a::before{
+  content: '';
+  background-image:url('../assets/img/tg.png') ;
+}
+.tg a:hover{
+  color: blue;
 }
 @media (max-width: 768px) {
   .lawyer__menu-block
