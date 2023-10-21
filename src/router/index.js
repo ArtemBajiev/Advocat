@@ -5,6 +5,7 @@ import EventsPage from '@/views/EventsPage.vue';
 import EventItem from '@/views/EventItem.vue';
 import LegalCenter from '@/views/LegalCenter.vue';
 import AdminMain from '@/views/AdminMain.vue';
+import AdminLawyer from '@/views/AdminLawyer.vue';
 
 const routes = [
   {
@@ -41,6 +42,11 @@ const routes = [
     path: '/adminMain',
     name: 'AdminMain',
     component: AdminMain,
+  },
+  {
+    path: '/AdminLawyer/:id',
+    name: 'AdminLawyer',
+    component: AdminLawyer,
   },
 ];
 

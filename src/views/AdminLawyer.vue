@@ -1,7 +1,6 @@
-<!-- eslint-disable import/no-unresolved -->
-
 <template>
-  <HeaderSlot></HeaderSlot>
+<section name="admin-lawyer">
+    <HeaderSlot></HeaderSlot>
   <div class="container">
   <div v-if="editor">
     <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().
@@ -92,8 +91,8 @@
   </div>
 </div>
   <editor-content :editor="editor" />
+</section>
 </template>
-
 <script>
 import Image from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
@@ -111,6 +110,7 @@ export default {
   data() {
     return {
       editor: null,
+      adminAdvocatData: {},
     };
   },
 
@@ -123,6 +123,11 @@ export default {
     },
     imgLeft() {
       console.log(document.activeElement);
+    },
+    getLawyerData() {
+      this.adminAdvocatData = {
+        ...this.$store.state.advocatsInfo.find((item) => item.id === this.$route.params.id),
+      };
     },
   },
   mounted() {
@@ -145,7 +150,8 @@ export default {
       `,
     });
   },
-
+  computed: {
+  },
   beforeUnmount() {
     this.editor.destroy();
   },
