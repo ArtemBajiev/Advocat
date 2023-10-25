@@ -1,9 +1,10 @@
 <template>
     <div class="event-card">
       <div class="event-card__text">
-        <div class="event-card__img">
+        <div class="event-card__img"
+        :style="{ backgroundImage: 'url(' + require(`@/assets/img/${item.img}`) + ')'}">
 
-</div>
+  </div>
         <h3 class="event-card__header">{{ item.cardHeader[$store.state.language] }}</h3>
         <p class="event-card__discription">{{ item.cardText[$store.state.language] }}</p>
       </div>
@@ -48,7 +49,6 @@ export default {
   }
   .event-card__img
   {
-    background-image: url("../assets/img/slide2.png");
     width: 40%;
     height: 130px;
     background-position: center;

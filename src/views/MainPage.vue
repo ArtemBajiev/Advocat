@@ -1,61 +1,50 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div class="main__slider__container">
-    <SliderMain :slide-data="$store.state.slide"></SliderMain>
+  <div class="main__top__img-and-text">
+    <img src="../assets/img/slideImg1.jpg" alt="" class="main__top__img">
+    <p class="main__top__text" v-html="$store.state.allContent.main.imgText[$store.state.language] "></p>
   </div>
 
   <ArticlesMain/>
 </template>
 <script>
-import SliderMain from '@/components/SliderMain.vue';
 import ArticlesMain from '@/components/ArticlesMain.vue';
 
 export default {
-  components: { SliderMain, ArticlesMain },
-
+  components: { ArticlesMain },
 };
 </script>
-<style scoped>
-.main__slider__container
-{
-  overflow-x: hidden;
-  height: 100vh;
-  width: 100vw;
-}
-.slide-container
-{
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-}
-.slide {
-  background-image: url("@/assets/img/slideImg1.jpg");
-  height: 100vh;
-  min-width: 100vw;
-  background-size: 100% auto;
-  background-position: top;
-  overflow: hidden;
-  vertical-align: middle;
- background-attachment: fixed;
- transform: translateX();
- position: relative;
-}
-.slide:nth-child(2) {
-  background-image: url("@/assets/img/slide2.png");
-}
-.slide:nth-child(3) {
-  background-image: url("@/assets/img/slide3.png");
-}
-.slide__text {
-  height: 300px;
-  width: 800px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  left: 10%;
-  font-size: 48px;
-}
-/* slide control */
-
+<style>
+  .main__top__img-and-text
+  {
+    background-image: url('../assets/img/slideImg1.jpg');
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  .main__top__img
+  {
+    width: 100%;
+  }
+  .main__top__text
+  {
+    font-size: 45px;
+    position: absolute;
+    top: 30%;
+    vertical-align: center;
+    left: 5%;
+    max-width: 50%;
+    color: white;
+    font-weight: 700;
+  }
+  @media (max-width: 1024px) {
+    .main__top__text
+  {
+    font-size: calc(var(--index));
+  }
+  }
 </style>

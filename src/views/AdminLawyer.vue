@@ -1,133 +1,228 @@
+<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
-<section name="admin-lawyer">
+  <section name="admin-lawyer">
     <HeaderSlot></HeaderSlot>
-  <div class="container">
-  <div v-if="editor">
-    <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().
-    chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-      bold
-    </button>
-    <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can()
-    .chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-      italic
-    </button>
-    <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can()
-    .chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-      strike
-    </button>
-    <button @click="editor.chain().focus().unsetAllMarks().run()">
-      clear marks
-    </button>
-    <button @click="editor.chain().focus().clearNodes().run()">
-      clear nodes
-    </button>
-    <button @click="editor.chain().focus().setParagraph().run()"
-     :class="{ 'is-active': editor.isActive('paragraph') }">
-      paragraph
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 1 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-      h1
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 2 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-      h2
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 3 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-      h3
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 4 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
-      h4
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 5 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
-      h5
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 6 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }">
-      h6
-    </button>
-    <button @click="editor.chain().focus().toggleBulletList().run()"
-     :class="{ 'is-active': editor.isActive('bulletList') }">
-      bullet list
-    </button>
-    <button @click="editor.chain().focus().toggleOrderedList().run()"
-     :class="{ 'is-active': editor.isActive('orderedList') }">
-      ordered list
-    </button>
-    <button @click="editor.chain().focus().toggleBlockquote().run()"
-     :class="{ 'is-active': editor.isActive('blockquote') }">
-      blockquote
-    </button>
-    <button @click="editor.chain().focus().setHorizontalRule().run()">
-      horizontal rule
-    </button>
-    <button @click="editor.chain().focus().setHardBreak().run()">
-      hard break
-    </button>
-    <button @click="editor.chain().focus().setTextAlign('left').run()"
-     :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }">
-      left
-    </button>
-    <button @click="editor.chain().focus().setTextAlign('center').run()"
-     :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }">
-      center
-    </button>
-    <button @click="editor.chain().focus().setTextAlign('right').run()"
-     :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }">
-      right
-    </button>
-    <button @click="editor.chain().focus().setTextAlign('justify').run()"
-     :class="{ 'is-active': editor.isActive({ textAlign: 'justify' }) }">
-      justify
-    </button>
-    <button @click="editor.chain().focus().unsetTextAlign().run()">
-      unsetTextAlign
-    </button>
-    <button @click="addImage" >add image from URL</button>
+    <AdminMenu></AdminMenu>
+    <div class="container">
+      <fieldset class="admin__lawyer-info">
+      <label for=""
+        >ФИО рус<input class="form-control"
+         name="nameRus" type="text" v-model="getAdvocatInfo.name.rus"
+      /></label>
+      <label for=""
+        >ФИО eng<input class="form-control"
+         name="nameRus" type="text" v-model="getAdvocatInfo.name.eng"
+      /></label>
+      <label for=""
+        >Полное ФИО рус<input class="form-control"
+         name="fullNameRus" type="text" v-model="getAdvocatInfo.fullName.rus"
+      /></label>
+      <label for=""
+        >Полное ФИО eng<input class="form-control"
+         name="fullNameRus" type="text" v-model="getAdvocatInfo.fullName.eng"
+      /></label>
+    </fieldset>
+      <div class="admin__lawyer-img">
+        <img v-if="getAdvocatInfo.img"
+          width="300" :src="require(`@/assets/img/${getAdvocatInfo.img}`)"
+         alt="">
+         <label v-else for=""><input  type="file" /></label>
 
-  </div>
-</div>
-  <editor-content :editor="editor" />
-</section>
+      </div>
+      <p>РУС</p>
+        <div class="button-container">
+        <div v-if="editor" class="buttons-editor">
+          <button
+            @click="editor.chain().focus().toggleBold().run()"
+            :disabled="!editor.can().chain().focus().toggleBold().run()"
+            :class="{ 'is-active': editor.isActive('bold') }"
+          >
+            <strong>Ж</strong>
+          </button>
+          <button
+            @click="editor.chain().focus().toggleItalic().run()"
+            :disabled="!editor.can().chain().focus().toggleItalic().run()"
+            :class="{ 'is-active': editor.isActive('italic') }"
+          >
+            <i>К</i>
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+          >
+            Заголовок 1
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+          >
+            Заголовок 2
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
+          >
+            Заголовок 3
+          </button>
+          <button
+            @click="editor.chain().focus().toggleBulletList().run()"
+            :class="{ 'is-active': editor.isActive('bulletList') }"
+          >
+            Список
+          </button>
+          <button
+            @click="editor.chain().focus().toggleOrderedList().run()"
+            :class="{ 'is-active': editor.isActive('orderedList') }"
+          >
+            Нумерованный список
+          </button>
+          <button @click="editor.chain().focus().setHorizontalRule().run()">
+            Горизонтальная линия</button>
+          <button @click="editor.chain().focus().setHardBreak().run()">Разрыв строки</button>
+          <button
+            @click="editor.chain().focus().setTextAlign('left').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
+          >
+            <img src="../assets/img/textLeft.svg" alt="">
+          </button>
+          <button
+            @click="editor.chain().focus().setTextAlign('center').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
+          >
+          <img src="../assets/img/textCenter.svg" alt="">
+          </button>
+          <button
+            @click="editor.chain().focus().setTextAlign('right').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
+          >
+          <img src="../assets/img/textRight.svg" alt="">
+          </button>
+        </div>
+      </div>
+    <editor-content :editor="editor" />
+    <hr>
+    <p>ENG</p>
+      <div class="button-container">
+        <div v-if="editorEng" class="buttons-editor">
+          <button
+            @click="editorEng.chain().focus().toggleBold().run()"
+            :disabled="!editorEng.can().chain().focus().toggleBold().run()"
+            :class="{ 'is-active': editorEng.isActive('bold') }"
+          >
+          <strong>Ж</strong>
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleItalic().run()"
+            :disabled="!editorEng.can().chain().focus().toggleItalic().run()"
+            :class="{ 'is-active': editorEng.isActive('italic') }"
+          >
+            <i>К</i>
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 1 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 1 }) }"
+          >
+            Заголовок 1
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 2 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 2 }) }"
+          >
+            Заголовок 2
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 3 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 3 }) }"
+          >
+            Заголовок 3
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleBulletList().run()"
+            :class="{ 'is-active': editorEng.isActive('bulletList') }"
+          >
+            Список
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleOrderedList().run()"
+            :class="{ 'is-active': editorEng.isActive('orderedList') }"
+          >
+            Нумерованный список
+          </button>
+          <button @click="editorEng.chain().focus().setHorizontalRule().run()">
+            Горизонтальная линия
+          </button>
+          <button @click="editorEng.chain().focus().setHardBreak().run()">Разрыв строки</button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('left').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'left' }) }"
+          >
+          <img src="../assets/img/textLeft.svg" alt="">
+          </button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('center').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'center' }) }"
+          >
+          <img src="../assets/img/textCenter.svg" alt="">
+          </button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('right').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'right' }) }"
+          >
+          <img src="../assets/img/textRight.svg" alt="">
+          </button>
+            </div>
+      </div>
+    <editor-content :editor="editorEng" />
+    <section name="contacts">
+      <fieldset class="admin__lawyer__contacts">
+        <div class="admin__lawyer__contacts__inputs">
+        <label for="">Номер телефона
+          <input class="form-control" type="number" v-model="getAdvocatInfo.telLink" /></label>
+        <label for="">Email
+          <input class="form-control" type="text" v-model="getAdvocatInfo.email" /></label>
+        <label for="">Адресс
+          <input class="form-control" type="text" v-model="getAdvocatInfo.address.rus" /></label>
+          </div>
+          <div class="admin__lawyer__contacts__inputs">
+        <label for="">Адресс eng
+          <input class="form-control" type="text" v-model="getAdvocatInfo.address.eng" /></label>
+        <label for="">WhatsApp
+          <input class="form-control" type="number" v-model="getAdvocatInfo.address" /></label>
+        <label for="">telegram
+          <input class="form-control" type="number" v-model="getAdvocatInfo.address" /></label>
+          </div>
+      </fieldset>
+    </section>
+    <button class="btn btn-primary admin__btn-save" @click="Post()">Сохранить</button>
+    </div>
+  </section>
 </template>
 <script>
-import Image from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
 import { Editor, EditorContent } from '@tiptap/vue-3';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import TextAlign from '@tiptap/extension-text-align';
 import HeaderSlot from '@/components/HeaderSlot.vue';
+import AdminMenu from '@/components/AdminMenu.vue';
 
 export default {
   components: {
     EditorContent,
     HeaderSlot,
+    AdminMenu,
   },
 
   data() {
     return {
       editor: null,
-      adminAdvocatData: {},
+      editorEng: null,
+      adminAdvocatData: [],
     };
   },
 
   methods: {
-    addImage() {
-      const url = window.prompt('URL');
-      if (url) {
-        this.editor.chain().focus().setImage({ src: url }).run();
-      }
-    },
-    imgLeft() {
-      console.log(document.activeElement);
-    },
-    getLawyerData() {
-      this.adminAdvocatData = {
-        ...this.$store.state.advocatsInfo.find((item) => item.id === this.$route.params.id),
-      };
+    Post() {
+      this.getAdvocatInfo.info.rus = this.editor.getHTML();
+      this.getAdvocatInfo.info.eng = this.editor.getHTML();
     },
   },
   mounted() {
@@ -135,41 +230,98 @@ export default {
       extensions: [
         StarterKit,
         TextAlign,
-        Image,
         TextAlign.configure({
           types: ['heading', 'paragraph'],
         }),
-        Image.configure({
-          HTMLAttributes: {
-            class: 'tip-img',
-          },
+      ],
+      content: this.getAdvocatInfo.info.rus,
+    });
+    this.editorEng = new Editor({
+      extensions: [
+        StarterKit,
+        TextAlign,
+        TextAlign.configure({
+          types: ['heading', 'paragraph'],
         }),
       ],
-      content: `
-       
-      `,
+      type: 'doc',
+      content: this.getAdvocatInfo.info.eng,
     });
   },
   computed: {
+    getAdvocatInfo() {
+      return this.$store.state.advocatsInfo.find((item) => item.id === this.$route.params.id);
+    },
   },
   beforeUnmount() {
-    this.editor.destroy();
+    // this.editor.destroy();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.img-admin
+.buttons-editor button
 {
+  border: 0px;
+  padding: 7px;
+  border-left: 1px solid #0000001f;
+  border-right:1px solid #0000001f ;
+  margin: 0px 3px;
+  background-color: transparent;
+  height: 50px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.363);
+}
+.buttons-editor
+{
+  display: flex;
+  justify-content: space-between;
+}
+.admin__lawyer-info
+{
+  display: flex;
+}
+.admin__lawyer-info label
+{
+  flex: 1 1 auto;
+  margin: 4px;
+}
+.admin__lawyer-img
+{
+  display: flex;
+  justify-content: end;
+  margin: 10px;
+}
+.img-admin {
   max-height: 300px;
 }
-
+.admin__lawyer__contacts__inputs
+{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 20px;
+}
+.admin__lawyer__contacts
+{
+  display: flex;
+  justify-content: space-between;
+}
+.admin__btn-save
+{
+  margin: 20px auto;
+  display: block;
+  width: 20vw;
+}
 .tiptap {
   max-width: 1226px;
   padding: 0px 12px;
   margin: 0px auto;
-  min-height: 600px;
+  min-height: 600px !important;
   border: 1px solid rgb(0, 0, 0);
+}
+.tiptap {
   > * + * {
     margin-top: 0.75em;
   }
@@ -194,9 +346,9 @@ export default {
   }
 
   pre {
-    background: #0D0D0D;
-    color: #FFF;
-    font-family: 'JetBrainsMono', monospace;
+    background: #0d0d0d;
+    color: #fff;
+    font-family: "JetBrainsMono", monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
 
@@ -215,17 +367,16 @@ export default {
 
   blockquote {
     padding-left: 1rem;
-    border-left: 2px solid rgba(#0D0D0D, 0.1);
+    border-left: 2px solid rgba(#0d0d0d, 0.1);
   }
 
   hr {
     border: none;
-    border-top: 2px solid rgba(#0D0D0D, 0.1);
+    border-top: 2px solid rgba(#0d0d0d, 0.1);
     margin: 2rem 0;
   }
 }
-.tip-img
-{
+.tip-img {
   float: left;
   max-height: 300px;
 }

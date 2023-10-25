@@ -14,7 +14,6 @@
                     </div>
                  </div>
              </div>
-             <div class="arrow__more-articles">V</div>
         </div>
     </div>
 </template>
@@ -33,15 +32,10 @@ export default {
 .articles
 {
     background-image: url("@/assets/img/gavel.png");
-    background-size: auto 40%;
+    background-size: auto 45%;
     background-position: center bottom;
     background-repeat: no-repeat;
-}
-
-.arrow__more-articles
-{
-    text-align: center;
-    padding: 100px;
+    margin-bottom: 50px;
 }
 
 </style>

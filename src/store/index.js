@@ -46,7 +46,6 @@ export default createStore({
         slideImg: 'slide3.png',
         id: 2,
       },
-
     ],
     slideEvents: [
       {
@@ -213,6 +212,7 @@ export default createStore({
         email: 'sadural@mail.ru',
         address: { rus: 'ЕКБ', eng: 'EKB' },
         tgNikname: '',
+        pdfFile: '',
       },
       {
         id: 'Abraamov_V_V',
@@ -281,6 +281,7 @@ export default createStore({
         email: 'sadural@mail.ru',
         address: { rus: 'ЕКБ', eng: 'EKB' },
         tgNikname: '',
+        pdfFile: '',
       },
     ],
     lawyerEvents: [
@@ -289,6 +290,7 @@ export default createStore({
           rus: 'Круглый стол',
           eng: 'Round table',
         },
+        img: 'slide2.png',
         cardText: {
           rus: 'Проблемы злоупотребления при возбуждении уголовных дел',
           eng: 'Problems of abuse in the initiation of criminal cases',
@@ -299,6 +301,7 @@ export default createStore({
         В качестве эксперта и учёного в работе круглого стола принял участие адвокат, доктор юридических наук, профессор кафедры публичного права УрГЭУ Рудич Валерий Владимирович.
         В своём докладе он сделал предложения направленные на расширение процессов интеграции в сфере образования между странами ЕАЭС и республиками Центральной Азии. А так же впервые на публичном форуме Валерий Владимирович обосновал предложение о создании Евразийского Межгосударственного Суда по Правам Человека ‒ ЕМСПЧ. Указанные предложения получили положительную оценку у ряда независимых
         экспертов.
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/9QWiaXDxPIM" title="&quot;Непосредственно СУД&quot; 8 серия 5 сезона" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         5.01.2022 года прошёл международный круглый стол на тему: «Современная ситуация в Афганистане в контексте евразийской интеграции и её влияние на международное сотрудничество». <br/>ТУТ КАРТИНКА <br/>В работе круглого стола приняли участие учёные, эксперты, представители аналитических центров и представители некоммерческих организаций России, Кыргызстана, Узбекистана, Казахстана, Таджикистана, а так же
         представители МИД Афганистана, Ирана и России.
         В качестве эксперта и учёного в работе круглого стола принял участие адвокат, доктор юридических наук, профессор кафедры публичного права УрГЭУ Рудич Валерий Владимирович.
@@ -326,53 +329,8 @@ export default createStore({
         experts.`,
         },
         id: 'круглый_стол',
-
+        pdf: [{ pdfLink: 'normal.pdf', id: 0 }, { pdfLink: 'popopo.pdf', id: 1 }],
       },
-      {
-        cardHeader: {
-          rus: 'Круглый стол',
-          eng: 'Round table',
-        },
-        cardText: {
-          rus: 'Проблемы злоупотребления при возбуждении уголовных дел',
-          eng: 'Problems of abuse in the initiation of criminal cases',
-        },
-        content: {
-          rus: `5.01.2022 года прошёл международный круглый стол на тему: «Современная ситуация в Афганистане в контексте евразийской интеграции и её влияние на международное сотрудничество». <br/>ТУТ КАРТИНКА <br/>В работе круглого стола приняли участие учёные, эксперты, представители аналитических центров и представители некоммерческих организаций России, Кыргызстана, Узбекистана, Казахстана, Таджикистана, а так же
-        представители МИД Афганистана, Ирана и России.
-        В качестве эксперта и учёного в работе круглого стола принял участие адвокат, доктор юридических наук, профессор кафедры публичного права УрГЭУ Рудич Валерий Владимирович.
-        В своём докладе он сделал предложения направленные на расширение процессов интеграции в сфере образования между странами ЕАЭС и республиками Центральной Азии. А так же впервые на публичном форуме Валерий Владимирович обосновал предложение о создании Евразийского Межгосударственного Суда по Правам Человека ‒ ЕМСПЧ. Указанные предложения получили положительную оценку у ряда независимых
-        экспертов.
-        5.01.2022 года прошёл международный круглый стол на тему: «Современная ситуация в Афганистане в контексте евразийской интеграции и её влияние на международное сотрудничество». <br/>ТУТ КАРТИНКА <br/>В работе круглого стола приняли участие учёные, эксперты, представители аналитических центров и представители некоммерческих организаций России, Кыргызстана, Узбекистана, Казахстана, Таджикистана, а так же
-        представители МИД Афганистана, Ирана и России.
-        В качестве эксперта и учёного в работе круглого стола принял участие адвокат, доктор юридических наук, профессор кафедры публичного права УрГЭУ Рудич Валерий Владимирович.
-        В своём докладе он сделал предложения направленные на расширение процессов интеграции в сфере образования между странами ЕАЭС и республиками Центральной Азии. А так же впервые на публичном форуме Валерий Владимирович обосновал предложение о создании Евразийского Межгосударственного Суда по Правам Человека ‒ ЕМСПЧ. Указанные предложения получили положительную оценку у ряда независимых
-        экспертов.
-        5.01.2022 года прошёл международный круглый стол на тему: «Современная ситуация в Афганистане в контексте евразийской интеграции и её влияние на международное сотрудничество». <br/>ТУТ КАРТИНКА <br/>В работе круглого стола приняли участие учёные, эксперты, представители аналитических центров и представители некоммерческих организаций России, Кыргызстана, Узбекистана, Казахстана, Таджикистана, а так же
-        представители МИД Афганистана, Ирана и России.
-        В качестве эксперта и учёного в работе круглого стола принял участие адвокат, доктор юридических наук, профессор кафедры публичного права УрГЭУ Рудич Валерий Владимирович.
-        В своём докладе он сделал предложения направленные на расширение процессов интеграции в сфере образования между странами ЕАЭС и республиками Центральной Азии. А так же впервые на публичном форуме Валерий Владимирович обосновал предложение о создании Евразийского Межгосударственного Суда по Правам Человека ‒ ЕМСПЧ. Указанные предложения получили положительную оценку у ряда независимых
-        экспертов.`,
-          eng: `On 5.01.2022, an international round table was held on the topic: "The current situation in Afghanistan in the context of Eurasian integration and its impact on international cooperation." <br/>HERE IS A PICTURE <br/>The round table was attended by scientists, experts, representatives of analytical centers and representatives of non-profit organizations of Russia, Kyrgyzstan, Uzbekistan, Kazakhstan, Tajikistan, as well as
-        Representatives of the Foreign Ministries of Afghanistan, Iran and Russia.
-        Lawyer, Doctor of Law, Professor of the Department of Public Law of USUE Rudich Valery Vladimirovich took part in the round table as an expert and scientist.
-        In his report, he made proposals aimed at expanding the integration processes in the field of education between the EAEU countries and the republics of Central Asia. And also for the first time at a public forum, Valery Vladimirovich justified the proposal to create a Eurasian Interstate Court for Human Rights ‒ EMHR. These proposals received a positive assessment from a number of independent
-        experts.
-        On 5.01.2022, an international round table was held on the topic: "The current situation in Afghanistan in the context of Eurasian integration and its impact on international cooperation." <br/>HERE IS A PICTURE <br/>The round table was attended by scientists, experts, representatives of analytical centers and representatives of non-profit organizations of Russia, Kyrgyzstan, Uzbekistan, Kazakhstan, Tajikistan, as well as
-        Representatives of the Foreign Ministries of Afghanistan, Iran and Russia.
-        Lawyer, Doctor of Law, Professor of the Department of Public Law of USUE Rudich Valery Vladimirovich took part in the round table as an expert and scientist.
-        In his report, he made proposals aimed at expanding the integration processes in the field of education between the EAEU countries and the republics of Central Asia. And also for the first time at a public forum, Valery Vladimirovich justified the proposal to create a Eurasian Interstate Court for Human Rights ‒ EMHR. These proposals received a positive assessment from a number of independent
-        experts.
-        On 5.01.2022, an international round table was held on the topic: "The current situation in Afghanistan in the context of Eurasian integration and its impact on international cooperation." <br/>HERE IS A PICTURE <br/>The round table was attended by scientists, experts, representatives of analytical centers and representatives of non-profit organizations of Russia, Kyrgyzstan, Uzbekistan, Kazakhstan, Tajikistan, as well as
-        Representatives of the Foreign Ministries of Afghanistan, Iran and Russia.
-        Lawyer, Doctor of Law, Professor of the Department of Public Law of USUE Rudich Valery Vladimirovich took part in the round table as an expert and scientist.
-        In his report, he made proposals aimed at expanding the integration processes in the field of education between the EAEU countries and the republics of Central Asia. And also for the first time at a public forum, Valery Vladimirovich justified the proposal to create a Eurasian Interstate Court for Human Rights ‒ EMHR. These proposals received a positive assessment from a number of independent
-        experts.`,
-        },
-        id: 'Некруглый_стол',
-
-      },
-
     ],
     LegalCenter: {
       header: {
@@ -431,6 +389,14 @@ export default createStore({
     },
     allContent: {
       main: {
+        imgText: {
+          rus: `“ Если Вы считаете, что компетентность стоит дорого,
+          то попробуйте некомпетентность — она обойдётся вам гораздо дороже. “<br><br>
+           © Йохан Стаель фон Хольстайн`,
+          eng: `“ If you think competence is expensive,
+          then try incompetence — it will cost you much more. “<br><br>
+           © Johan Stael von Holstein`,
+        },
         headerArticles: {
           rus: 'Объявления',
           eng: 'Advertisements',
@@ -498,19 +464,34 @@ export default createStore({
           eng: 'Open PDF file',
         },
         link: '',
-
       },
     },
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     languageUpdate(state, lang) {
       state.language = lang;
     },
+    addEvent(state) {
+      state.lawyerEvents.push({
+        cardHeader: {
+          rus: '',
+          eng: '',
+        },
+        img: '',
+        cardText: {
+          rus: '',
+          eng: '',
+        },
+        content: {
+          rus: '',
+          eng: '',
+        },
+        id: 'newEvent',
+        pdf: [],
+      });
+    },
   },
-  actions: {
-  },
-  modules: {
-  },
+  actions: {},
+  modules: {},
 });

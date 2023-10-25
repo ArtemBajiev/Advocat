@@ -1,9 +1,24 @@
+<!-- eslint-disable vuejs-accessibility/form-control-has-label -->
 <!-- eslint-disable import/no-unresolved -->
 
 <template>
   <HeaderSlot></HeaderSlot>
+  <AdminMenu></AdminMenu>
   <div class="container">
-  <div v-if="editor">
+    <div class="admin__main__cards">
+    <div class="admin__main__card-item" v-for="item in mainCardData"
+    :key="item.id">
+      <textarea class="admin__main__card__input" type="text" v-model="item.text.rus"></textarea>
+    </div>
+  </div>
+    <hr>
+    <div class="admin__main__cards">
+    <div class="admin__main__card-item" v-for="item in mainCardData"
+    :key="item.id">
+      <textarea class="admin__main__card__input" type="text" v-model="item.text.eng"></textarea>
+    </div>
+</div>
+  <div v-if="editor" class="button-container">
     <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().
     chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
       bold
@@ -16,39 +31,17 @@
     .chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
       strike
     </button>
-    <button @click="editor.chain().focus().unsetAllMarks().run()">
-      clear marks
-    </button>
-    <button @click="editor.chain().focus().clearNodes().run()">
-      clear nodes
-    </button>
-    <button @click="editor.chain().focus().setParagraph().run()"
-     :class="{ 'is-active': editor.isActive('paragraph') }">
-      paragraph
-    </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 1 })
     .run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-      h1
+      Заголовок 1 уровня
     </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 2 })
     .run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-      h2
+      Заголовок 2 уровня
     </button>
     <button @click="editor.chain().focus().toggleHeading({ level: 3 })
     .run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-      h3
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 4 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
-      h4
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 5 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
-      h5
-    </button>
-    <button @click="editor.chain().focus().toggleHeading({ level: 6 })
-    .run()" :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }">
-      h6
+      Заголовок 3 уровня
     </button>
     <button @click="editor.chain().focus().toggleBulletList().run()"
      :class="{ 'is-active': editor.isActive('bulletList') }">
@@ -80,14 +73,6 @@
      :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }">
       right
     </button>
-    <button @click="editor.chain().focus().setTextAlign('justify').run()"
-     :class="{ 'is-active': editor.isActive({ textAlign: 'justify' }) }">
-      justify
-    </button>
-    <button @click="editor.chain().focus().unsetTextAlign().run()">
-      unsetTextAlign
-    </button>
-    <button @click="addImage" >add image from URL</button>
 
   </div>
 </div>
@@ -95,132 +80,49 @@
 </template>
 
 <script>
-import Image from '@tiptap/extension-image';
-import StarterKit from '@tiptap/starter-kit';
-import { Editor, EditorContent } from '@tiptap/vue-3';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import TextAlign from '@tiptap/extension-text-align';
+
 import HeaderSlot from '@/components/HeaderSlot.vue';
+import AdminMenu from '@/components/AdminMenu.vue';
 
 export default {
   components: {
-    EditorContent,
+    AdminMenu,
     HeaderSlot,
   },
 
   data() {
     return {
-      editor: null,
     };
   },
-
-  methods: {
-    addImage() {
-      const url = window.prompt('URL');
-      if (url) {
-        this.editor.chain().focus().setImage({ src: url }).run();
-      }
-    },
-    imgLeft() {
-      console.log(document.activeElement);
+  computed: {
+    mainCardData() {
+      return this.$store.state.articles;
     },
   },
-  mounted() {
-    this.editor = new Editor({
-      extensions: [
-        StarterKit,
-        TextAlign,
-        Image,
-        TextAlign.configure({
-          types: ['heading', 'paragraph'],
-        }),
-        Image.configure({
-          HTMLAttributes: {
-            class: 'tip-img',
-          },
-        }),
-      ],
-      content: `
-       
-      `,
-    });
-  },
 
-  beforeUnmount() {
-    this.editor.destroy();
-  },
 };
 </script>
 
-<style lang="scss" scoped>
-.img-admin
+<style lang="scss">
+.admin__main__card__input
 {
-  max-height: 300px;
+  width: 270px;
+  height: 300px;
+  word-wrap: break-word;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 0px solid transparent;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.411);
+
 }
-
-.tiptap {
-  max-width: 1226px;
-  padding: 0px 12px;
-  margin: 0px auto;
-  min-height: 600px;
-  border: 1px solid rgb(0, 0, 0);
-  > * + * {
-    margin-top: 0.75em;
-  }
-
-  ul,
-  ol {
-    padding: 0 1rem;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.1;
-  }
-
-  code {
-    background-color: rgba(#616161, 0.1);
-    color: #616161;
-  }
-
-  pre {
-    background: #0D0D0D;
-    color: #FFF;
-    font-family: 'JetBrainsMono', monospace;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-
-    code {
-      color: inherit;
-      padding: 0;
-      background: none;
-      font-size: 0.8rem;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  blockquote {
-    padding-left: 1rem;
-    border-left: 2px solid rgba(#0D0D0D, 0.1);
-  }
-
-  hr {
-    border: none;
-    border-top: 2px solid rgba(#0D0D0D, 0.1);
-    margin: 2rem 0;
-  }
-}
-.tip-img
+.admin__main__cards
 {
-  float: left;
-  max-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 </style>

@@ -2,6 +2,7 @@
   <HeaderSlot></HeaderSlot>
   <div class="legalCenter">
     <div class="container">
+      <button class="btn-go-back"></button>
       <HeaderItem>
         <h4 class="events-page__header">
         {{ $store.state.allContent.EventsPage.header[$store.state.language] }}
@@ -11,7 +12,6 @@
           <div class="events-page__slider__container">
             <SliderMain :slide-data="$store.state.slideEvents"></SliderMain>
           </div>
-          <span class="events-page__name-slide">Название презентации</span>
         </div>
       <div class="events-page__event">
       <div class="row">
@@ -41,6 +41,27 @@ export default {
 };
 </script>
 <style lang="scss">
+.btn-go-back
+{
+  position: absolute;
+  top: 160px;
+  background-color: transparent;
+  border: 0;
+  background-color: white;
+  background-image: url('../assets/img/goBackpng.svg');
+  width: 40px;
+  height: 40px;
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  border: 2px solid #977657;
+  border-radius: 10px;
+  transition: background-position .6s ease-in-out ;
+}
+.btn-go-back:hover
+{
+  background-position: 30% center;
+}
 
 .events-page__slider__container {
   width: 100%;
@@ -48,9 +69,6 @@ export default {
   position: relative;
   border-radius: 20px;
   height: 400px;
-}
-.events-page__name-slide {
-  display: block;
 }
 .slider-and-name-slide {
   min-height: 400px;

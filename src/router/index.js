@@ -6,6 +6,9 @@ import EventItem from '@/views/EventItem.vue';
 import LegalCenter from '@/views/LegalCenter.vue';
 import AdminMain from '@/views/AdminMain.vue';
 import AdminLawyer from '@/views/AdminLawyer.vue';
+import AdminLegalCenter from '@/views/AdminLegalCenter.vue';
+import AdminEvents from '@/views/AdminEvents.vue';
+import AdminEventsItem from '@/views/AdminEventsItem.vue';
 
 const routes = [
   {
@@ -47,6 +50,21 @@ const routes = [
     path: '/AdminLawyer/:id',
     name: 'AdminLawyer',
     component: AdminLawyer,
+  },
+  {
+    path: '/AdminLegalCenter',
+    name: 'AdminLegalCenter',
+    component: AdminLegalCenter,
+  },
+  {
+    path: '/AdminEvents',
+    name: 'AdminEvents',
+    component: AdminEvents,
+  },
+  {
+    path: '/AdminEventsItem/:id',
+    name: 'AdminEventsItem',
+    component: AdminEventsItem,
   },
 ];
 
