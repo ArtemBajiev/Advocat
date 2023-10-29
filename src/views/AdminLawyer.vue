@@ -30,7 +30,7 @@
 
       </div>
       <p>РУС</p>
-        <div class="button-container">
+      <div class="button-container">
         <div v-if="editor" class="buttons-editor">
           <button
             @click="editor.chain().focus().toggleBold().run()"
@@ -102,7 +102,7 @@
     <editor-content :editor="editor" />
     <hr>
     <p>ENG</p>
-      <div class="button-container">
+    <div class="button-container">
         <div v-if="editorEng" class="buttons-editor">
           <button
             @click="editorEng.chain().focus().toggleBold().run()"
@@ -259,7 +259,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .buttons-editor button
 {
   border: 0px;

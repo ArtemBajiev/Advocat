@@ -1,9 +1,10 @@
 <!-- eslint-disable max-len -->
 <template>
+  <router-link to="/aut">
   <div class="main__top__img-and-text">
     <img src="../assets/img/slideImg1.jpg" alt="" class="main__top__img">
     <p class="main__top__text" v-html="$store.state.allContent.main.imgText[$store.state.language] "></p>
-  </div>
+  </div></router-link>
 
   <ArticlesMain/>
 </template>

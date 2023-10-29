@@ -4,11 +4,6 @@ import lawyerItem from '@/views/lawyerItem.vue';
 import EventsPage from '@/views/EventsPage.vue';
 import EventItem from '@/views/EventItem.vue';
 import LegalCenter from '@/views/LegalCenter.vue';
-import AdminMain from '@/views/AdminMain.vue';
-import AdminLawyer from '@/views/AdminLawyer.vue';
-import AdminLegalCenter from '@/views/AdminLegalCenter.vue';
-import AdminEvents from '@/views/AdminEvents.vue';
-import AdminEventsItem from '@/views/AdminEventsItem.vue';
 
 const routes = [
   {
@@ -44,28 +39,34 @@ const routes = [
   {
     path: '/adminMain',
     name: 'AdminMain',
-    component: AdminMain,
+    component: () => import(/* webpackChunkName:"AdminMain" */'../views/AdminMain.vue'),
   },
   {
     path: '/AdminLawyer/:id',
     name: 'AdminLawyer',
-    component: AdminLawyer,
+    component: () => import(/* webpackChunkName:"AdminLawyer" */'../views/AdminLawyer.vue'),
   },
   {
     path: '/AdminLegalCenter',
     name: 'AdminLegalCenter',
-    component: AdminLegalCenter,
+    component: () => import(/* webpackChunkName:"AdminLegalCenter" */'../views/AdminLegalCenter.vue'),
   },
   {
     path: '/AdminEvents',
     name: 'AdminEvents',
-    component: AdminEvents,
+    component: () => import(/* webpackChunkName:"AdminEvents" */'../views/AdminEvents.vue'),
   },
   {
     path: '/AdminEventsItem/:id',
     name: 'AdminEventsItem',
-    component: AdminEventsItem,
+    component: () => import(/* webpackChunkName:"AdminEventsItem" */'../views/AdminEventsItem.vue'),
   },
+  {
+    path: '/Aut',
+    name: 'Aut',
+    component: () => import(/* webpackChunkName:"Aut" */'../views/AutorizationPage.vue'),
+  },
+
 ];
 
 const router = createRouter({

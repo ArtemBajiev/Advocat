@@ -5,148 +5,150 @@
     <section name="legal-center">
 
         <AdminMenu></AdminMenu>
-      <div class="container">
         <div class="button-container">
-      <div v-if="editor">
-        <button @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().
-        chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-          bold
-        </button>
-        <button @click="editor.chain().focus().toggleItalic().run()" :disabled="!editor.can()
-        .chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-          italic
-        </button>
-        <button @click="editor.chain().focus().toggleStrike().run()" :disabled="!editor.can()
-        .chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-          strike
-        </button>
-        <button @click="editor.chain().focus().toggleHeading({ level: 1 })
-        .run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-          Заголовок 1
-        </button>
-        <button @click="editor.chain().focus().toggleHeading({ level: 2 })
-        .run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-          Заголовок 2
-        </button>
-        <button @click="editor.chain().focus().toggleHeading({ level: 3 })
-        .run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-          Заголовок 3
-        </button>
-        <button @click="editor.chain().focus().toggleBulletList().run()"
-         :class="{ 'is-active': editor.isActive('bulletList') }">
-          bullet list
-        </button>
-        <button @click="editor.chain().focus().toggleOrderedList().run()"
-         :class="{ 'is-active': editor.isActive('orderedList') }">
-          ordered list
-        </button>
-        <button @click="editor.chain().focus().toggleBlockquote().run()"
-         :class="{ 'is-active': editor.isActive('blockquote') }">
-          blockquote
-        </button>
-        <button @click="editor.chain().focus().setHorizontalRule().run()">
-          horizontal rule
-        </button>
-        <button @click="editor.chain().focus().setHardBreak().run()">
-          hard break
-        </button>
-        <button @click="editor.chain().focus().setTextAlign('left').run()"
-         :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }">
-          left
-        </button>
-        <button @click="editor.chain().focus().setTextAlign('center').run()"
-         :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }">
-          center
-        </button>
-        <button @click="editor.chain().focus().setTextAlign('right').run()"
-         :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }">
-          right
-        </button>
-        <button @click="editor.chain().focus().setTextAlign('justify').run()"
-         :class="{ 'is-active': editor.isActive({ textAlign: 'justify' }) }">
-          justify
-        </button>
-        <button @click="editor.chain().focus().unsetTextAlign().run()">
-          unsetTextAlign
-        </button>
-        <button @click="addImage" >add image from URL</button>
-
-      </div>
+        <div v-if="editor" class="buttons-editor">
+          <button
+            @click="editor.chain().focus().toggleBold().run()"
+            :disabled="!editor.can().chain().focus().toggleBold().run()"
+            :class="{ 'is-active': editor.isActive('bold') }"
+          >
+            <strong>Ж</strong>
+          </button>
+          <button
+            @click="editor.chain().focus().toggleItalic().run()"
+            :disabled="!editor.can().chain().focus().toggleItalic().run()"
+            :class="{ 'is-active': editor.isActive('italic') }"
+          >
+            <i>К</i>
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+          >
+            Заголовок 1
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+          >
+            Заголовок 2
+          </button>
+          <button
+            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+            :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
+          >
+            Заголовок 3
+          </button>
+          <button
+            @click="editor.chain().focus().toggleBulletList().run()"
+            :class="{ 'is-active': editor.isActive('bulletList') }"
+          >
+            Список
+          </button>
+          <button
+            @click="editor.chain().focus().toggleOrderedList().run()"
+            :class="{ 'is-active': editor.isActive('orderedList') }"
+          >
+            Нумерованный список
+          </button>
+          <button @click="editor.chain().focus().setHorizontalRule().run()">
+            Горизонтальная линия</button>
+          <button @click="editor.chain().focus().setHardBreak().run()">Разрыв строки</button>
+          <button
+            @click="editor.chain().focus().setTextAlign('left').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
+          >
+            <img src="../assets/img/textLeft.svg" alt="">
+          </button>
+          <button
+            @click="editor.chain().focus().setTextAlign('center').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
+          >
+          <img src="../assets/img/textCenter.svg" alt="">
+          </button>
+          <button
+            @click="editor.chain().focus().setTextAlign('right').run()"
+            :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
+          >
+          <img src="../assets/img/textRight.svg" alt="">
+          </button>
         </div>
       </div>
       <editor-content :editor="editor" />
+      <hr>
       <div class="button-container">
-      <div v-if="editorEng">
-        <button @click="editorEng.chain().focus().toggleBold().run()" :disabled="!editorEng.can().
-        chain().focus().toggleBold().run()" :class="{ 'is-active': editorEng.isActive('bold') }">
-          bold
-        </button>
-        <button @click="editorEng.chain().focus().toggleItalic().run()" :disabled="!editorEng.can()
-        .chain().focus().toggleItalic().run()" :class="
-        { 'is-active': editorEng.isActive('italic') }">
-          italic
-        </button>
-        <button @click="editorEng.chain().focus().toggleStrike().run()" :disabled="!editorEng.can()
-        .chain().focus().toggleStrike().run()" :class="{
-             'is-active': editorEng.isActive('strike') }">
-          strike
-        </button>
-        <button @click="editorEng.chain().focus().toggleHeading({ level: 1 })
-        .run()" :class="{ 'is-active': editorEng.isActive('heading', { level: 1 }) }">
-          Заголовок 1
-        </button>
-        <button @click="editorEng.chain().focus().toggleHeading({ level: 2 })
-        .run()" :class="{ 'is-active': editorEng.isActive('heading', { level: 2 }) }">
-          Заголовок 2
-        </button>
-        <button @click="editorEng.chain().focus().toggleHeading({ level: 3 })
-        .run()" :class="{ 'is-active': editorEng.isActive('heading', { level: 3 }) }">
-          Заголовок 3
-        </button>
-        <button @click="editorEng.chain().focus().toggleBulletList().run()"
-         :class="{ 'is-active': editorEng.isActive('bulletList') }">
-          bullet list
-        </button>
-        <button @click="editorEng.chain().focus().toggleOrderedList().run()"
-         :class="{ 'is-active': editorEng.isActive('orderedList') }">
-          ordered list
-        </button>
-        <button @click="editorEng.chain().focus().toggleBlockquote().run()"
-         :class="{ 'is-active': editorEng.isActive('blockquote') }">
-          blockquote
-        </button>
-        <button @click="editorEng.chain().focus().setHorizontalRule().run()">
-          horizontal rule
-        </button>
-        <button @click="editorEng.chain().focus().setHardBreak().run()">
-          hard break
-        </button>
-        <button @click="editorEng.chain().focus().setTextAlign('left').run()"
-         :class="{ 'is-active': editorEng.isActive({ textAlign: 'left' }) }">
-          left
-        </button>
-        <button @click="editorEng.chain().focus().setTextAlign('center').run()"
-         :class="{ 'is-active': editorEng.isActive({ textAlign: 'center' }) }">
-          center
-        </button>
-        <button @click="editorEng.chain().focus().setTextAlign('right').run()"
-         :class="{ 'is-active': editorEng.isActive({ textAlign: 'right' }) }">
-          right
-        </button>
-        <button @click="editorEng.chain().focus().setTextAlign('justify').run()"
-         :class="{ 'is-active': editorEng.isActive({ textAlign: 'justify' }) }">
-          justify
-        </button>
-        <button @click="editorEng.chain().focus().unsetTextAlign().run()">
-          unsetTextAlign
-        </button>
-        <button @click="addImage" >add image from URL</button>
-
+        <div v-if="editorEng" class="buttons-editor">
+          <button
+            @click="editorEng.chain().focus().toggleBold().run()"
+            :disabled="!editorEng.can().chain().focus().toggleBold().run()"
+            :class="{ 'is-active': editorEng.isActive('bold') }"
+          >
+          <strong>Ж</strong>
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleItalic().run()"
+            :disabled="!editorEng.can().chain().focus().toggleItalic().run()"
+            :class="{ 'is-active': editorEng.isActive('italic') }"
+          >
+            <i>К</i>
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 1 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 1 }) }"
+          >
+            Заголовок 1
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 2 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 2 }) }"
+          >
+            Заголовок 2
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleHeading({ level: 3 }).run()"
+            :class="{ 'is-active': editorEng.isActive('heading', { level: 3 }) }"
+          >
+            Заголовок 3
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleBulletList().run()"
+            :class="{ 'is-active': editorEng.isActive('bulletList') }"
+          >
+            Список
+          </button>
+          <button
+            @click="editorEng.chain().focus().toggleOrderedList().run()"
+            :class="{ 'is-active': editorEng.isActive('orderedList') }"
+          >
+            Нумерованный список
+          </button>
+          <button @click="editorEng.chain().focus().setHorizontalRule().run()">
+            Горизонтальная линия
+          </button>
+          <button @click="editorEng.chain().focus().setHardBreak().run()">Разрыв строки</button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('left').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'left' }) }"
+          >
+          <img src="../assets/img/textLeft.svg" alt="">
+          </button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('center').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'center' }) }"
+          >
+          <img src="../assets/img/textCenter.svg" alt="">
+          </button>
+          <button
+            @click="editorEng.chain().focus().setTextAlign('right').run()"
+            :class="{ 'is-active': editorEng.isActive({ textAlign: 'right' }) }"
+          >
+          <img src="../assets/img/textRight.svg" alt="">
+          </button>
+            </div>
       </div>
-        </div>
       <editor-content :editor="editorEng" />
 
-      <button @click="Post()">Сохранить</button>
+      <button class="btn btn-primary admin__btn-save" @click="Post()">Сохранить</button>
     </section>
 </div>
     </template>

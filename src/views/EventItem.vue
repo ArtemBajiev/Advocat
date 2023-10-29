@@ -3,6 +3,7 @@
    <HeaderSlot/>
       <div class="event-page">
           <div class="container">
+              <button class="btn-go-back" @click="$router.go(-1)"></button>
             <HeaderItem> <h1 class="event-page__header">
               {{ getEventData.cardHeader[$store.state.language] }}
             </h1></HeaderItem>

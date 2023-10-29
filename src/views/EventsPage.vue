@@ -2,7 +2,7 @@
   <HeaderSlot></HeaderSlot>
   <div class="legalCenter">
     <div class="container">
-      <button class="btn-go-back"></button>
+      <!--<button class="btn-go-back" @click="$router.go(-1)"></button>-->
       <HeaderItem>
         <h4 class="events-page__header">
         {{ $store.state.allContent.EventsPage.header[$store.state.language] }}
