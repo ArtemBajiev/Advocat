@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default createStore({
   state: {
@@ -468,25 +468,25 @@ export default createStore({
       },
     },
   },
-  getters: {
-    getData(state) {
-      axios.get(`${this.state.URL__DATA}/api/baskets`)
-      // , {
-      //  params: {
-      //    userAccessKey: context.state.userKey,
-      //  },
-      // })
-        // eslint-disable-next-line no-return-assign
-        .then((response) => {
-          if (!context.state.userKey) {
-            localStorage.setItem('userAccesKey', response.data.user.accessKey);
-            context.commit('updateUserKey', response.data.user.accessKey);
-          }
+  // getters: {
+  //  getData(state) {
+  //    axios.get(`${this.state.URL__DATA}/api/baskets`)
+  //     , {
+  //      params: {
+  //        userAccessKey: context.state.userKey,
+  //      },
+  //     })
+  //      // eslint-disable-next-line no-return-assign
+  //      .then((response) => {
+  //        if (!context.state.userKey) {
+  //          localStorage.setItem('userAccesKey', response.data.user.accessKey);
+  //          context.commit('updateUserKey', response.data.user.accessKey);
+  //        }
 
-          context.commit('updateCardProductsData', response.data.items);
-        });
-    },
-  },
+  //        context.commit('updateCardProductsData', response.data.items);
+  //      });
+  //  },
+  // },
   mutations: {
     languageUpdate(state, lang) {
       state.language = lang;
