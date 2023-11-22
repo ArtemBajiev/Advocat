@@ -4,12 +4,11 @@
     <transition name="phone">
       <div
         class="header__phone"
-        v-if="getWidth == false"
         v-show="PhoneMenu"
         @touchstart="touchStart($event.touches[0].clientX)"
         @touchend="touchEnd($event.changedTouches[0].clientX)"
       >
-        <div class="header__phone__background" @click="PhoneMenu = !PhoneMenu"></div>
+        <div class="header__phone__background" @click="closeMenu()"></div>
         <nav class="header__menu__phone">
           <ul class="header__menu-all__phone">
             <li class="header__menu-item__phone">
@@ -17,15 +16,17 @@
                 class="header__menu-item__link__phone"
                 :class="{ 'header__menu-item-active': $route.path === '/' }"
                 :to="{name: 'home'}"
+                @click="closeMenu()"
               >
                 Главная</router-link
               >
             </li>
-            <li class="header__menu-item">
+            <li class="header__menu-item__phone">
               <router-link
                 class="header__menu-item__link__phone"
-                to="/Legal_center"
+                to="/LegalCenter"
                 :class="{ 'header__menu-item-active': $route.path === '/Legal_center' }"
+                @click="closeMenu()"
               >
                 Научно-Правовой Центр</router-link
               >
@@ -39,16 +40,26 @@
                 class="header__menu-item__link__phone"
                 :class="{ 'header__menu-item-active': $route.path === '/lawyer/' + lawyer.id }"
                 :to="{ name: 'lawyer', params: { id: lawyer.id } }"
+                @click="closeMenu()"
                 >Адвокат {{ lawyer.name[$store.state.language] }}</router-link
               >
             </li>
+            <li class="header__menu-item__phone">
+            <router-link
+              class="header__menu-item__link__phone"
+              to="/Events"
+              :class="{ 'header__menu-item-active': $route.path === '/Events' }"
+            >
+              {{ $store.state.allContent.header.Events[$store.state.language] }}
+            </router-link>
+          </li>
           </ul>
         </nav>
       </div>
     </transition>
     <div class="header__container">
       <img class="logo" src="@/assets/img/LOGO.png" height="100" alt="" />
-      <nav class="header__menu" v-if="getWidth">
+      <nav class="header__menu" >
         <ul class="header__menu-all">
           <li class="header__menu-item">
             <router-link
@@ -106,7 +117,7 @@
       >
         ENG
       </button>
-      <button class="header__button-menu" @click="PhoneMenu = !PhoneMenu"></button>
+      <button class="header__button-menu" @click="openMenu()"></button>
     </div>
   </header>
 </template>
@@ -120,22 +131,28 @@ export default {
     };
   },
   computed: {
-    getWidth() {
-      return window.innerWidth > 768;
-    },
   },
   methods: {
+    openMenu() {
+      window.scrollTo(0, 0);
+      this.PhoneMenu = true;
+      document.body.style.overflow = 'hidden';
+    },
     touchStart(event) {
       this.touchStartData = event;
     },
     touchEnd(event) {
       this.touchEndData = event;
-      this.closeMenu();
+      this.closeMenuSwipe();
+    },
+    closeMenuSwipe() {
+      if (this.touchStartData < this.touchEndData * 0.9) {
+        this.closeMenu();
+      }
     },
     closeMenu() {
-      if (this.touchStartData < this.touchEndData * 0.9) {
-        this.PhoneMenu = false;
-      }
+      this.PhoneMenu = false;
+      document.body.style.overflow = 'auto';
     },
   },
 };
@@ -202,15 +219,33 @@ export default {
 }
 .header__button-menu {
   background-image: url("../assets/img/burger.svg");
-  width: 25px;
+  width: 30px;
   height: 25px;
   background-color: transparent;
   border: 0px;
   background-position: center;
-  background-size: contain;
+  background-size: 80%;
   background-repeat: no-repeat;
-  margin: 0px 10px;
   display: none;
+  margin-left: auto;
+  margin-right: 40px;
+  border-radius: 50%;
+  transition: all ease-in-out 0.1s;
+}
+.header__button-menu:active
+{
+  background-color: rgba(255, 255, 255, 0.336);
+box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.336);
+}
+
+.header__menu-all__phone
+{
+  list-style: none;
+  padding: 0;
+}
+.header__menu-item__link__phone
+{
+  font-size: 1px;
 }
 /*Anim*/
 .phone-enter-from {
@@ -235,29 +270,37 @@ export default {
   transform: translateX(100%);
   opacity: 0;
 }
+.header__language {
+  border: 0px;
+  background-color: transparent;
+  font-weight: bold;
+  margin: 0px 10px;
+  padding: 0px;
+}
 /*phone*/
 .header__menu__phone {
   background-color: var(--twoColor);
-  height: 100vh;
+  height: 120vh;
   max-width: 70%;
   margin-left: auto;
-  z-index: 5;
-  position: absolute;
+  z-index: 20;
+  position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
 }
 .header__menu-item__link__phone {
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   display: block;
-  padding: 10px 0px;
+  padding: 10px 15px;
 }
 .header__phone__background {
   background-color: rgba(0, 0, 0, 0.411);
-  z-index: 1;
+  z-index: 10;
   width: 200vw;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   top: 0;
   right: 0;
@@ -276,13 +319,6 @@ export default {
   background-color: transparent;
 }
 
-.header__language {
-  border: 0px;
-  background-color: transparent;
-  font-weight: bold;
-  margin: 0px 10px;
-  padding: 0px;
-}
 .header__language__active {
 border-bottom: 2px solid black;
 
@@ -293,6 +329,17 @@ border-bottom: 2px solid black;
   }
 }
 @media (max-width: 768px) {
+  .logo
+  {
+    height: 80px;
+  }
+  .header__container{
+    padding-left: 0;
+  }
+  .header__menu
+  {
+    display: none;
+  }
   .header {
     padding: 0px;
   }

@@ -33,10 +33,10 @@ export default {
   components: { HeaderSlot, AdminMenu },
   computed: {
     lawyerEventsData() {
-      return this.$store.state.lawyerEvents;
+      return this.$store.state.receivedData.lawyerEvents;
     },
     slideEventsData() {
-      return this.$store.state.slideEvents;
+      return this.$store.state.receivedData.slideEvents;
     },
   },
   methods: {

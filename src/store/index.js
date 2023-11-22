@@ -1,9 +1,12 @@
 import { createStore } from 'vuex';
 // import axios from 'axios';
+import json from '../assets/lawyers.json';
 
 export default createStore({
   state: {
     language: 'rus',
+    URL__DATA: '../assets/lawyers.json',
+    receivedData: {},
     slide: [
       {
         slideText: {
@@ -468,26 +471,22 @@ export default createStore({
       },
     },
   },
-  // getters: {
-  //  getData(state) {
-  //    axios.get(`${this.state.URL__DATA}/api/baskets`)
-  //     , {
-  //      params: {
-  //        userAccessKey: context.state.userKey,
-  //      },
-  //     })
-  //      // eslint-disable-next-line no-return-assign
-  //      .then((response) => {
-  //        if (!context.state.userKey) {
-  //          localStorage.setItem('userAccesKey', response.data.user.accessKey);
-  //          context.commit('updateUserKey', response.data.user.accessKey);
-  //        }
-
-  //        context.commit('updateCardProductsData', response.data.items);
-  //      });
-  //  },
-  // },
+  getters: {
+  },
   mutations: {
+    getData(state) {
+      // axios.get((json), {
+      //  params: {
+
+      //  },
+      // })
+      //  // eslint-disable-next-line no-return-assign
+      //  .then((response) => this.receivedData = response.data)
+      //  .then((response) => console.log(response))
+      //  .catch(() => console.log('Я хуею с этого Буша'));
+      state.receivedData = json;
+    },
+
     languageUpdate(state, lang) {
       state.language = lang;
     },

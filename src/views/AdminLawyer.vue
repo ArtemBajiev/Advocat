@@ -83,19 +83,19 @@
             @click="editor.chain().focus().setTextAlign('left').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
           >
-            <img src="../assets/img/textLeft.svg" alt="">
+            <img src="../assets/img/textLeft.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editor.chain().focus().setTextAlign('center').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
           >
-          <img src="../assets/img/textCenter.svg" alt="">
+          <img src="../assets/img/textCenter.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editor.chain().focus().setTextAlign('right').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
           >
-          <img src="../assets/img/textRight.svg" alt="">
+          <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
           </button>
         </div>
       </div>
@@ -156,19 +156,19 @@
             @click="editorEng.chain().focus().setTextAlign('left').run()"
             :class="{ 'is-active': editorEng.isActive({ textAlign: 'left' }) }"
           >
-          <img src="../assets/img/textLeft.svg" alt="">
+          <img src="../assets/img/textLeft.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editorEng.chain().focus().setTextAlign('center').run()"
             :class="{ 'is-active': editorEng.isActive({ textAlign: 'center' }) }"
           >
-          <img src="../assets/img/textCenter.svg" alt="">
+          <img src="../assets/img/textCenter.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editorEng.chain().focus().setTextAlign('right').run()"
             :class="{ 'is-active': editorEng.isActive({ textAlign: 'right' }) }"
           >
-          <img src="../assets/img/textRight.svg" alt="">
+          <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
           </button>
             </div>
       </div>
@@ -259,7 +259,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+.btn-admin-menu-editor
+{
+  width: 25px;
+}
+.is-active{
+  background-color: rgba(150, 150, 150, 0.329) !important;
+}
 .buttons-editor button
 {
   border: 0px;

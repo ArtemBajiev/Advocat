@@ -1,69 +1,75 @@
 <template>
   <div class="background">
-  <HeaderSlot />
-  <div class="lawyer__info">
-    <div class="container">
-      <div class="lawyer__header__container">
-        <div class="lawyer__header__background">
-          <h1 class="lawyer__header">{{ $store.state.allContent.lawyer[$store.state.language] }}
-             {{ getLawyerData.fullName[$store.state.language] }}
-          </h1>
+    <HeaderSlot />
+    <div class="lawyer__info">
+      <div class="container">
+        <div class="lawyer__header__container">
+          <div class="lawyer__header__background">
+            <h1 class="lawyer__header">
+              {{ $store.state.allContent.lawyer[$store.state.language] }}
+              {{ getLawyerData.fullName[$store.state.language] }}
+            </h1>
+          </div>
         </div>
-      </div>
-      <div class="lawyer__container">
-        <div class="lawyer__text-and-img">
-          <img class="lawyer__img" :src="require(`@/assets/img/${getLawyerData.img}`)" alt="" />
-          <p class="lawyer__text" v-html="getLawyerData.info[$store.state.language]"></p>
+        <div class="lawyer__container">
+          <div class="lawyer__text-and-img">
+            <img class="lawyer__img" :src="require(`@/assets/img/${getLawyerData.img}`)" alt="" />
+            <p class="lawyer__text" v-html="getLawyerData.info[$store.state.language]"></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="educational-publications">
-    <div class="container">
-    <p class="educational-publications__text">
-      {{ $store.state.allContent.EducationalPublications.text[$store.state.language] }}
-    </p>
-    <span class="educational-publications__text-link">
-      {{ $store.state.allContent.EducationalPublications.textLink[$store.state.language] }}
-    </span>
-    <a class="educational-publications__button">
-      {{ $store.state.allContent.EducationalPublications.button[$store.state.language] }}
-    </a>
+    <div class="educational-publications">
+      <div class="container">
+        <p class="educational-publications__text">
+          {{ $store.state.allContent.EducationalPublications.text[$store.state.language] }}
+        </p>
+        <span class="educational-publications__text-link">
+          {{ $store.state.allContent.EducationalPublications.textLink[$store.state.language] }}
+        </span>
+        <a class="educational-publications__button">
+          {{ $store.state.allContent.EducationalPublications.button[$store.state.language] }}
+        </a>
+      </div>
     </div>
-  </div>
-  <div class="lawyer__contact">
-    <div class="container">
-    <h3 class="lawyer__contact__header">
-      {{ $store.state.allContent.contact.header[$store.state.language] }}
-    </h3>
+    <div class="lawyer__contact">
+      <div class="container">
+        <h3 class="lawyer__contact__header">
+          {{ $store.state.allContent.contact.header[$store.state.language] }}
+        </h3>
 
-    <ul class="lawyer__contact__all">
-      <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title">
-          {{$store.state.allContent.contact.numberPhone[$store.state.language]}} </span>
-        <a :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
-      </li>
-      <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title">
-          {{$store.state.allContent.contact.email[$store.state.language]}}:</span>
-        <a :href="getLawyerData.email">{{ getLawyerData.email }}</a>
-      </li>
-      <li class="lawyer__contact__item">
-        <span class="lawyer__contact__item__title">
-          {{$store.state.allContent.contact.address[$store.state.language]}}:</span
-        ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
-      </li>
-      <li class="messenger">
-        <div class="whats messenger__item"><a :href="`https://wa.me/${getLawyerData.telLink}`">WhatsApp</a></div>
-        <div class="tg messenger__item"><a :href="`tg://resolve?domain=${getLawyerData.tgNikname}`">Telegram</a></div>
-      </li>
-    </ul>
+        <ul class="lawyer__contact__all">
+          <li class="lawyer__contact__item">
+            <span class="lawyer__contact__item__title">
+              {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}
+            </span>
+            <a :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
+          </li>
+          <li class="lawyer__contact__item">
+            <span class="lawyer__contact__item__title">
+              {{ $store.state.allContent.contact.email[$store.state.language] }}:</span
+            >
+            <a :href="getLawyerData.email">{{ getLawyerData.email }}</a>
+          </li>
+          <li class="lawyer__contact__item">
+            <span class="lawyer__contact__item__title">
+              {{ $store.state.allContent.contact.address[$store.state.language] }}:</span
+            ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
+          </li>
+          <li class="messenger">
+            <div class="whats messenger__item">
+              <a :href="`https://wa.me/${getLawyerData.telLink}`">WhatsApp</a>
+            </div>
+            <div class="tg messenger__item">
+              <a :href="`tg://resolve?domain=${getLawyerData.tgNikname}`">Telegram</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </template>
 <script>
-
 import HeaderSlot from '@/components/HeaderSlot.vue';
 
 export default {
@@ -82,8 +88,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.background
-{
+.background {
   background-color: #fff;
 }
 .lawyer__container {
@@ -130,32 +135,27 @@ export default {
 .lawyer__text {
   font-size: 32px;
   line-height: 32px;
-  word-break:normal;
+  word-break: normal;
 }
 .lawyer__text-and-img {
   flex: 1 2 auto;
 }
-.educational-publications
-{
+.educational-publications {
   margin-top: 40px;
   background-color: var(--bodyColor);
   border-radius: 30px;
   padding: 30px;
-
 }
-.educational-publications__text
-{
+.educational-publications__text {
   margin: 0px;
   font-size: 34px;
 }
-.educational-publications__text-link
-{
+.educational-publications__text-link {
   display: block;
   margin-top: 20px;
   font-size: 28px;
 }
-.educational-publications__button
-{
+.educational-publications__button {
   display: inline-block;
   margin-top: 20px;
   padding: 20px 40px;
@@ -166,12 +166,10 @@ export default {
   transition: background-color 0.3s ease-in-out;
   box-shadow: 0px 2px 4px 3px rgba(0, 0, 0, 0.212);
 }
-.educational-publications__button:hover
-{
+.educational-publications__button:hover {
   background-color: #97755388;
   color: white;
   cursor: pointer;
-
 }
 .lawyer__contact {
   margin-top: 40px;
@@ -201,23 +199,19 @@ export default {
   font-size: 20px;
   margin-left: 10px;
 }
-.messenger
-{
-display: flex;
+.messenger {
+  display: flex;
 }
 
-.messenger__item a
-{
+.messenger__item a {
   display: block;
   margin: 20px;
   padding-top: 60px;
   position: relative;
   text-align: center;
   transition: color 0.3s ease-in-out;
-
 }
-.messenger__item a::before
-{
+.messenger__item a::before {
   display: block;
   width: 100%;
   height: 50px;
@@ -229,43 +223,56 @@ display: flex;
   filter: sepia(100%);
   transition: filter 0.3s ease-in-out;
 }
-.messenger__item a:hover::before
-{
+.messenger__item a:hover::before {
   filter: sepia(0%);
 }
-.whats a::before{
-  content: '';
-  background-image: url('../assets/img/whats.png');
-
+.whats a::before {
+  content: "";
+  background-image: url("../assets/img/whats.png");
 }
-.whats a{
+.whats a {
 }
 .whats a:hover {
   color: green;
 }
-.tg a::before{
-  content: '';
-  background-image:url('../assets/img/tg.png') ;
+.tg a::before {
+  content: "";
+  background-image: url("../assets/img/tg.png");
 }
-.tg a:hover{
+.tg a:hover {
   color: blue;
 }
 @media (max-width: 768px) {
-  .lawyer__menu-block
+  .lawyer__text
   {
-    margin: 0px;
+    font-size: calc(var(--index) * 2);
   }
-  .lawyer__container
+  .educational-publications__text
   {
-    flex-direction: column;
-    align-items: center;
-  }
-  .lawyer__header__background
-  {
-    margin: 0px;
+    font-size: calc(var(--index) * 2);
   }
   .lawyer__contact__all
   {
+    padding: 0;
+  }
+  .lawyer__header {
+    font-size: calc(var(--index) * 2);
+  }
+  .lawyer__container img {
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+  }
+  .lawyer__menu-block {
+    margin: 0px;
+  }
+  .lawyer__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .lawyer__header__background {
+    margin: 0px;
+  }
+  .lawyer__contact__all {
     max-width: 100%;
   }
 }

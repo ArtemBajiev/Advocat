@@ -58,19 +58,19 @@
             @click="editor.chain().focus().setTextAlign('left').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
           >
-            <img src="../assets/img/textLeft.svg" alt="">
+            <img src="../assets/img/textLeft.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editor.chain().focus().setTextAlign('center').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
           >
-          <img src="../assets/img/textCenter.svg" alt="">
+          <img src="../assets/img/textCenter.svg" class="btn-admin-menu-editor" alt="">
           </button>
           <button
             @click="editor.chain().focus().setTextAlign('right').run()"
             :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
           >
-          <img src="../assets/img/textRight.svg" alt="">
+          <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
           </button>
         </div>
       </div>
@@ -221,7 +221,23 @@ export default {
 };
 </script>
 
-    <style lang="scss">
+    <style lang="scss" scoped>
+.is-active{
+  background-color: rgba(150, 150, 150, 0.329) !important;
+}
+.buttons-editor button
+{
+  border: 0px;
+  padding: 7px;
+  border-left: 1px solid #0000001f;
+  border-right:1px solid #0000001f ;
+  margin: 0px 3px;
+  background-color: transparent;
+  height: 50px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.363);
+}
     .img-admin
     {
       max-height: 300px;

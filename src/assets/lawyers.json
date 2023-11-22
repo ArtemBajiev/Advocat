@@ -1,4 +1,4 @@
-'{   "slide": [
+{   "slide": [
             {
               "slideText": {
                 "rus": "слайдтекст1",
@@ -131,4 +131,4 @@
               "rus": "Цель",
               "eng": "The purpose"
             }
-          }}'
+          }}

@@ -24,6 +24,9 @@ export default {
     FooterComp,
     CastomDevT,
   },
+  mounted() {
+    this.$store.commit('getData');
+  },
 };
 </script>
 <style>
@@ -125,4 +128,10 @@ transition: all 0.5s ease-in;
 opacity: 0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@media (max-width: 768px ) {
+.header-item *
+{
+  font-size: calc(var(--index)*3) !important;
+}
+}
 </style>
