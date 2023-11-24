@@ -41,9 +41,10 @@
         <ul class="lawyer__contact__all">
           <li class="lawyer__contact__item">
             <span class="lawyer__contact__item__title">
-              {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}
+              {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}:
             </span>
-            <a :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
+            <a class="lawyer__contact__phone-link"
+             :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
           </li>
           <li class="lawyer__contact__item">
             <span class="lawyer__contact__item__title">
@@ -201,6 +202,7 @@ export default {
 }
 .messenger {
   display: flex;
+  justify-content: center;
 }
 
 .messenger__item a {
@@ -272,8 +274,21 @@ export default {
   .lawyer__header__background {
     margin: 0px;
   }
+  .lawyer__contact
+  {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   .lawyer__contact__all {
     max-width: 100%;
+  }
+  .lawyer__contact__phone-link
+  {
+    white-space: nowrap;
+  }
+  .lawyer__contact__item
+  {
+    text-align: center;
   }
 }
 </style>

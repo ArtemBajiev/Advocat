@@ -328,10 +328,11 @@ border-bottom: 2px solid black;
     font-size: calc(var(--index)*0.9);
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .logo
   {
     height: 80px;
+    margin-top: 8px;
   }
   .header__container{
     padding-left: 0;
@@ -345,6 +346,13 @@ border-bottom: 2px solid black;
   }
   .header__button-menu {
     display: block;
+  }
+}
+@media (max-width: 540px) {
+  .logo
+  {
+    height: 50px;
+    margin-top: 8px;
   }
 }
 </style>

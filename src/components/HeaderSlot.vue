@@ -18,4 +18,10 @@ export default {
     height: 80px;
   }
 }
+@media (max-width: 540px) {
+  .header-background
+  {
+    height: 58px;
+  }
+}
 </style>

@@ -45,7 +45,8 @@ export default {
   @media (max-width: 1024px) {
     .main__top__text
   {
-    font-size: calc(var(--index));
+    font-size: calc(var(--index)*1.5);
+    max-width: 80%;
   }
   }
 </style>
