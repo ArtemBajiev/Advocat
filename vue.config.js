@@ -10,3 +10,8 @@ module.exports = defineConfig({
       .loader('file-loader');
   },
 });
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/advocat/'
+    : '/',
+};
