@@ -8,7 +8,7 @@
             <div class="all-articles">
                 <div class="row">
                     <div class="col-md-6 col-lg-3
-                      g-5" v-for="article in $store.state.articles"
+                      g-5" v-for="article in $store.state.receivedData.articles"
                        :key="article.id">
                         <ArticleItem :article="article"/>
                     </div>

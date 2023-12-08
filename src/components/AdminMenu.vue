@@ -7,7 +7,7 @@
                     Главная
                 </router-link>
             </li>
-            <li v-for="item in $store.state.advocatsInfo" :key="item.id">
+            <li v-for="item in $store.state.receivedData.advocatsInfo" :key="item.id">
                 <router-link :to="{name:'AdminLawyer', params:{id: item.id}}">
                     {{ item.name.rus }}
                 </router-link>

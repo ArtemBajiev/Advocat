@@ -25,11 +25,14 @@ export default {
     CastomDevT,
   },
   mounted() {
-    this.$store.commit('getData');
+    this.$store.dispatch('GetData');
   },
 };
 </script>
 <style>
+body{
+  overflow-x: hidden;
+}
 .wrapper
 {
   display: flex;

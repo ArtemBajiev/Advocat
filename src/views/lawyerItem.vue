@@ -33,6 +33,7 @@
       </div>
     </div>
     <div class="lawyer__contact">
+      <!--:style="{'background-image': require('url(../assets/img/contactAbramov.png)')}"-->
       <div class="container">
         <h3 class="lawyer__contact__header">
           {{ $store.state.allContent.contact.header[$store.state.language] }}
@@ -83,7 +84,8 @@ export default {
   methods: {},
   computed: {
     getLawyerData() {
-      return this.$store.state.advocatsInfo.find((item) => item.id === this.$route.params.id);
+      return this.$store.state.receivedData.advocatsInfo
+        .find((item) => item.id === this.$route.params.id);
     },
   },
 };
@@ -177,6 +179,9 @@ export default {
   background-color: var(--bodyColor);
   border-radius: 30px 30px 0px 0px;
   padding: 30px;
+  background-size: contain;
+  background-position: 80% 10%;
+  background-repeat: no-repeat;
 }
 .lawyer__contact__header {
   color: var(--fontColorTwo);

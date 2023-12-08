@@ -18,7 +18,6 @@ export default {
 <style>
   .main__top__img-and-text
   {
-    background-image: url('../assets/img/slideImg1.jpg');
     width: 100%;
     background-position: top;
     background-repeat: no-repeat;
@@ -33,7 +32,7 @@ export default {
   }
   .main__top__text
   {
-    font-size: 45px;
+    font-size: clamp(12px,3vw, 45px);
     position: absolute;
     top: 30%;
     vertical-align: center;
@@ -45,7 +44,6 @@ export default {
   @media (max-width: 1024px) {
     .main__top__text
   {
-    font-size: calc(var(--index)*1.5);
     max-width: 80%;
   }
   }

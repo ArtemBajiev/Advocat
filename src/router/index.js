@@ -66,6 +66,11 @@ const routes = [
     name: 'Aut',
     component: () => import(/* webpackChunkName:"Aut" */'../views/AutorizationPage.vue'),
   },
+  {
+    path: '/test',
+    name: 'test',
+    component: () => import(/* webpackChunkName:"test" */'../views/TestLoad.vue'),
+  },
 
 ];
 

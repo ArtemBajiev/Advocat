@@ -58,7 +58,8 @@ export default {
   },
   computed: {
     getEventData() {
-      return this.$store.state.lawyerEvents.find((item) => item.id === this.$route.params.id);
+      // eslint-disable-next-line max-len
+      return this.$store.state.receivedData.lawyerEvents.find((item) => item.id === this.$route.params.id);
     },
   },
   data() {

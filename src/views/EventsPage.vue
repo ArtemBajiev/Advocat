@@ -10,12 +10,13 @@
 
         <div class="slider-and-name-slide">
           <div class="events-page__slider__container">
-            <SliderMain :slide-data="$store.state.slideEvents"></SliderMain>
+            <SliderMain :slide-data="$store.state.receivedData.slideEvents"></SliderMain>
           </div>
         </div>
       <div class="events-page__event">
       <div class="row">
-        <div class="col-md-6 g-4" v-for="item in $store.state.lawyerEvents" :key="item.id">
+        <!--eslint-disable-next-line max-len-->
+        <div class="col-md-6 g-4" v-for="item in $store.state.receivedData.lawyerEvents" :key="item.id">
           <router-link :to="{name: 'event', params:{id: item.id}} ">
             <EventCard :item="item">
             </EventCard>

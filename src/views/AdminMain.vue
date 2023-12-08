@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     mainCardData() {
-      return this.$store.state.articles;
+      return this.$store.state.receivedData.articles;
     },
   },
 

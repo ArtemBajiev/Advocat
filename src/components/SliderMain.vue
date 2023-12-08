@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     slideRight() {
-      if (this.slidePosition > this.$store.state.slide.length * (-100) + 100) {
+      if (this.slidePosition > this.$store.state.receivedData.slide.length * (-100) + 100) {
         this.slidePosition -= 100;
         this.slideActive = Math.abs(this.slidePosition) / 100;
       }

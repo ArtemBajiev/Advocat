@@ -245,7 +245,8 @@ export default {
   },
   computed: {
     eventsItemData() {
-      return this.$store.state.lawyerEvents.find((item) => item.id === this.$route.params.id);
+      return this.$store.state.receivedData
+        .lawyerEvents.find((item) => item.id === this.$route.params.id);
     },
   },
   beforeUnmount() {

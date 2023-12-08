@@ -1,20 +1,44 @@
-<!-- eslint-disable vuejs-accessibility/media-has-caption -->
 <!-- eslint-disable vuejs-accessibility/form-control-has-label -->
 <template >
     <HeaderSlot></HeaderSlot>
     <div class="autorization__window">
         <p class="autorization__text">Авторизация</p>
-        <input class="form-control autorization__input" type="text" placeholder="Логин">
-        <input class="form-control autorization__input" type="password" placeholder="Пароль">
+        <form @submit.prevent="autorization()">
+        <input class="form-control autorization__input" :class="{'is-invalid': erroe}"
+         v-model="login" type="text" placeholder="Логин">
+        <input class="form-control autorization__input" :class="{'is-invalid': erroe}"
+         v-model="password" type="password" placeholder="Пароль">
+         <div id="validationServer05Feedback" class="invalid-feedback">
+             Неверный логин или пароль
+        </div>
         <button class="btn btn-light">Войти</button>
-
+        </form>
     </div>
 </template>
 <script>
 import HeaderSlot from '@/components/HeaderSlot.vue';
+import axios from 'axios';
 
 export default {
   components: { HeaderSlot },
+  data() {
+    return {
+      login: '',
+      password: '',
+      erroe: false,
+    };
+  },
+  methods: {
+    autorization() {
+      axios.post('http://api.sudural.ru/api/login', {
+        login: this.login,
+        password: this.password,
+      }).then((response) => {
+        this.$router.push('/adminMain');
+        localStorage.setItem('userAccesKey', response.data);
+      }).catch(() => { this.erroe = true; });
+    },
+  },
 };
 
 </script>

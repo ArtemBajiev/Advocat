@@ -212,7 +212,7 @@ export default {
   },
   computed: {
     legalCenterData() {
-      return this.$store.state.LegalCenter;
+      return this.$store.state.receivedData.LegalCenter;
     },
   },
   beforeUnmount() {

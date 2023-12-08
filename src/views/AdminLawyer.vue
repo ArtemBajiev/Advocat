@@ -26,8 +26,10 @@
         <img v-if="getAdvocatInfo.img"
           width="300" :src="require(`@/assets/img/${getAdvocatInfo.img}`)"
          alt="">
-         <label v-else for=""><input  type="file" /></label>
-
+         <form class="admin-lawyer__form-img">
+            <label for=""><input  type="file" /></label>
+            <button type="submit" class="btn btn-light">Заменить</button>
+         </form>
       </div>
       <p>РУС</p>
       <div class="button-container">
@@ -193,6 +195,13 @@
           </div>
       </fieldset>
     </section>
+    <form @submit.prevent="">
+      <a href="">загруженный файл</a>
+      <br>
+      <label for="">Статьи<br><input type="file"></label>
+      <br>
+      <button type="submit" class="btn btn-light" >заменить</button>
+    </form>
     <button class="btn btn-primary admin__btn-save" @click="Post()">Сохранить</button>
     </div>
   </section>
@@ -250,7 +259,9 @@ export default {
   },
   computed: {
     getAdvocatInfo() {
-      return this.$store.state.advocatsInfo.find((item) => item.id === this.$route.params.id);
+      // eslint-disable-next-line max-len
+      return this.$store.state.receivedData
+        .advocatsInfo.find((item) => item.id === this.$route.params.id);
     },
   },
   beforeUnmount() {
@@ -286,6 +297,17 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.admin-lawyer__form-img
+{
+  margin-top: 20px;
+  text-align: center;
+  margin-left: auto;
+}
+.admin-lawyer__form-img{
+  margin: 10px;
+  margin-left: auto;
+
+}
 .admin__lawyer-info
 {
   display: flex;
@@ -297,9 +319,12 @@ export default {
 }
 .admin__lawyer-img
 {
-  display: flex;
-  justify-content: end;
   margin: 10px;
+}
+.admin__lawyer-img img
+{
+  display: block;
+  margin: auto;
 }
 .img-admin {
   max-height: 300px;

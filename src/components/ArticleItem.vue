@@ -55,6 +55,7 @@ export default {
 }
 .article-item:hover{
     box-shadow: 0px 11px 15px 2px rgba(0, 0, 0, 0.466);
+    background-color: #8F755B;
 }
 .article-item__text
 {
