@@ -10,7 +10,7 @@
 
         <div class="slider-and-name-slide">
           <div class="events-page__slider__container">
-            <SliderMain :slide-data="$store.state.receivedData.slideEvents"></SliderMain>
+            <SliderMain :slide-data="$store.state.receivedData"></SliderMain>
           </div>
         </div>
       <div class="events-page__event">

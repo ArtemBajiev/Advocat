@@ -13,7 +13,8 @@
         </div>
         <div class="lawyer__container">
           <div class="lawyer__text-and-img">
-            <img class="lawyer__img" :src="require(`@/assets/img/${getLawyerData.img}`)" alt="" />
+            <img class="lawyer__img" :src="`${$store.state.URL__DATA}${getLawyerData.img}`"
+             alt="" />
             <p class="lawyer__text" v-html="getLawyerData.info[$store.state.language]"></p>
           </div>
         </div>

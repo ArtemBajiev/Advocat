@@ -24,44 +24,39 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      selectedFile: null,
+      selectedFile: {},
     };
   },
   methods: {
     handleFileChange(event) {
       // Обработчик изменения файла
-      const file = {};
       // eslint-disable-next-line prefer-destructuring
-      file.file = event.target.files[0];
-      file.text = { text1: '123123', text2: '123123' };
-      this.selectedFile = file;
+      this.selectedFile.file = event.target.files[0];
     },
     uploadImage() {
       // Функция загрузки изображения
-      if (this.selectedFile) {
-        // Создаем объект FormData для упаковки файла
-        const formData = new FormData();
-        formData.append('file', this.selectedFile.file);
-        formData.append('text', this.selectedFile.text);
-        console.log(formData);
-        // Отправляем запрос на сервер
-        axios
-          .post('http://api.sudural.ru/api/upload', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          })
-          .then((response) => {
-            // Обработка успешного ответа
-            console.log('Файл успешно загружен:', response.data);
-          })
-          .catch((error) => {
-            // Обработка ошибок
-            console.error('Ошибка при загрузке файла:', error);
-          });
-      } else {
-        console.error('Выберите файл для загрузки.');
-      }
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('file', this.selectedFile.file);
+      formData.append('id', 'id1');
+      formData.append('fileFormat', 'img');
+      formData.append('arrayName', 'arrayName1');
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axios
+        .post('http://api.sudural.ru/api/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          // Обработка успешного ответа
+          console.log('Файл успешно загружен:', response.data);
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          console.error('Ошибка при загрузке файла:', error);
+        });
     },
   },
 };

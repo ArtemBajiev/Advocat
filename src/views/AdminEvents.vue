@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <template>
     <HeaderSlot></HeaderSlot>
     <AdminMenu></AdminMenu>
@@ -5,8 +6,27 @@
         <div class="container">
             <ul class="Admin__slider">
                 <li class="Admin__slide-item" v-for="slide in slideEventsData" :key="slide.id">
-                    <img width="300" :src="require(`../assets/img/${slide.slideImg}`)" alt="">
-                    <button class="admin__slide__del-btn">X</button>
+                    <!--eslint-disable-next-line vuejs-accessibility/anchor-has-content-->
+                    <a :href="`${$store.state.URL__DATA}${slide.pdf}`">
+                    <img width="300" :src="`${$store.state.URL__DATA}${slide.img}`" alt=""></a>
+                    <button class="admin__slide__del-btn" @click="delSlide(slide.id)">X</button>
+                </li>
+                <li class="Admin__slide-item Admin__slide-item-form">
+                    <form ref="formEvent" @submit.prevent="uploadFiles">
+                        <label for="">Выберите картинку
+                        <input @change="loadImg" type="file">
+                        </label>
+                        <label for="">Выберите файл pdf
+                        <input @change="loadPdf" type="file">
+                        </label>
+                        <label for="">rus
+                        <input id="" type="text" v-model="newSlide.text.rus"
+                         cols="30" rows="10"></label>
+                         <label for="">eng
+                        <input name="" type="text" id="" v-model="newSlide.text.eng"
+                         cols="30" rows="10"></label>
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+                    </form>
                 </li>
             </ul>
             <div class="admin__event__cards">
@@ -28,9 +48,19 @@
 <script>
 import HeaderSlot from '@/components/HeaderSlot.vue';
 import AdminMenu from '@/components/AdminMenu.vue';
+import axiosClient from '@/axios';
 
 export default {
   components: { HeaderSlot, AdminMenu },
+  data() {
+    return {
+      newSlide: {
+        img: '',
+        pdf: '',
+        text: {},
+      },
+    };
+  },
   computed: {
     lawyerEventsData() {
       return this.$store.state.receivedData.lawyerEvents;
@@ -43,6 +73,51 @@ export default {
     addEvent() {
       this.$store.commit('addEvent');
       this.$router.push({ name: 'AdminEventsItem', params: { id: 'newEvent' } });
+    },
+    loadImg(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.newSlide.img = event.target.files[0];
+    },
+    loadPdf(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.newSlide.pdf = event.target.files[0];
+    },
+    uploadFiles() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('filePdf', this.newSlide.pdf);
+      formData.append('fileImg', this.newSlide.img);
+      formData.append('text', JSON.stringify(this.newSlide.text));
+      formData.append('lastId', this.slideEventsData.length);
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/add/slide', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          // Обработка успешного ответа
+          console.log('Файл успешно загружен:', response.data);
+          this.$refs.formEvent.reset();
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          console.error('Ошибка при загрузке файла:', error);
+        });
+    },
+    delSlide(id) {
+      const formData = new FormData();
+      formData.append('id', id);
+      console.log(id);
+      axiosClient.post('http://api.sudural.ru/api/delete/slide', formData)
+        .then((response) => {
+          console.log(response.data);
+          this.$store.dispatch('GetData');
+        });
     },
   },
 };
@@ -71,6 +146,17 @@ export default {
 .Admin__slide-item
 {
     position: relative;
+}
+.Admin__slide-item-form > *
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 300px;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    padding: 10px;
 }
 .admin__event__cards
 {

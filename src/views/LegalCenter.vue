@@ -22,7 +22,10 @@ export default {
   components: { HeaderSlot },
 };
 </script>
-<style lang="scss">
+<style lang="scss" >
+h2{
+    font-size: 45px !important;
+}
 .legal-center__text
 {
     margin-top: 100px;

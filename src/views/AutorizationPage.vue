@@ -35,7 +35,8 @@ export default {
         password: this.password,
       }).then((response) => {
         this.$router.push('/adminMain');
-        localStorage.setItem('userAccesKey', response.data);
+        localStorage.setItem('userAccesKey', response.data.token);
+        console.log(response.data);
       }).catch(() => { this.erroe = true; });
     },
   },

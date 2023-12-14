@@ -24,10 +24,10 @@
     </fieldset>
       <div class="admin__lawyer-img">
         <img v-if="getAdvocatInfo.img"
-          width="300" :src="require(`@/assets/img/${getAdvocatInfo.img}`)"
+          width="300" :src="`${$store.state.URL__DATA}${getAdvocatInfo.img}`"
          alt="">
-         <form class="admin-lawyer__form-img">
-            <label for=""><input  type="file" /></label>
+         <form @submit.prevent="uploadImage" class="admin-lawyer__form-img">
+            <label for=""><input  type="file" @change="loadImage" /></label>
             <button type="submit" class="btn btn-light">Заменить</button>
          </form>
       </div>
@@ -195,14 +195,14 @@
           </div>
       </fieldset>
     </section>
-    <form @submit.prevent="">
-      <a href="">загруженный файл</a>
+    <form @submit.prevent="uploadPdf">
+      <a :href="`${$store.state.URL__DATA}${getAdvocatInfo.pdf}`">загруженный файл</a>
       <br>
-      <label for="">Статьи<br><input type="file"></label>
+      <label for="">Статьи<br><input @change="loadPdf" type="file"></label>
       <br>
       <button type="submit" class="btn btn-light" >заменить</button>
     </form>
-    <button class="btn btn-primary admin__btn-save" @click="Post()">Сохранить</button>
+    <button class="btn btn-primary admin__btn-save" @click.prevent="uploadObject">Сохранить</button>
     </div>
   </section>
 </template>
@@ -212,6 +212,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3';
 import TextAlign from '@tiptap/extension-text-align';
 import HeaderSlot from '@/components/HeaderSlot.vue';
 import AdminMenu from '@/components/AdminMenu.vue';
+import axiosClient from '@/axios';
 
 export default {
   components: {
@@ -224,14 +225,98 @@ export default {
     return {
       editor: null,
       editorEng: null,
-      adminAdvocatData: [],
+      selectedPdf: null,
+      selectedImg: null,
     };
   },
 
   methods: {
-    Post() {
+    saveData() {
       this.getAdvocatInfo.info.rus = this.editor.getHTML();
-      this.getAdvocatInfo.info.eng = this.editor.getHTML();
+      this.getAdvocatInfo.info.eng = this.editorEng.getHTML();
+    },
+    loadPdf(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.selectedPdf = event.target.files[0];
+    },
+    loadImage(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.selectedImg = event.target.files[0];
+      console.log(this.selectedImg);
+    },
+    uploadImage() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('file', this.selectedImg);
+      formData.append('id', this.getAdvocatInfo.id);
+      formData.append('fileFormat', 'img');
+      formData.append('arrayName', 'advocatsInfo');
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/upload/file', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          alert('Файл успешно загружен');
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          alert(`Ошибка при загрузке файла. Код ошибки: ${error.response.status}`);
+        });
+    },
+    uploadPdf() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('file', this.selectedPdf);
+      formData.append('id', this.getAdvocatInfo.id);
+      formData.append('fileFormat', 'pdf');
+      formData.append('arrayName', 'advocatsInfo');
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/upload/file', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(() => {
+          // Обработка успешного ответа
+          alert('Файл успешно загружен');
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          alert(`Ошибка при загрузке файла. Код ошибки: ${error.response.status}`);
+        });
+    },
+    uploadObject() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      this.saveData();
+      const formData = new FormData();
+      formData.append('arrayName', 'advocatsInfo');
+      formData.append('id', this.getAdvocatInfo.id);
+      formData.append('data', JSON.stringify(this.getAdvocatInfo));
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/update', formData)
+        .then((response) => {
+          // Обработка успешного ответа
+          alert('Данные обновлены:', response.data);
+          console.log(response);
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          alert('Ошибка обновления:', error);
+          console.error('Ошибка обновления:', error);
+        });
     },
   },
   mounted() {

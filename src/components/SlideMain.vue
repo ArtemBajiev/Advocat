@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-       <div class="slide" :style="{ backgroundImage: 'url(' + require(`@/assets/img/${itemSlide.slideImg}`) + ')'}">
+       <div class="slide" :style="{ backgroundImage: `url(${$store.state.URL__DATA}${itemSlide.img})`}">
       <h2 class="slide__text" v-html="itemSlide.slideText[$store.state.language]">
 
       </h2>
@@ -37,12 +37,10 @@ export default
 }
 
 .slide__text {
-  height: 300px;
   width: 800px;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
+  bottom: 20%;
+height: 20px;
   left: 10%;
   font-size: 48px;
   color: var(--fontColor);

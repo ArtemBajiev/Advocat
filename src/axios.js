@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
+  baseURL: 'http://api.sudural.ru/api',
 });
 
 axiosClient.interceptors.request.use((config) => {
   // eslint-disable-next-line no-param-reassign
-  config.headers.Authorization = `Bearer ${localStorage.getItem('authToken')}`;
+  config.headers.Authorization = `Bearer ${localStorage.getItem('userAccesKey')}`;
   return config;
 });
 

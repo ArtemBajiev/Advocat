@@ -2,7 +2,7 @@
     <div class="event-card">
       <div class="event-card__text">
         <div class="event-card__img"
-        :style="{ backgroundImage: 'url(' + require(`@/assets/img/${item.img}`) + ')'}">
+        :style="{ backgroundImage: `url(${$store.state.URL__DATA}${item.img})`}">
 
   </div>
         <h3 class="event-card__header">{{ item.cardHeader[$store.state.language] }}</h3>

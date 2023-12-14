@@ -2,11 +2,16 @@
 <footer class="footer">
   <div class="footer__container">
       <div class="footer__left">
+        <p class="footer__left__text">2008 Научно-правовой центр</p>
+      </div>
+      <div class="footer__right">
+        <span class="footer-phone"><img src="../assets/img/phone.svg" alt="Phone"></span>
+        <span class="footer-phone"><img src="../assets/img/message.svg" alt="email"></span>
+        <span class="footer-phone"><img src="../assets/img/gps.svg" alt="Adress"></span>
+        <span><img src="../assets/img/tg.png" alt="Tg"></span>
+        <span><img src="../assets/img/whats.png" alt="WhatsApp"></span>
+      </div>
 
-      </div>
-      <div class="footer__map">
-        <img src="../assets/img/map.png" alt="">
-      </div>
   </div>
 </footer>
 <CastomDevT/>
@@ -23,7 +28,6 @@ export default {
 {
     background-color: rgba(184, 139, 95);
     width: 100%;
-    height: 378px;
     border-top: 4px solid black;
 }
 .footer__container{
@@ -31,11 +35,19 @@ export default {
   justify-content: space-between;
   height: 100%;
   width: 100%;
+  align-items: center;
+  padding: 0 2%;
 }
 .footer__left
 {
   width: 50%;
   height: 100%;
+  display: flex;
+  align-items: center;
+}
+.footer__left__text
+{
+  margin: 0px;
 }
 .footer__map
 {

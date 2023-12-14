@@ -5,6 +5,7 @@
   <HeaderSlot></HeaderSlot>
   <AdminMenu></AdminMenu>
   <div class="container">
+    <form @submit.prevent="saveMainCardData" action="">
     <div class="admin__main__cards">
     <div class="admin__main__card-item" v-for="item in mainCardData"
     :key="item.id">
@@ -18,6 +19,8 @@
       <textarea class="admin__main__card__input" type="text" v-model="item.text.eng"></textarea>
     </div>
 </div>
+<button type="submit" class="btn btn-primary">:::</button>
+</form>
 </div>
 </template>
 
@@ -25,6 +28,7 @@
 
 import HeaderSlot from '@/components/HeaderSlot.vue';
 import AdminMenu from '@/components/AdminMenu.vue';
+import axiosClient from '@/axios';
 
 export default {
   components: {
@@ -35,6 +39,18 @@ export default {
   data() {
     return {
     };
+  },
+  methods: {
+    saveMainCardData() {
+      axiosClient.post('http://api.sudural.ru/api/update', {
+        arrayName: 'articles',
+        id: null,
+        data: JSON.stringify(this.mainCardData),
+      }).then(() => {
+        alert('Данные обновлены');
+        this.$store.dispatch('GetData');
+      }).catch((response) => alert(`Ошибка при выполнении запроса. Код ошибки: ${response.response.status}`));
+    },
   },
   computed: {
     mainCardData() {

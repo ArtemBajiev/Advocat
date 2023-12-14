@@ -16,16 +16,20 @@
         </div>
         <div>
           <label for="">Текс отображаемый на карточке рус
-            <textarea class="form-control" name="" id="" cols="50" rows="5"></textarea></label>
+            <textarea class="form-control" name="" id=""
+             v-model="eventsItemData.cardText.rus" cols="50" rows="5"></textarea></label>
           <label for="">Текс отображаемый на карточке eng
-            <textarea class="form-control" name="" id="" cols="50" rows="5"></textarea></label>
+            <textarea class="form-control" name="" id=""
+             v-model="eventsItemData.cardText.eng" cols="50" rows="5"></textarea></label>
         </div>
       </div>
-        <img v-if="eventsItemData.img" height="200"
-         :src="require(`@/assets/img/${eventsItemData.img}`)" alt="pzs">
-        <label v-else for="">Фото
-            <input type="file">
+      <form class="admin-events__load-img" @submit.prevent="uploadImage" action="">
+        <label  for="img"><img height="200"
+         :src="$store.state.URL__DATA+''+eventsItemData.img " alt="pzs">
+            <input id="img" @change="loadImage" type="file">
         </label>
+        <button type="submit" class="btn btn-primary">Загрузить картинку</button>
+      </form>
       </fieldset>
       <p>РУС</p>
       <div class="button-container">
@@ -170,13 +174,17 @@
             </div>
       </div>
       <editor-content :editor="editorEng" />
-      <div v-for="itemPdf in eventsItemData.pdf" :key="itemPdf.pdf">
-        <a href="" download>{{ itemPdf.pdfLink }}</a>
-        <button @click="delPdf(itemPdf.pdfLink)">X</button>
+      <div v-if="eventsItemData.pdf">
+        <a :href="$store.state.URL__DATA+''+eventsItemData.pdf"
+         >Загруженный файл</a>
+        <!--<button @click="delPdf(eventsItemData.pdf)">X</button>-->
       </div>
+      <form @submit.prevent="uploadPdf" action="">
       <label for="">Выбрать файл PDF
-      <input type="file"></label>
-      <button class="btn btn-primary admin__btn-save" @click="saveData">Сохранить</button>
+      <input type="file" @change="loadPdf"></label>
+        <button type="submit" class="btn btn-primary">Загрузить PDF</button>
+    </form>
+      <button class="btn btn-primary admin__btn-save" @click="uploadObject">Сохранить</button>
     </div>
 </template>
 <script>
@@ -186,6 +194,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3';
 import TextAlign from '@tiptap/extension-text-align';
 import HeaderSlot from '@/components/HeaderSlot.vue';
 import AdminMenu from '@/components/AdminMenu.vue';
+import axiosClient from '../axios';
 
 export default {
   components: {
@@ -199,6 +208,9 @@ export default {
       editor: null,
       editorEng: null,
       adminAdvocatData: [],
+      selectedImg: '',
+      selectedPdf: null,
+      fileUrl: '',
     };
   },
 
@@ -211,8 +223,94 @@ export default {
     },
     saveData() {
       this.eventsItemData.content.rus = this.editor.getHTML();
-      this.eventsItemData.content.eng = this.editor.getHTML();
+      this.eventsItemData.content.eng = this.editorEng.getHTML();
     },
+    loadPdf(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.selectedPdf = event.target.files[0];
+    },
+    loadImage(event) {
+      // eslint-disable-next-line prefer-destructuring
+      this.selectedImg = event.target.files[0];
+      console.log(this.selectedImg);
+    },
+    uploadImage() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('file', this.selectedImg);
+      formData.append('id', this.eventsItemData.id);
+      formData.append('fileFormat', 'img');
+      formData.append('arrayName', 'lawyerEvents');
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/upload/file', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          // Обработка успешного ответа
+          console.log('Файл успешно загружен:', response.data);
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          console.error('Ошибка при загрузке файла:', error);
+        });
+    },
+    uploadPdf() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      const formData = new FormData();
+      formData.append('file', this.selectedPdf);
+      formData.append('id', this.eventsItemData.id);
+      formData.append('fileFormat', 'pdf');
+      formData.append('arrayName', 'lawyerEvents');
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/upload/file', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          // Обработка успешного ответа
+          console.log('Файл успешно загружен:', response.data);
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          console.error('Ошибка при загрузке файла:', error);
+        });
+    },
+    uploadObject() {
+      // Функция загрузки изображения
+      // Создаем объект FormData для упаковки файла
+      this.saveData();
+      const formData = new FormData();
+      formData.append('arrayName', 'lawyerEvents');
+      formData.append('id', this.eventsItemData.id);
+      formData.append('data', JSON.stringify(this.eventsItemData));
+      // console.log(formData);
+      // Отправляем запрос на сервер
+      axiosClient
+        .post('http://api.sudural.ru/api/update', formData)
+        .then((response) => {
+          // Обработка успешного ответа
+          alert('Данные обновлены:', response.data);
+          console.log(response);
+          this.$store.dispatch('GetData');
+        })
+        .catch((error) => {
+          // Обработка ошибок
+          alert('Ошибка обновления:', error);
+          console.error('Ошибка обновления:', error);
+        });
+    },
+
   },
   mounted() {
     this.editor = new Editor({
@@ -270,6 +368,12 @@ export default {
   border-radius: 5px;
   margin-bottom: 5px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.363);
+}
+.admin-events__load-img
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .btn-admin-menu-editor
 {

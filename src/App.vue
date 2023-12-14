@@ -8,21 +8,20 @@
     </div>
   </transition>
 </router-view>
-<CastomDevT></CastomDevT>
+<FooterComp></FooterComp>
+
   </div>
 
 </template>
 <script>
 import FooterComp from '@/components/FooterComp.vue';
 import HeaderComp from '@/components/HeaderComp.vue';
-import CastomDevT from './components/CastomDevT.vue';
 
 export default {
   components: {
     HeaderComp,
-    // eslint-disable-next-line vue/no-unused-components
     FooterComp,
-    CastomDevT,
+
   },
   mounted() {
     this.$store.dispatch('GetData');

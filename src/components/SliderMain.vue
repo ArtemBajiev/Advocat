@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'%)',  transition: 'all .8s ease'}" @touchstart="swaipStart($event.touches[0].clientX)" @touchend="swaipEnd($event.changedTouches[0].clientX)" >
-            <SlideMain v-for="slide in slideData" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
+            <SlideMain v-for="slide in slideData.slideEvents" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
 </div>
 <div class="control-slide">
       <div class="control-btn">
@@ -13,9 +13,9 @@
   <div class="all-indicators">
     <div class="slide-indicator "
     :class="{'indicator-active':
-    slide.id * -100 == slidePosition}"
-     v-for="slide in $store.state.slide" :key="slide.id"
-     @click="slidePosition = slide.id * -100 "></div>
+    index * -100 == slidePosition}"
+     v-for="(slide, index) in $store.state.receivedData.slideEvents" :key="slide.id"
+     @click="slidePosition = index * -100 "></div>
   </div>
 </template>
 <script>
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     slideRight() {
-      if (this.slidePosition > this.$store.state.receivedData.slide.length * (-100) + 100) {
+      if (this.slidePosition > this.$store.state.receivedData.slideEvents.length * (-100) + 100) {
         this.slidePosition -= 100;
         this.slideActive = Math.abs(this.slidePosition) / 100;
       }
