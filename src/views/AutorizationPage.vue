@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     autorization() {
-      axios.post('http://api.sudural.ru/api/login', {
+      axios.post(`${this.$store.state.URL__DATA}api/login`, {
         login: this.login,
         password: this.password,
       }).then((response) => {

@@ -4,7 +4,7 @@ import axios from 'axios';
 export default createStore({
   state: {
     language: 'rus',
-    URL__DATA: 'http://api.sudural.ru/',
+    URL__DATA: 'https://api.sudural.ru/',
     receivedData: {},
 
     allContent: {

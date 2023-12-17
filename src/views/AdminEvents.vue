@@ -120,7 +120,7 @@ export default {
       // console.log(formData);
       // Отправляем запрос на сервер
       axiosClient
-        .post('http://api.sudural.ru/api/add/slide', formData, {
+        .post(`${this.$store.state.URL__DATA}api/add/slide`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -152,7 +152,7 @@ export default {
         const formData = new FormData();
         formData.append('id', id);
         console.log(id);
-        axiosClient.post('http://api.sudural.ru/api/delete/slide', formData)
+        axiosClient.post(`${this.$store.state.URL__DATA}api/delete/slide`, formData)
           .then((response) => {
             console.log(response.data);
             this.$store.dispatch('GetData');

@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     saveMainCardData() {
-      axiosClient.post('http://api.sudural.ru/api/update', {
+      axiosClient.post(`${this.$store.state.URL__DATA}api/update`, {
         arrayName: 'articles',
         id: null,
         data: JSON.stringify(this.mainCardData),

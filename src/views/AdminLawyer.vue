@@ -137,7 +137,7 @@ export default {
       // console.log(formData);
       // Отправляем запрос на сервер
       axiosClient
-        .post('http://api.sudural.ru/api/upload/file', formData, {
+        .post(`${this.$store.state.URL__DATA}api/upload/file`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -161,7 +161,7 @@ export default {
       // console.log(formData);
       // Отправляем запрос на сервер
       axiosClient
-        .post('http://api.sudural.ru/api/upload/file', formData, {
+        .post(`${this.$store.state.URL__DATA}api/upload/file`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -187,7 +187,7 @@ export default {
       // console.log(formData);
       // Отправляем запрос на сервер
       axiosClient
-        .post('http://api.sudural.ru/api/update', formData)
+        .post(`${this.$store.state.URL__DATA}api/update`, formData)
         .then((response) => {
           // Обработка успешного ответа
           alert('Данные обновлены:', response.data);
