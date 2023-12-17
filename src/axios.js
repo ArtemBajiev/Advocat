@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'http://api.sudural.ru/api',
+  baseURL: 'https://api.sudural.ru/api',
 });
 
 axiosClient.interceptors.request.use((config) => {
