@@ -5,226 +5,108 @@
     <AdminMenu></AdminMenu>
     <div class="container">
       <fieldset class="admin__lawyer-info">
-      <label for=""
-        >ФИО рус<input class="form-control"
-         name="nameRus" type="text" v-model="getAdvocatInfo.name.rus"
-      /></label>
-      <label for=""
-        >ФИО eng<input class="form-control"
-         name="nameRus" type="text" v-model="getAdvocatInfo.name.eng"
-      /></label>
-      <label for=""
-        >Полное ФИО рус<input class="form-control"
-         name="fullNameRus" type="text" v-model="getAdvocatInfo.fullName.rus"
-      /></label>
-      <label for=""
-        >Полное ФИО eng<input class="form-control"
-         name="fullNameRus" type="text" v-model="getAdvocatInfo.fullName.eng"
-      /></label>
-    </fieldset>
+        <label for=""
+          >ФИО рус<input
+            class="form-control"
+            name="nameRus"
+            type="text"
+            v-model="getAdvocatInfo.name.rus"
+        /></label>
+        <label for=""
+          >ФИО eng<input
+            class="form-control"
+            name="nameRus"
+            type="text"
+            v-model="getAdvocatInfo.name.eng"
+        /></label>
+        <label for=""
+          >Полное ФИО рус<input
+            class="form-control"
+            name="fullNameRus"
+            type="text"
+            v-model="getAdvocatInfo.fullName.rus"
+        /></label>
+        <label for=""
+          >Полное ФИО eng<input
+            class="form-control"
+            name="fullNameRus"
+            type="text"
+            v-model="getAdvocatInfo.fullName.eng"
+        /></label>
+      </fieldset>
       <div class="admin__lawyer-img">
-        <img v-if="getAdvocatInfo.img"
-          width="300" :src="`${$store.state.URL__DATA}${getAdvocatInfo.img}`"
-         alt="">
-         <form @submit.prevent="uploadImage" class="admin-lawyer__form-img">
-            <label for=""><input  type="file" @change="loadImage" /></label>
-            <button type="submit" class="btn btn-light">Заменить</button>
-         </form>
+        <img
+          v-if="getAdvocatInfo.img"
+          width="300"
+          :src="`${$store.state.URL__DATA}${getAdvocatInfo.img}`"
+          alt=""
+        />
+        <form @submit.prevent="uploadImage" class="admin-lawyer__form-img">
+          <label for=""><input type="file" @change="loadImage" /></label>
+          <button type="submit" class="btn btn-primary">Заменить</button>
+        </form>
       </div>
       <p>РУС</p>
-      <div class="button-container">
-        <div v-if="editor" class="buttons-editor">
-          <button
-            @click="editor.chain().focus().toggleBold().run()"
-            :disabled="!editor.can().chain().focus().toggleBold().run()"
-            :class="{ 'is-active': editor.isActive('bold') }"
-          >
-            <strong>Ж</strong>
-          </button>
-          <button
-            @click="editor.chain().focus().toggleItalic().run()"
-            :disabled="!editor.can().chain().focus().toggleItalic().run()"
-            :class="{ 'is-active': editor.isActive('italic') }"
-          >
-            <i>К</i>
-          </button>
-          <button
-            @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-            :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
-          >
-            Заголовок 1
-          </button>
-          <button
-            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-            :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
-          >
-            Заголовок 2
-          </button>
-          <button
-            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-            :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-          >
-            Заголовок 3
-          </button>
-          <button
-            @click="editor.chain().focus().toggleBulletList().run()"
-            :class="{ 'is-active': editor.isActive('bulletList') }"
-          >
-            Список
-          </button>
-          <button
-            @click="editor.chain().focus().toggleOrderedList().run()"
-            :class="{ 'is-active': editor.isActive('orderedList') }"
-          >
-            Нумерованный список
-          </button>
-          <button @click="editor.chain().focus().setHorizontalRule().run()">
-            Горизонтальная линия</button>
-          <button @click="editor.chain().focus().setHardBreak().run()">Разрыв строки</button>
-          <button
-            @click="editor.chain().focus().setTextAlign('left').run()"
-            :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
-          >
-            <img src="../assets/img/textLeft.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-          <button
-            @click="editor.chain().focus().setTextAlign('center').run()"
-            :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
-          >
-          <img src="../assets/img/textCenter.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-          <button
-            @click="editor.chain().focus().setTextAlign('right').run()"
-            :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
-          >
-          <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-        </div>
-      </div>
-    <editor-content :editor="editor" />
-    <hr>
-    <p>ENG</p>
-    <div class="button-container">
-        <div v-if="editorEng" class="buttons-editor">
-          <button
-            @click="editorEng.chain().focus().toggleBold().run()"
-            :disabled="!editorEng.can().chain().focus().toggleBold().run()"
-            :class="{ 'is-active': editorEng.isActive('bold') }"
-          >
-          <strong>Ж</strong>
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleItalic().run()"
-            :disabled="!editorEng.can().chain().focus().toggleItalic().run()"
-            :class="{ 'is-active': editorEng.isActive('italic') }"
-          >
-            <i>К</i>
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleHeading({ level: 1 }).run()"
-            :class="{ 'is-active': editorEng.isActive('heading', { level: 1 }) }"
-          >
-            Заголовок 1
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleHeading({ level: 2 }).run()"
-            :class="{ 'is-active': editorEng.isActive('heading', { level: 2 }) }"
-          >
-            Заголовок 2
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleHeading({ level: 3 }).run()"
-            :class="{ 'is-active': editorEng.isActive('heading', { level: 3 }) }"
-          >
-            Заголовок 3
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleBulletList().run()"
-            :class="{ 'is-active': editorEng.isActive('bulletList') }"
-          >
-            Список
-          </button>
-          <button
-            @click="editorEng.chain().focus().toggleOrderedList().run()"
-            :class="{ 'is-active': editorEng.isActive('orderedList') }"
-          >
-            Нумерованный список
-          </button>
-          <button @click="editorEng.chain().focus().setHorizontalRule().run()">
-            Горизонтальная линия
-          </button>
-          <button @click="editorEng.chain().focus().setHardBreak().run()">Разрыв строки</button>
-          <button
-            @click="editorEng.chain().focus().setTextAlign('left').run()"
-            :class="{ 'is-active': editorEng.isActive({ textAlign: 'left' }) }"
-          >
-          <img src="../assets/img/textLeft.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-          <button
-            @click="editorEng.chain().focus().setTextAlign('center').run()"
-            :class="{ 'is-active': editorEng.isActive({ textAlign: 'center' }) }"
-          >
-          <img src="../assets/img/textCenter.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-          <button
-            @click="editorEng.chain().focus().setTextAlign('right').run()"
-            :class="{ 'is-active': editorEng.isActive({ textAlign: 'right' }) }"
-          >
-          <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
-          </button>
-            </div>
-      </div>
-    <editor-content :editor="editorEng" />
-    <section name="contacts">
-      <fieldset class="admin__lawyer__contacts">
-        <div class="admin__lawyer__contacts__inputs">
-        <label for="">Номер телефона
-          <input class="form-control" type="number" v-model="getAdvocatInfo.telLink" /></label>
-        <label for="">Email
-          <input class="form-control" type="text" v-model="getAdvocatInfo.email" /></label>
-        <label for="">Адресс
-          <input class="form-control" type="text" v-model="getAdvocatInfo.address.rus" /></label>
+      <TextEditor ref="textEditorRus" :content="getAdvocatInfo.info.rus"></TextEditor>
+      <hr />
+      <p>ENG</p>
+      <TextEditor ref="textEditorEng" :content="getAdvocatInfo.info.eng"></TextEditor>
+      <section name="contacts">
+        <fieldset class="admin__lawyer__contacts">
+          <div class="admin__lawyer__contacts__inputs">
+            <label for=""
+              >Номер телефона
+              <input class="form-control" type="number" v-model="getAdvocatInfo.telLink"
+            /></label>
+            <label for=""
+              >Email <input class="form-control" type="text" v-model="getAdvocatInfo.email"
+            /></label>
+            <label for=""
+              >Адресс <input class="form-control" type="text" v-model="getAdvocatInfo.address.rus"
+            /></label>
           </div>
           <div class="admin__lawyer__contacts__inputs">
-        <label for="">Адресс eng
-          <input class="form-control" type="text" v-model="getAdvocatInfo.address.eng" /></label>
-        <label for="">WhatsApp
-          <input class="form-control" type="number" v-model="getAdvocatInfo.address" /></label>
-        <label for="">telegram
-          <input class="form-control" type="number" v-model="getAdvocatInfo.address" /></label>
+            <label for=""
+              >Адресс eng
+              <input class="form-control" type="text" v-model="getAdvocatInfo.address.eng"
+            /></label>
+            <label for=""
+              >Telegram
+              <input class="form-control" type="number" v-model="getAdvocatInfo.tgNikname"
+            /></label>
           </div>
-      </fieldset>
-    </section>
-    <form @submit.prevent="uploadPdf">
-      <a :href="`${$store.state.URL__DATA}${getAdvocatInfo.pdf}`">загруженный файл</a>
-      <br>
-      <label for="">Статьи<br><input @change="loadPdf" type="file"></label>
-      <br>
-      <button type="submit" class="btn btn-light" >заменить</button>
-    </form>
-    <button class="btn btn-primary admin__btn-save" @click.prevent="uploadObject">Сохранить</button>
+        </fieldset>
+      </section>
+      <form class="admin-lawyer__articles" @submit.prevent="uploadPdf">
+        <label for=""><strong>Статьи</strong><br /><input type="file" @change="loadPdf"/></label>
+        <div v-if="getAdvocatInfo.pdf">
+          <a :href="`${$store.state.URL__DATA}${getAdvocatInfo.pdf}`">загруженный файл</a>
+        </div>
+        <button type="submit" class="btn btn-primary"
+        v-text="getAdvocatInfo.pdf ? 'Заменить': 'Добавить' "></button>
+        <button class="btn btn-danger" @click.prevent="delPdf()">Удалить</button>
+      </form>
+      <button class="btn btn-primary admin__btn-save" @click.prevent="uploadObject">
+        Сохранить
+      </button>
     </div>
   </section>
 </template>
 <script>
-import StarterKit from '@tiptap/starter-kit';
-import { Editor, EditorContent } from '@tiptap/vue-3';
-import TextAlign from '@tiptap/extension-text-align';
+import TextEditor from '@/components/TextEditor.vue';
 import HeaderSlot from '@/components/HeaderSlot.vue';
 import AdminMenu from '@/components/AdminMenu.vue';
 import axiosClient from '@/axios';
 
 export default {
   components: {
-    EditorContent,
+    TextEditor,
     HeaderSlot,
     AdminMenu,
   },
 
   data() {
     return {
-      editor: null,
-      editorEng: null,
       selectedPdf: null,
       selectedImg: null,
     };
@@ -232,8 +114,8 @@ export default {
 
   methods: {
     saveData() {
-      this.getAdvocatInfo.info.rus = this.editor.getHTML();
-      this.getAdvocatInfo.info.eng = this.editorEng.getHTML();
+      this.getAdvocatInfo.info.rus = this.$refs.textEditorRus.editor.getHTML();
+      this.getAdvocatInfo.info.eng = this.$refs.textEditorEng.editor.getHTML();
     },
     loadPdf(event) {
       // eslint-disable-next-line prefer-destructuring
@@ -318,58 +200,40 @@ export default {
           console.error('Ошибка обновления:', error);
         });
     },
-  },
-  mounted() {
-    this.editor = new Editor({
-      extensions: [
-        StarterKit,
-        TextAlign,
-        TextAlign.configure({
-          types: ['heading', 'paragraph'],
-        }),
-      ],
-      content: this.getAdvocatInfo.info.rus,
-    });
-    this.editorEng = new Editor({
-      extensions: [
-        StarterKit,
-        TextAlign,
-        TextAlign.configure({
-          types: ['heading', 'paragraph'],
-        }),
-      ],
-      type: 'doc',
-      content: this.getAdvocatInfo.info.eng,
-    });
+    delPdf() {
+      axiosClient
+        .post(`${this.$store.state.URL__DATA}api/delete/pdf`, {
+          arrayName: 'advocatsInfo',
+          id: this.getAdvocatInfo.id,
+        })
+        .then(() => {
+          this.$store.dispatch('GetData');
+        });
+    },
   },
   computed: {
     getAdvocatInfo() {
       // eslint-disable-next-line max-len
-      return this.$store.state.receivedData
-        .advocatsInfo.find((item) => item.id === this.$route.params.id);
+      return this.$store.state.receivedData.advocatsInfo.find(
+        (item) => item.id === this.$route.params.id,
+      );
     },
-  },
-  beforeUnmount() {
-    // this.editor.destroy();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.btn-admin-menu-editor
-{
+.btn-admin-menu-editor {
   width: 25px;
 }
-.is-active{
+.is-active {
   background-color: rgba(150, 150, 150, 0.329) !important;
 }
-.buttons-editor button
-{
+.buttons-editor button {
   border: 0px;
   padding: 7px;
   border-left: 1px solid #0000001f;
-  border-right:1px solid #0000001f ;
+  border-right: 1px solid #0000001f;
   margin: 0px 3px;
   background-color: transparent;
   height: 50px;
@@ -377,60 +241,63 @@ export default {
   margin-bottom: 5px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.363);
 }
-.buttons-editor
-{
+.buttons-editor {
   display: flex;
   justify-content: space-between;
 }
-.admin-lawyer__form-img
-{
+.admin-lawyer__form-img {
   margin-top: 20px;
   text-align: center;
   margin-left: auto;
 }
-.admin-lawyer__form-img{
+.admin-lawyer__form-img {
   margin: 10px;
   margin-left: auto;
-
 }
-.admin__lawyer-info
-{
+.admin__lawyer-info {
   display: flex;
 }
-.admin__lawyer-info label
-{
+.admin__lawyer-info label {
   flex: 1 1 auto;
   margin: 4px;
 }
-.admin__lawyer-img
-{
-  margin: 10px;
+.admin__lawyer-img {
+  margin: 0px auto;
+  max-width: 50%;
+  padding: 30px;
+  display: block;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.329);
+  border-radius: 20px;
 }
-.admin__lawyer-img img
-{
+.admin__lawyer-img img {
   display: block;
   margin: auto;
 }
 .img-admin {
   max-height: 300px;
 }
-.admin__lawyer__contacts__inputs
-{
+.admin__lawyer__contacts__inputs {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   padding: 20px;
 }
-.admin__lawyer__contacts
-{
+.admin__lawyer__contacts {
   display: flex;
   justify-content: space-between;
 }
-.admin__btn-save
-{
+.admin__btn-save {
   margin: 20px auto;
   display: block;
   width: 20vw;
+}
+.admin-lawyer__articles
+{
+  border: 1px solid rgba(128, 128, 128, 0.438);
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.329);
 }
 .tiptap {
   max-width: 1226px;

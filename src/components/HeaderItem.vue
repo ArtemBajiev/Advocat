@@ -34,33 +34,34 @@ export default {
 }
 .header-item *
 {
-      font-size: 40px;
-    font-weight: 600;
+      font-size:clamp(25px, 4vw, 60px);
+    font-weight: 700;
     color: var(--twoColor);
     margin: 0px;
+    font-family: 'El Messiri';
 }
-.header-item::before {
-  content: "";
-  position: absolute;
-  height: 120%;
-  width: 20%;
-  background-color: var(--colorHeaderEl);
-  z-index: -1;
-  top: -10%;
-  left: -3%;
-  border-radius: 15px;
-  max-width:100px;
-}
-.header-item::after {
-  content: "";
-  position: absolute;
-  height: 120%;
-  width: 20%;
-  background-color: var(--colorHeaderEl);
-  z-index: -1;
-  top: -10%;
-  right: -3%;
-  border-radius: 15px;
-  max-width:100px;
-}
+//.header-item::before {
+//  content: "";
+//  position: absolute;
+//  height: 120%;
+//  width: 20%;
+//  background-color: var(--colorHeaderEl);
+//  z-index: -1;
+//  top: -10%;
+//  left: -3%;
+//  border-radius: 15px;
+//  max-width:100px;
+//}
+//.header-item::after {
+//  content: "";
+//  position: absolute;
+//  height: 120%;
+//  width: 20%;
+//  background-color: var(--colorHeaderEl);
+//  z-index: -1;
+//  top: -10%;
+//  right: -3%;
+//  border-radius: 15px;
+//  max-width:100px;
+//}
 </style>

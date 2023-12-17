@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="educational-publications">
+    <div class="educational-publications" v-if="getLawyerData.pdf">
       <div class="container">
         <p class="educational-publications__text">
           {{ $store.state.allContent.EducationalPublications.text[$store.state.language] }}
@@ -28,13 +28,14 @@
         <span class="educational-publications__text-link">
           {{ $store.state.allContent.EducationalPublications.textLink[$store.state.language] }}
         </span>
-        <a class="educational-publications__button">
+        <a class="educational-publications__button"
+        :href="`${$store.state.URL__DATA}${getLawyerData.pdf}`">
           {{ $store.state.allContent.EducationalPublications.button[$store.state.language] }}
         </a>
       </div>
     </div>
-    <div class="lawyer__contact">
-      <!--:style="{'background-image': require('url(../assets/img/contactAbramov.png)')}"-->
+    <div class="lawyer__contact" :class="[ getLawyerData.id === 'Abraamov_V_V' ?
+     'lawyer__contact-abramov': 'lawyer__contact-rudich']">
       <div class="container">
         <h3 class="lawyer__contact__header">
           {{ $store.state.allContent.contact.header[$store.state.language] }}
@@ -42,20 +43,20 @@
 
         <ul class="lawyer__contact__all">
           <li class="lawyer__contact__item">
-            <span class="lawyer__contact__item__title">
+            <span class="lawyer__contact__item__title lawyer__contact__item__tel">
               {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}:
             </span>
             <a class="lawyer__contact__phone-link"
              :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
           </li>
           <li class="lawyer__contact__item">
-            <span class="lawyer__contact__item__title">
+            <span class="lawyer__contact__item__title lawyer__contact__item__email">
               {{ $store.state.allContent.contact.email[$store.state.language] }}:</span
             >
             <a :href="getLawyerData.email">{{ getLawyerData.email }}</a>
           </li>
           <li class="lawyer__contact__item">
-            <span class="lawyer__contact__item__title">
+            <span class="lawyer__contact__item__title lawyer__contact__item__address">
               {{ $store.state.allContent.contact.address[$store.state.language] }}:</span
             ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
           </li>
@@ -88,6 +89,9 @@ export default {
       return this.$store.state.receivedData.advocatsInfo
         .find((item) => item.id === this.$route.params.id);
     },
+    // mobileMask() {
+    //  return this.getLawyerData.telLink.splice(1, 0, '(');
+    // },
   },
 };
 </script>
@@ -184,6 +188,12 @@ export default {
   background-position: 80% 10%;
   background-repeat: no-repeat;
 }
+.lawyer__contact-abramov{
+  background-image: url('../assets/img/contactAbramov.png');
+}
+.lawyer__contact-rudich{
+  background-image: url('../assets/img/contactRudich.png');
+}
 .lawyer__contact__header {
   color: var(--fontColorTwo);
   display: block;
@@ -191,7 +201,7 @@ export default {
 }
 .lawyer__contact__all {
   margin: 0px auto;
-  max-width: 30%;
+  max-width: 50%;
 }
 .lawyer__contact__item {
   text-align: left;
@@ -201,6 +211,26 @@ export default {
 }
 .lawyer__contact__item__title {
   font-size: 20px;
+  position: relative;
+}
+.lawyer__contact__item__title::before {
+  content: "";
+  left: -40px;
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.lawyer__contact__item__tel::before {
+  background-image: url('../assets/img/phone.svg');
+}
+.lawyer__contact__item__email::before {
+  background-image: url('../assets/img/message.svg');
+}
+.lawyer__contact__item__address::before {
+  background-image: url('../assets/img/gps.svg');
 }
 .lawyer__contact__item a {
   font-size: 20px;
@@ -208,7 +238,7 @@ export default {
 }
 .messenger {
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .messenger__item a {

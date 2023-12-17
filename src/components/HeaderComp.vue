@@ -5,7 +5,9 @@
       <MobilMenu v-show="PhoneMenu" @closeMenu="closeMenu"></MobilMenu>
     </transition>
     <div class="header__container">
-      <img class="logo" src="@/assets/img/LOGO.png" height="100" alt="" />
+      <router-link to="/">
+        <img class="logo" src="/LOGO.png" height="100" alt="" />
+    </router-link>
       <nav class="header__menu" >
         <ul class="header__menu-all">
           <li class="header__menu-item">

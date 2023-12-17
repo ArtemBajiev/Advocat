@@ -5,7 +5,7 @@
   <HeaderSlot></HeaderSlot>
   <AdminMenu></AdminMenu>
   <div class="container">
-    <form @submit.prevent="saveMainCardData" action="">
+    <form @submit.prevent="saveMainCardData" class="admin__main__articles" action="">
     <div class="admin__main__cards">
     <div class="admin__main__card-item" v-for="item in mainCardData"
     :key="item.id">
@@ -19,7 +19,7 @@
       <textarea class="admin__main__card__input" type="text" v-model="item.text.eng"></textarea>
     </div>
 </div>
-<button type="submit" class="btn btn-primary">:::</button>
+<button type="submit" class="btn btn-primary btn-admin-center">Сохранить</button>
 </form>
 </div>
 </template>
@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style lang="scss">
+.admin__main__articles
+{
+  margin-top: 50px;
+}
 .admin__main__card__input
 {
   width: 270px;
@@ -82,5 +86,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.btn-admin-center
+{
+  display: block;
+  width: 50%;
+  margin: 30px auto;
+
 }
 </style>

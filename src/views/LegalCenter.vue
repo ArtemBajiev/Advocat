@@ -23,9 +23,6 @@ export default {
 };
 </script>
 <style lang="scss" >
-h2{
-    font-size: 45px !important;
-}
 .legal-center__text
 {
     margin-top: 100px;
@@ -35,6 +32,8 @@ h2{
 .legal-center__text
 {
     font-size: calc(var(--index) * 2) !important;
+    margin-top: 40px;
 }
+
 }
 </style>

@@ -2,31 +2,54 @@
 <footer class="footer">
   <div class="footer__container">
       <div class="footer__left">
-        <p class="footer__left__text">2008 Научно-правовой центр</p>
+        <div class="more-detailed-footer"><div class="foot">© 2023 Научно-правовой центр"</div>
+        <div class="foot-dev">Сделано в <div class="CDT">CDT</div></div></div>
       </div>
       <div class="footer__right">
-        <span class="footer-phone"><img src="../assets/img/phone.svg" alt="Phone"></span>
-        <span class="footer-phone"><img src="../assets/img/message.svg" alt="email"></span>
-        <span class="footer-phone"><img src="../assets/img/gps.svg" alt="Adress"></span>
-        <span><img src="../assets/img/tg.png" alt="Tg"></span>
-        <span><img src="../assets/img/whats.png" alt="WhatsApp"></span>
+        <a href=""><span class="footer-phone">
+          <img src="../assets/img/phone.svg" alt="Phone"></span></a>
+        <span class="footer-message">
+          <img src="../assets/img/message.svg" alt="email"></span>
+        <span class="footer-gps">
+          <img src="../assets/img/gps.svg" alt="Adress"></span>
+        <span class="footer-tg">
+          <img src="../assets/img/tgBlack.svg" alt="Tg"></span>
+        <span class="footer-whats">
+          <img src="../assets/img/whatsBlack.svg" alt="WhatsApp"></span>
       </div>
 
   </div>
 </footer>
-<CastomDevT/>
+
 </template>
 <script>
-import CastomDevT from './CastomDevT.vue';
 
 export default {
-  components: { CastomDevT },
+
 };
 </script>
 <style>
+.footer-phone img,
+.footer-gps img
+{
+  height: 30px;
+}
+.footer-message img
+{
+  width: 28px;
+}
+.footer-phone img,
+.footer-gps img,
+.footer-message img,
+.footer-tg,
+.footer-whats
+{
+  margin-right: 20px;
+}
 .footer
 {
-    background-color: rgba(184, 139, 95);
+    padding: 20px 0px;
+    background-color: #8F755B;
     width: 100%;
     border-top: 4px solid black;
 }
@@ -44,10 +67,6 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-}
-.footer__left__text
-{
-  margin: 0px;
 }
 .footer__map
 {
@@ -73,10 +92,41 @@ right: 25%;
   position: relative;
   object-fit: contain;
 }
+.CDT
+{
+  color: #e4e4e4;
+  transition: color 1s ease;
+  display: inline-block;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.CDT:hover
+{
+  color: #ffffff;
+}
+.foot
+{
+  color: white;
+}
+.foot-dev
+{
+  color: white;
+}
+.more-detailed-footer
+{
+    padding: 10px 40px;
+    width: 100%;
+    color: #adadad;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+}
 @media (max-width: 768px) {
   .footer__container
   {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     text-align: center
   }
@@ -87,6 +137,12 @@ right: 25%;
   .footer__left
   {
     width: 100%;
+  }
+  .footer__left__text
+  {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
   }
 }
 </style>

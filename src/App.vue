@@ -9,7 +9,9 @@
   </transition>
 </router-view>
 <FooterComp></FooterComp>
-
+  <transition name="anim-page" mode="out-in">
+    <button v-show="goTop" @click="scrollTop" class="go-top"></button>
+  </transition>
   </div>
 
 </template>
@@ -23,14 +25,52 @@ export default {
     FooterComp,
 
   },
+  data() {
+    return {
+      goTop: false,
+    };
+  },
+  methods: {
+    scrollTop() {
+      window.scrollTo(0, 0);
+    },
+  },
   mounted() {
     this.$store.dispatch('GetData');
+  },
+  created() {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        this.goTop = true;
+      } else {
+        this.goTop = false;
+      }
+    });
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
 <style>
-body{
-  overflow-x: hidden;
+@font-face {
+      font-family: 'El Messiri', sans-serif;
+      src: url('./assets/fonts/ElMessiri-VariableFont_wght.ttf');
+      font-weight: 500;
+    }
+    :root{
+  --index: calc(1vw + 1vh);
+  --bodyColor:  #F1EDE7;
+  --bodyColorTwo:#f7f5f2 ;
+  --twoColor: #8F755B;
+  --threeColor: #E8E2D8;
+  --colorHeaderEl: #A98D6F;
+  --articlesColor:#AF855B;
+  --fontColor: white;
+  --fontColorTwo: black;
+}
+h2{
+  font-size: clamp(25px, calc(var(--index)*2), 35px);
 }
 .wrapper
 {
@@ -47,17 +87,7 @@ a{
   text-decoration: none;
   color: black;
 }
-:root{
-  --index: calc(1vw + 1vh);
-  --bodyColor:  #F1EDE7;
-  --bodyColorTwo:#f7f5f2 ;
-  --twoColor: #8F755B;
-  --threeColor: #E8E2D8;
-  --colorHeaderEl: #A98D6F;
-  --articlesColor:#AF855B;
-  --fontColor: white;
-  --fontColorTwo: black;
-}
+
 *{
   box-sizing: border-box;
   padding: 0px;
@@ -77,12 +107,31 @@ body
 {
 
 }
-
+.go-top
+{
+  position: fixed;
+  right: 3%;
+  bottom: 15%;
+  height: clamp(30px,4vw, 70px);
+  width: clamp(30px,4vw, 70px);
+  background-color: #8F755B;
+  border-radius: 50%;
+  border: 0px;
+  background-image: url('./assets/img/arrowFFF.svg');
+  background-size: 60%;
+  background-position: 30% center;
+  background-repeat: no-repeat;
+  transform: rotate(-90deg);
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+.go-top:hover{
+  opacity: 1;
+}
 .r-link{
    text-decoration: none;
   color: #D49F6A;
-  transition: color .5s ease
-;
+  transition: color .5s ease;
 }
 .r-link:hover{
   color: white
@@ -117,10 +166,10 @@ opacity: 0;
 transition: all 0.5s ease-in;
 }
 .anim-page-enter-to {
-opacity: 1;
+
 }
 .anim-page-leave-from {
-opacity: 1;
+
 }
 .anim-page-leave-active {
 transition: all 0.5s ease-in;
@@ -129,11 +178,27 @@ transition: all 0.5s ease-in;
 
 opacity: 0;
 }
+/* go-top */
+.go-top-enter-from {
+  transform:translate(100px) ;
+  opacity: 0;
+}
+.go-top-enter-active {
+  transition: all 0.3s ease-in;
+}
+.go-top-enter-to {
+  opacity: 0.6;
+}
+.go-top-leave-from {
+  opacity: 0.6;
+}
+.go-top-leave-active {
+  transform:translate(-200%) ;
+  transition: all 0.3s ease-in;
+}
+.go-top-leave-to {
+
+  opacity: 0;
+}
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-@media (max-width: 768px ) {
-.header-item *
-{
-  font-size: calc(var(--index)*3) !important;
-}
-}
 </style>

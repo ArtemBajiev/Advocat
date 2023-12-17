@@ -11,7 +11,6 @@
       >
       <img
         class="event-page__img"
-        v-if="getEventData.img"
         :src="`${$store.state.URL__DATA}${getEventData.img}`"
         alt=""
       />
@@ -19,7 +18,9 @@
     </div>
   </div>
   <div class="container">
-
+      <div class="event-page__file">
+        <a target="_blank" :href="`${this.$store.state.URL__DATA}${getEventData.pdf}`">здесь</a>
+      </div>
   </div>
 </template>
 
@@ -32,14 +33,16 @@ export default {
     getEventData() {
       // eslint-disable-next-line max-len
       return this.$store.state.receivedData.lawyerEvents.find(
-        (item) => item.id === this.$route.params.id,
+        (item) => item.id === Number(this.$route.params.id),
       );
     },
   },
   data() {
     return {};
   },
-
+  mounted() {
+    console.log(this.getEventData);
+  },
   methods: {
     handleDocumentRender() {
       this.isLoading = false;
@@ -51,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 .event-page__img {
   display: block;
-  max-height: 600px;
+  width: 100%;
   margin: 0 auto;
   border-radius: 30px;
   box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.486);

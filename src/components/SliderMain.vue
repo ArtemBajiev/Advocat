@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="slide-container" :style="{transform: 'translateX('+slidePosition+'%)',  transition: 'all .8s ease'}" @touchstart="swaipStart($event.touches[0].clientX)" @touchend="swaipEnd($event.changedTouches[0].clientX)" >
-            <SlideMain v-for="slide in slideData.slideEvents" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
+            <SlideMain v-for="slide in slideData.slideEvents.slice().reverse()" :key="slide.id" :itemSlide="slide" :slidePosition="slidePosition"/>
 </div>
 <div class="control-slide">
       <div class="control-btn">
@@ -14,7 +14,7 @@
     <div class="slide-indicator "
     :class="{'indicator-active':
     index * -100 == slidePosition}"
-     v-for="(slide, index) in $store.state.receivedData.slideEvents" :key="slide.id"
+     v-for="(slide, index) in $store.state.receivedData.slideEvents.slice().reverse()" :key="slide.id"
      @click="slidePosition = index * -100 "></div>
   </div>
 </template>
@@ -105,7 +105,7 @@ export default {
 {
     background-color: transparent;
     border: 0px;
-    background-image: url('@/assets/img/arrowFFF.svg');
+    background-image: url('../assets/img/arrowFFF.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -114,7 +114,7 @@ export default {
 {
     background-color: transparent;
     border: 0px;
-    background-image: url('@/assets/img/arrowFFF.svg');
+    background-image: url('../assets/img/arrowFFF.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -150,6 +150,7 @@ justify-content: center;
 {
     background-color: rgba(255, 255, 255, 0.8);
     transform: scale(1.2);
+    border: 1px solid rgba(94, 94, 94, 0.459);
 }
 @media (max-width: 768px) {
   .control-btn *

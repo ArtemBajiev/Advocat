@@ -1,9 +1,11 @@
 <!-- eslint-disable max-len -->
 <template>
        <div class="slide" :style="{ backgroundImage: `url(${$store.state.URL__DATA}${itemSlide.img})`}">
+        <a class="slide__link" :href="`${$store.state.URL__DATA}${itemSlide.pdf}`">
       <h2 class="slide__text" v-html="itemSlide.slideText[$store.state.language]">
 
       </h2>
+    </a>
     </div>
 </template>
 <script>
@@ -18,6 +20,12 @@ export default
 };
 </script>
 <style>
+.slide__link
+{
+  height: 100%;
+  width: 100%;
+  display: block;
+}
 .slide-container
 {
     display: flex;
@@ -28,8 +36,8 @@ export default
   height: 100%;
   min-width: 100%;
   background-size: 100% auto;
+  background-repeat: no-repeat;
   background-position: top;
-  overflow: hidden;
   vertical-align: middle;
  background-attachment: fixed;
  transform: translateX();

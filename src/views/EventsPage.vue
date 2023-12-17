@@ -16,9 +16,9 @@
       <div class="events-page__event">
       <div class="row">
         <!--eslint-disable-next-line max-len-->
-        <div class="col-md-6 g-4" v-for="item in $store.state.receivedData.lawyerEvents" :key="item.id">
+        <div class="col-md-6 g-4" v-for="item in $store.state.receivedData.lawyerEvents.slice().reverse()" :key="item.id">
           <router-link :to="{name: 'event', params:{id: item.id}} ">
-            <EventCard :item="item">
+            <EventCard :item="item" v-if="item.img">
             </EventCard>
           </router-link>
         </div>
@@ -58,6 +58,7 @@ export default {
   border: 2px solid #977657;
   border-radius: 10px;
   transition: background-position .6s ease-in-out ;
+  z-index: 10;
 }
 .btn-go-back:hover
 {
@@ -69,10 +70,9 @@ export default {
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  height: 400px;
+  height: 600px;
 }
 .slider-and-name-slide {
-  min-height: 400px;
   width: 100%;
 }
 .events-page__event
