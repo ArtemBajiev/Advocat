@@ -119,7 +119,7 @@ export default createStore({
   },
   actions: {
     GetData(context) {
-      axios.get('http://api.sudural.ru/api/get')
+      axios.get(`${this.state.URL__DATA}api/get`)
         .then((response) => {
           context.commit('updateData', response.data.pages);
           console.log(response.data.pages);
