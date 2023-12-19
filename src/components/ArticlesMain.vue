@@ -31,10 +31,7 @@ export default {
 <style scoped>
 .articles
 {
-    background-image: url("../assets/img/gavel.png");
-    background-size: auto 45%;
-    background-position: center bottom;
-    background-repeat: no-repeat;
+
     margin-bottom: 50px;
 }
 

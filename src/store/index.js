@@ -63,6 +63,10 @@ export default createStore({
           rus: 'Адресс',
           eng: 'Address',
         },
+        pdf: {
+          rus: 'Подробнее ознакомиться с материалом вы можете по ссылке',
+          eng: 'To learn more about the material, follow the link',
+        },
       },
       EducationalPublications: {
         text: {

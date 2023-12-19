@@ -33,6 +33,8 @@ export default
     width: 100%;
 }
 .slide {
+  background-color: rgba(0, 0, 0, 0.116);
+  background-blend-mode: multiply;
   height: 100%;
   min-width: 100%;
   background-size: 100% auto;

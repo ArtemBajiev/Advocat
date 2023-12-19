@@ -21,7 +21,9 @@
   </div>
   <div class="container">
       <div class="event-page__file">
-        <a target="_blank" :href="`${this.$store.state.URL__DATA}${getEventData.pdf}`">здесь</a>
+        <a target="_blank" :href="`${this.$store.state.URL__DATA}${getEventData.pdf}`">
+          {{ $store.state.allContent.contact.pdf[$store.state.language] }}
+           <img src="../assets/img/link.svg" alt=""></a>
       </div>
   </div>
 </template>
@@ -77,7 +79,7 @@ export default {
 }
 .event-page__img {
   display: block;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   border-radius: 30px;
   box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.486);
@@ -104,6 +106,14 @@ export default {
 
 .right {
   float: right;
+}
+.event-page__file
+{
+  margin-bottom: 40px;
+}
+.event-page__file a
+{
+  font-size: 20px;
 }
 @media (max-width: 768px) {
   .event-page__text iframe{

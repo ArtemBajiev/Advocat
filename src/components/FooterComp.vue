@@ -7,15 +7,15 @@
       </div>
       <div class="footer__right">
         <a href=""><span class="footer-phone">
-          <img src="../assets/img/phone.svg" alt="Phone"></span></a>
+          <img src="../assets/img/phoneFooter.svg" alt="Phone"></span></a>
         <span class="footer-message">
-          <img src="../assets/img/message.svg" alt="email"></span>
+          <img src="../assets/img/messageFooter.svg" alt="email"></span>
         <span class="footer-gps">
-          <img src="../assets/img/gps.svg" alt="Adress"></span>
+          <img src="../assets/img/gpsFooter.svg" alt="Adress"></span>
         <span class="footer-tg">
-          <img src="../assets/img/tgBlack.svg" alt="Tg"></span>
+          <img src="../assets/img/tgWhite.svg" alt="Tg"></span>
         <span class="footer-whats">
-          <img src="../assets/img/whatsBlack.svg" alt="WhatsApp"></span>
+          <img src="../assets/img/whatsAppWhite.svg" alt="WhatsApp"></span>
       </div>
 
   </div>
@@ -29,10 +29,14 @@ export default {
 };
 </script>
 <style>
+.icon-phone{
+  fill: #FFF !important;
+}
 .footer-phone img,
 .footer-gps img
 {
   height: 30px;
+  fill: #FFF !important;
 }
 .footer-message img
 {
@@ -51,7 +55,7 @@ export default {
     padding: 20px 0px;
     background-color: #8F755B;
     width: 100%;
-    border-top: 4px solid black;
+    margin-top: 50px;
 }
 .footer__container{
   display: flex;

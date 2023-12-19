@@ -74,7 +74,7 @@ export default {
   top: 0;
   bottom:0 ;
   margin: auto 0;
-  height: 50px;
+  height: 0px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -82,8 +82,6 @@ export default {
 .control-btn
 {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   position: absolute;
 }
 .control-btn *
@@ -109,6 +107,8 @@ export default {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    position: absolute;
+    right: 0;
 }
 .control-btn-left
 {
@@ -119,7 +119,9 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     transform: rotate(180deg);
-}
+    position: absolute;
+    left: 0;
+  }
 .all-indicators
 {
     position: absolute;
