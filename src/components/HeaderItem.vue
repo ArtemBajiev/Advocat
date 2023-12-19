@@ -17,6 +17,7 @@ export default {
         display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 1 1 100%;
 }
 
 .header-item {

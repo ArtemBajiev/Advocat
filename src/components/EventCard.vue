@@ -62,7 +62,6 @@ export default {
   {
 
     flex: 1 1 auto;
-    word-break: break-all;
 
   }
   .event-card__details

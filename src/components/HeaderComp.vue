@@ -6,7 +6,7 @@
     </transition>
     <div class="header__container">
       <router-link to="/">
-        <img class="logo" src="/LOGO.png" height="100" alt="" />
+        <img class="logo" src="../assets/img/LOGO.png" height="100" alt="" />
     </router-link>
       <nav class="header__menu" >
         <ul class="header__menu-all">
@@ -108,6 +108,7 @@ export default {
   display: flex;
   align-items: center;
   padding-left: 30px;
+  padding-right: 20px ;
 }
 .logo {
   margin-right: 2%;
@@ -116,6 +117,7 @@ export default {
 }
 .header__menu {
   flex: 1 1 auto;
+  margin: 0px 20px;
 }
 .header__menu-all {
   display: flex;
@@ -206,6 +208,7 @@ box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.336);
 .header__language__active
 {
   border-bottom: 1px solid black;
+  transform: scale(1.1);
 }
 /*phone*/
 

@@ -67,13 +67,36 @@
           >
           <img src="../assets/img/textRight.svg" class="btn-admin-menu-editor" alt="">
           </button>
-            </div>
+          <button @click="addImage">
+      Изображение
+    </button>
+            <button id="add" @click="addVideo">
+        YouTube
+      </button>
+      <!--<input
+        id="width"
+        type="number"
+        v-model="width"
+        placeholder="width"
+        min="320"
+        max="1024"
+      >
+      <input
+        id="height"
+        type="number"
+        v-model="height"
+        placeholder="height"
+        min="180"
+        max="720"
+      >-->
       </div>
+    </div>
       <editor-content :editor="editor" />
 </template>
 <script>
 import Image from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
+import Youtube from '@tiptap/extension-youtube';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import TextAlign from '@tiptap/extension-text-align';
 
@@ -85,9 +108,27 @@ export default {
   data() {
     return {
       editor: null,
+      width: '640',
+      height: '480',
     };
   },
   methods: {
+    addImage() {
+      const url = window.prompt('URL');
+
+      if (url) {
+        this.editor.chain().focus().setImage({ src: url }).run();
+      }
+    },
+    addVideo() {
+      const url = prompt('Enter YouTube URL');
+
+      this.editor.commands.setYoutubeVideo({
+        src: url,
+        width: Math.max(320, parseInt(this.width, 10)) || 640,
+        height: Math.max(180, parseInt(this.height, 10)) || 480,
+      });
+    },
   },
   mounted() {
     this.editor = new Editor({
@@ -102,6 +143,9 @@ export default {
           HTMLAttributes: {
             class: 'tip-img',
           },
+        }),
+        Youtube.configure({
+          controls: true,
         }),
       ],
       content: this.content,
@@ -158,5 +202,25 @@ export default {
 {
 width: 100%;
 padding-right: 20px;
+}
+.tiptap {
+  > * + * {
+    margin-top: 0.75em;
+  }
+  iframe{
+  width: 100% !important;
+
+  height: 700px !important;
+   }
+  img {
+    max-width: 100%;
+    min-width: 30%;
+    margin: 0 auto;
+    height: auto;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid #68CEF8;
+    }
+  }
 }
 </style>

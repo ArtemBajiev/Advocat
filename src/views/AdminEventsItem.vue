@@ -97,6 +97,7 @@ export default {
     saveData() {
       this.eventsItemData.content.rus = this.$refs.textEditorRus.editor.getHTML();
       this.eventsItemData.content.eng = this.$refs.textEditorEng.editor.getHTML();
+      console.log(this.$refs.textEditorRus.editor.getHTML());
     },
     loadPdf(event) {
       // eslint-disable-next-line prefer-destructuring

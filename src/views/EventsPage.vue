@@ -42,28 +42,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.btn-go-back
-{
-  position: absolute;
-  top: 160px;
-  background-color: transparent;
-  border: 0;
-  background-color: white;
-  background-image: url('../assets/img/goBackpng.svg');
-  width: 40px;
-  height: 40px;
-  background-position: 100% center;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  border: 2px solid #977657;
-  border-radius: 10px;
-  transition: background-position .6s ease-in-out ;
-  z-index: 10;
-}
-.btn-go-back:hover
-{
-  background-position: 30% center;
-}
 
 .events-page__slider__container {
   width: 100%;

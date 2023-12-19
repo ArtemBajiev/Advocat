@@ -3,12 +3,14 @@
   <div class="event-page">
     <HeaderSlot></HeaderSlot>
     <div class="container">
-      <button class="btn-go-back" @click="$router.go(-1)"></button>
+      <div class="event-page__btn-and-header">
+      <btnGoBack></btnGoBack>
       <HeaderItem>
         <h1 class="event-page__header">
           {{ getEventData.cardHeader[$store.state.language] }}
         </h1></HeaderItem
       >
+    </div>
       <img
         class="event-page__img"
         :src="`${$store.state.URL__DATA}${getEventData.img}`"
@@ -26,9 +28,10 @@
 
 <script>
 import HeaderSlot from '@/components/HeaderSlot.vue';
+import btnGoBack from '@/components/btnGoBack.vue';
 
 export default {
-  components: { HeaderSlot },
+  components: { HeaderSlot, btnGoBack },
   computed: {
     getEventData() {
       // eslint-disable-next-line max-len
@@ -51,7 +54,27 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+.event-page__btn-and-header
+{
+  display: flex;
+  align-items: center;
+}
+.event-page__text{
+
+  img {
+    max-width: 100%;
+    height: auto;
+    min-width: 30%;
+    margin: 0 auto;
+
+  }
+   iframe{
+  width: 100% !important;
+
+  height: 700px !important;
+   }
+}
 .event-page__img {
   display: block;
   width: 100%;
@@ -81,5 +104,19 @@ export default {
 
 .right {
   float: right;
+}
+@media (max-width: 768px) {
+  .event-page__text iframe{
+  width: 100% !important;
+
+  height: 400px !important;
+}
+}
+@media (max-width: 500px) {
+  .event-page__text iframe{
+  width: 100% !important;
+
+  height: 300px !important;
+}
 }
 </style>
