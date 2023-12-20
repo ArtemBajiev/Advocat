@@ -1,4 +1,5 @@
 <template>
+  <LoadingPage v-if="$store.state.loading || $store.state.loadingImg"></LoadingPage>
   <div class="wrapper">
     <HeaderComp></HeaderComp>
 <router-view v-slot="{ Component, route }">
@@ -18,11 +19,13 @@
 <script>
 import FooterComp from '@/components/FooterComp.vue';
 import HeaderComp from '@/components/HeaderComp.vue';
+import LoadingPage from './components/LoadingPage.vue';
 
 export default {
   components: {
     HeaderComp,
     FooterComp,
+    LoadingPage,
 
   },
   data() {

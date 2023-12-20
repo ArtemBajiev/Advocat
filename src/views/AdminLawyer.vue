@@ -124,7 +124,6 @@ export default {
     loadImage(event) {
       // eslint-disable-next-line prefer-destructuring
       this.selectedImg = event.target.files[0];
-      console.log(this.selectedImg);
     },
     uploadImage() {
       // Функция загрузки изображения
@@ -148,6 +147,7 @@ export default {
         })
         .catch((error) => {
           alert(`Ошибка при загрузке файла. Код ошибки: ${error.response.status}`);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     uploadPdf() {
@@ -174,9 +174,11 @@ export default {
         .catch((error) => {
           // Обработка ошибок
           alert(`Ошибка при загрузке файла. Код ошибки: ${error.response.status}`);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     uploadObject() {
+      this.$store.commit('loadingUpdate', true);
       // Функция загрузки изображения
       // Создаем объект FormData для упаковки файла
       this.saveData();
@@ -191,16 +193,17 @@ export default {
         .then((response) => {
           // Обработка успешного ответа
           alert('Данные обновлены:', response.data);
-          console.log(response);
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
         .catch((error) => {
           // Обработка ошибок
           alert('Ошибка обновления:', error);
-          console.error('Ошибка обновления:', error);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     delPdf() {
+      this.$store.commit('loadingUpdate', true);
       axiosClient
         .post(`${this.$store.state.URL__DATA}api/delete/pdf`, {
           arrayName: 'advocatsInfo',
@@ -208,6 +211,7 @@ export default {
         })
         .then(() => {
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         });
     },
   },

@@ -117,6 +117,7 @@ export default {
       formData.append('fileImg', this.newSlide.img);
       formData.append('text', JSON.stringify(this.newSlide.text));
       formData.append('lastId', this.slideEventsData.length);
+      this.$store.commit('loadingUpdate', true);
       // console.log(formData);
       // Отправляем запрос на сервер
       axiosClient
@@ -125,48 +126,61 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((response) => {
+        .then(() => {
           // Обработка успешного ответа
-          console.log('Файл успешно загружен:', response.data);
+          alert('Файл успешно загружен:');
           this.$refs.formEvent.reset();
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
         .catch((error) => {
           // Обработка ошибок
-          console.error('Ошибка при загрузке файла:', error);
+          this.$store.commit('loadingUpdate', false);
+          alert('Ошибка при загрузке файла:', error);
         });
     },
     addEvent() {
+      this.$store.commit('loadingUpdate', true);
       axiosClient.post(`${this.$store.state.URL__DATA}api/add/lawyer/event`, {
         // eslint-disable-next-line max-len
         lastId: this.lawyerEventsData.length > 0 ? this.lawyerEventsData[this.lawyerEventsData.length - 1].id : 1,
       }).then(() => {
         // eslint-disable-next-line max-len
-        console.log(this.lawyerEventsData.lenght);
         alert('Добавлен');
         this.$store.dispatch('GetData');
+        this.$store.commit('loadingUpdate', false);
+      }).catch((error) => {
+        alert('Ошибка', error);
+        this.$store.commit('loadingUpdate', false);
       });
     },
     delSlide(id) {
+      this.$store.commit('loadingUpdate', true);
       if (window.confirm('Подтвердите удаление')) {
         const formData = new FormData();
         formData.append('id', id);
-        console.log(id);
         axiosClient.post(`${this.$store.state.URL__DATA}api/delete/slide`, formData)
-          .then((response) => {
-            console.log(response.data);
+          .then(() => {
             this.$store.dispatch('GetData');
+            this.$store.commit('loadingUpdate', false);
+          }).catch((error) => {
+            alert('Ошибка:', error);
+            this.$store.commit('loadingUpdate', false);
           });
       }
     },
     delEvent(id) {
+      this.$store.commit('loadingUpdate', true);
       if (window.confirm('Подтвердите удаление')) {
-        console.log(id);
         axiosClient.post(`${this.$store.state.URL__DATA}api/delete/lawyer/event`, {
           id,
         }).then(() => {
           alert('Удалён');
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
+        }).catch((error) => {
+          alert('Ошибка', error);
+          this.$store.commit('loadingUpdate', false);
         });
       }
     },

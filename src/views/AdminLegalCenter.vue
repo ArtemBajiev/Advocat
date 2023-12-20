@@ -47,6 +47,7 @@ export default {
       this.legalCenterData.text.eng = this.$refs.textEditorEng.editor.getHTML();
     },
     saveLegalCenter() {
+      this.$store.commit('loadingUpdate', true);
       this.saveData();
       axiosClient
         .post(`${this.$store.state.URL__DATA}api/update`, {
@@ -57,8 +58,12 @@ export default {
         .then(() => {
           alert('Данные обновлены');
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
-        .catch((response) => alert(`Ошибка при выполнении запроса. Код ошибки: ${response.response.status}`));
+        .catch((response) => {
+          this.$store.commit('loadingUpdate', false);
+          alert(`Ошибка при выполнении запроса. Код ошибки: ${response.response.status}`);
+        });
     },
   },
   computed: {

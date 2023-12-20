@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     saveMainCardData() {
+      this.$store.commit('loadingUpdate', true);
       axiosClient.post(`${this.$store.state.URL__DATA}api/update`, {
         arrayName: 'articles',
         id: null,
@@ -49,7 +50,11 @@ export default {
       }).then(() => {
         alert('Данные обновлены');
         this.$store.dispatch('GetData');
-      }).catch((response) => alert(`Ошибка при выполнении запроса. Код ошибки: ${response.response.status}`));
+        this.$store.commit('loadingUpdate', false);
+      }).catch((response) => {
+        alert(`Ошибка при выполнении запроса. Код ошибки: ${response.response.status}`);
+        this.$store.commit('loadingUpdate', false);
+      });
     },
   },
   computed: {

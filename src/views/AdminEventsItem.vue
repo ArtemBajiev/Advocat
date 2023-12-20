@@ -97,7 +97,6 @@ export default {
     saveData() {
       this.eventsItemData.content.rus = this.$refs.textEditorRus.editor.getHTML();
       this.eventsItemData.content.eng = this.$refs.textEditorEng.editor.getHTML();
-      console.log(this.$refs.textEditorRus.editor.getHTML());
     },
     loadPdf(event) {
       // eslint-disable-next-line prefer-destructuring
@@ -106,9 +105,9 @@ export default {
     loadImage(event) {
       // eslint-disable-next-line prefer-destructuring
       this.selectedImg = event.target.files[0];
-      console.log(this.selectedImg);
     },
     uploadImage() {
+      this.$store.commit('loadingUpdate', true);
       // Функция загрузки изображения
       // Создаем объект FormData для упаковки файла
       const formData = new FormData();
@@ -124,17 +123,20 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((response) => {
+        .then(() => {
           // Обработка успешного ответа
-          console.log('Файл успешно загружен:', response.data);
+          alert('Файл успешно загружен:');
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
         .catch((error) => {
           // Обработка ошибок
-          console.error('Ошибка при загрузке файла:', error);
+          alert('Ошибка при загрузке файла:', error);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     uploadPdf() {
+      this.$store.commit('loadingUpdate', true);
       // Функция загрузки изображения
       // Создаем объект FormData для упаковки файла
       const formData = new FormData();
@@ -150,17 +152,20 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then((response) => {
+        .then(() => {
           // Обработка успешного ответа
-          console.log('Файл успешно загружен:', response.data);
+          alert('Файл успешно загружен:');
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
         .catch((error) => {
           // Обработка ошибок
-          console.error('Ошибка при загрузке файла:', error);
+          alert('Ошибка при загрузке файла:', error);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     uploadObject() {
+      this.$store.commit('loadingUpdate', true);
       this.saveData();
       const formData = new FormData();
       formData.append('arrayName', 'lawyerEvents');
@@ -173,16 +178,17 @@ export default {
         .then((response) => {
           // Обработка успешного ответа
           alert('Данные обновлены:', response.data);
-          console.log(response);
           this.$store.dispatch('GetData');
+          this.$store.commit('loadingUpdate', false);
         })
         .catch((error) => {
           // Обработка ошибок
           alert('Ошибка обновления:', error);
-          console.error('Ошибка обновления:', error);
+          this.$store.commit('loadingUpdate', false);
         });
     },
     delPdf() {
+      this.$store.commit('loadingUpdate', true);
       axiosClient
         .post(`${this.$store.state.URL__DATA}api/delete/pdf`, {
           arrayName: 'lawyerEvents',
@@ -190,7 +196,8 @@ export default {
         })
         .then(() => {
           this.$store.dispatch('GetData');
-        });
+          this.$store.commit('loadingUpdate', false);
+        }).catch((error) => alert('Ошибка', error));
     },
   },
   computed: {

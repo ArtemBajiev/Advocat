@@ -6,6 +6,7 @@ export default createStore({
     language: 'rus',
     URL__DATA: 'https://api.sudural.ru/',
     receivedData: {},
+    loading: true,
 
     allContent: {
       main: {
@@ -97,7 +98,9 @@ export default createStore({
     updateData(state, data) {
       state.receivedData = data;
     },
-
+    loadingUpdate(state, bool) {
+      state.loading = bool;
+    },
     languageUpdate(state, lang) {
       state.language = lang;
     },
@@ -126,7 +129,7 @@ export default createStore({
       axios.get(`${this.state.URL__DATA}api/get`)
         .then((response) => {
           context.commit('updateData', response.data.pages);
-          console.log(response.data.pages);
+          context.commit('loadingUpdate', false);
         });
     },
   },

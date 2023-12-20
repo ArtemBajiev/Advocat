@@ -19,6 +19,8 @@ export default {
       mobil: false,
     };
   },
+  methods: {
+  },
   created() {
     if (window.innerWidth < 500) {
       this.mobil = true;
