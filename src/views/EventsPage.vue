@@ -70,6 +70,9 @@ export default {
   {
     padding: 0px;
   }
+  .events-page__slider__container {
+    height: 50vw;
+  }
 }
 
 </style>

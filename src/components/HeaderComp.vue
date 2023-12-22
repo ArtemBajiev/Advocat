@@ -160,7 +160,7 @@ export default {
   background-repeat: no-repeat;
   display: none;
   margin-left: auto;
-  margin-right: 40px;
+  margin-right: 20px;
   border-radius: 50%;
   transition: all ease-in-out 0.1s;
 }
@@ -242,6 +242,10 @@ box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.336);
   {
     height: 50px;
     margin-top: 8px;
+  }
+  .header__container
+  {
+    padding-left: 20px;
   }
 }
 </style>

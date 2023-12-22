@@ -228,11 +228,11 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 300px;
+    max-width: 350px;
     justify-content: space-between;
     text-align: center;
     border: 1px solid rgba(128, 128, 128, 0.432);
-    padding: 20px;
+    padding: 40px;
     border-radius: 20px;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.329);
 }

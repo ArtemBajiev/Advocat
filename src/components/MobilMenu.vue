@@ -44,6 +44,7 @@
             </li>
             <li class="header__menu-item__phone">
             <router-link
+            @click="closeMenu()"
               class="header__menu-item__link__phone"
               to="/Events"
               :class="{ 'header__menu-item-active': $route.path === '/Events' }"
