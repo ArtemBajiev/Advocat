@@ -205,7 +205,7 @@ export default {
 }
 .lawyer__contact__item {
   text-align: left;
-  padding: 20px 0px;
+  padding: 20px 25px;
   font-size: 16px;
   list-style: none;
 }
@@ -325,6 +325,15 @@ export default {
   .lawyer__contact__item
   {
     text-align: center;
+  }
+  .messenger
+  {
+    justify-content: center;
+  }
+}
+@media (max-width:600px) {
+  .lawyer__contact__all{
+
   }
 }
 </style>

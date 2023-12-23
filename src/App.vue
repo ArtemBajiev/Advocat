@@ -113,11 +113,11 @@ body
 .go-top
 {
   position: fixed;
-  right: 3%;
-  bottom: 15%;
-  height: clamp(30px,4vw, 70px);
-  width: clamp(30px,4vw, 70px);
-  background-color: #8F755B;
+  right: 8%;
+  bottom: 5%;
+  height: clamp(50px,4vw, 70px);
+  width: clamp(50px,4vw, 70px);
+  background-color: #77614c;
   border-radius: 50%;
   border: 0px;
   background-image: url('./assets/img/arrowFFF.svg');
