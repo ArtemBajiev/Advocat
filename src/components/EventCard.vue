@@ -8,7 +8,9 @@
         <h3 class="event-card__header">{{ item.cardHeader[$store.state.language] }}</h3>
         <p class="event-card__discription">{{ item.cardText[$store.state.language] }}</p>
       </div>
-      <div class="event-card__details">Подробнее <span class="arrow-black"></span></div>
+      <div class="event-card__details">{{ $store.state.allContent.EventsPage.moreDetailed
+      [$store.state.language] }}
+         <span class="arrow-black"></span></div>
     </div>
   </template>
 <script>
@@ -20,7 +22,7 @@ export default {
   .arrow-black
   {
     display: inline-block;
-    background-image: url('../assets/img/arrowBlack.svg');
+    background-image: url('../assets/img/arrowFFF.svg');
     background-size: contain;
     background-position: center;
     width: 15px;
@@ -30,7 +32,7 @@ export default {
   }
   .event-card
   {
-      background-color:#E8E2D8;
+      background-color:var(--twoColor);
 
       border-radius: 20px;
       height: 100%;
@@ -45,7 +47,11 @@ export default {
   }
   .event-card__header
   {
-    color: var(--twoColor);
+    color: var(--fontColor);
+  }
+  .event-card__discription
+  {
+    color: var(--fontColor);
   }
   .event-card__img
   {
@@ -69,6 +75,7 @@ export default {
     position: absolute;
     right: 35px;
     bottom: 15px;
+    color: var(--fontColor);
   }
   @media (max-width: 1024px) {
     .event-card__header

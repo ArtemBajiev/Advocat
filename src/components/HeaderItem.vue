@@ -33,9 +33,41 @@ export default {
   padding: 14px 30px;
 
 }
-.header-item *
+.header-item h1
 {
       font-size:clamp(25px, 4vw, 60px);
+    font-weight: 700;
+    color: var(--twoColor);
+    margin: 0px;
+    font-family: 'El Messiri';
+}
+.header-item h2
+{
+      font-size:clamp(20px, 4vw, 55px);
+    font-weight: 700;
+    color: var(--twoColor);
+    margin: 0px;
+    font-family: 'El Messiri';
+}
+.header-item h3
+{
+      font-size:clamp(18px, 4vw, 50px);
+    font-weight: 700;
+    color: var(--twoColor);
+    margin: 0px;
+    font-family: 'El Messiri';
+}
+.header-item h4
+{
+      font-size:clamp(16px, 4vw, 45px);
+    font-weight: 700;
+    color: var(--twoColor);
+    margin: 0px;
+    font-family: 'El Messiri';
+}
+.header-item h5
+{
+      font-size:clamp(14px, 4vw, 35px);
     font-weight: 700;
     color: var(--twoColor);
     margin: 0px;

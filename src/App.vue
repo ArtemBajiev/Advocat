@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       goTop: false,
+      oldscroll: 0,
     };
   },
   methods: {
@@ -43,11 +44,12 @@ export default {
   },
   created() {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 200 && window.scrollY < this.oldscroll) {
         this.goTop = true;
       } else {
         this.goTop = false;
       }
+      this.oldscroll = window.scrollY;
     });
   },
   unmounted() {
@@ -57,18 +59,23 @@ export default {
 </script>
 <style>
 @font-face {
-      font-family: 'El Messiri', sans-serif;
+      font-family: 'El Messiri';
       src: url('./assets/fonts/ElMessiri-VariableFont_wght.ttf');
       font-weight: 500;
     }
+    @font-face {
+      font-family: 'Rubic';
+      src: url('./assets/fonts/Rubik-VariableFont_wght.ttf');
+    }
     :root{
   --index: calc(1vw + 1vh);
-  --bodyColor:  #F1EDE7;
+  --bodyColor:  #ffffff;
   --bodyColorTwo:#f7f5f2 ;
-  --twoColor: #8F755B;
+  --twoColor: #374550;
   --threeColor: #E8E2D8;
   --colorHeaderEl: #A98D6F;
-  --articlesColor:#AF855B;
+  --articlesColor:#213455;
+  --twoColorHover:#384f77;
   --fontColor: white;
   --fontColorTwo: black;
 }
@@ -96,7 +103,7 @@ a{
   padding: 0px;
   margin: 0px;
   color: var(--fontColorTwo);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubic';
 
 }
 
@@ -117,7 +124,7 @@ body
   bottom: 5%;
   height: clamp(50px,4vw, 70px);
   width: clamp(50px,4vw, 70px);
-  background-color: #77614c;
+  background-color: var(--twoColor);
   border-radius: 50%;
   border: 0px;
   background-image: url('./assets/img/arrowFFF.svg');
@@ -127,6 +134,7 @@ body
   transform: rotate(-90deg);
   opacity: 0.6;
   transition: opacity 0.3s ease-in-out;
+  z-index: 100;
 }
 .go-top:hover{
   opacity: 1;
@@ -144,7 +152,7 @@ body
    сейчас только для Firefox */
    * {
     scrollbar-width: thin;
-    scrollbar-color: #D49F6A rgb(255, 255, 255);
+    scrollbar-color: var(--twoColor) rgb(255, 255, 255);
 }
 
 /* для Chrome/Edge/Safari */
@@ -153,11 +161,11 @@ body
 }
 
 *::-webkit-scrollbar-track {
-    background: #353535;
+    background: #bdbdbd;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #D49F6A;
+    background-color: var(--twoColor);
     border-radius: 5px;
 }
 /* animation */

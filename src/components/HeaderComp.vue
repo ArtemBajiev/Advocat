@@ -19,8 +19,18 @@
               {{ $store.state.allContent.header.main[$store.state.language] }}</router-link
             >
           </li>
+          <li class="header__menu-item">
+            <router-link
+              class="header__menu-item__link"
+              to="/LegalCenter"
+              :class="{ 'header__menu-item-active': $route.path === '/LegalCenter' }"
+            >
+              {{ $store.state.allContent.header.ScientificAndLegalCenter[$store.state.language] }}
+            </router-link>
+          </li>
+          <div class="header__lawyer-link__container">
           <li
-            class="header__menu-item"
+            class="header__menu-item header__lawyer-link"
             v-for="lawyer in $store.state.receivedData.advocatsInfo"
             :key="lawyer.id"
           >
@@ -32,15 +42,7 @@
               {{ lawyer.name[$store.state.language] }}</router-link
             >
           </li>
-          <li class="header__menu-item">
-            <router-link
-              class="header__menu-item__link"
-              to="/LegalCenter"
-              :class="{ 'header__menu-item-active': $route.path === '/LegalCenter' }"
-            >
-              {{ $store.state.allContent.header.ScientificAndLegalCenter[$store.state.language] }}
-            </router-link>
-          </li>
+        </div>
           <li class="header__menu-item">
             <router-link
               class="header__menu-item__link"
@@ -122,6 +124,7 @@ export default {
 .header__menu-all {
   display: flex;
   flex: 1 1 auto;
+  align-items: center;
   justify-content: space-between;
   background: rgba(36, 33, 33, 0.2);
   backdrop-filter: blur(2px);
@@ -204,12 +207,19 @@ box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.336);
   font-weight: bold;
   margin-left: 10px;
   padding: 0px;
+  color: rgb(238, 238, 238);
 }
 .header__language__active
 {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid  rgb(238, 238, 238);
   transform: scale(1.1);
 }
+.header__lawyer-link__container{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
 /*phone*/
 
 @media (max-width: 1180px) {

@@ -5,15 +5,10 @@
             {{ $store.state.allContent.main.headerArticles[$store.state.language] }}
         </h4></HeaderItem>
         <div class="container" >
-            <div class="all-articles">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3
-                      g-5" v-for="article in $store.state.receivedData.articles"
-                       :key="article.id">
-                        <ArticleItem v-if="article.text.rus && article.text.eng" :article="article"/>
-                    </div>
-                 </div>
-             </div>
+            <ul class="all-articles">
+                 <ArticleItem  v-for="article in $store.state.receivedData.articles"
+                       :key="article.id" :article="article"/>
+             </ul>
         </div>
     </div>
 </template>
@@ -33,6 +28,10 @@ export default {
 {
 
     margin-bottom: 50px;
+}
+.all-articles{
+    list-style: none;
+    padding: 0px;
 }
 
 </style>

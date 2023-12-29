@@ -3,14 +3,12 @@
     <HeaderSlot />
     <div class="lawyer__info">
       <div class="container">
-        <div class="lawyer__header__container">
-          <div class="lawyer__header__background">
+        <HeaderItem>
             <h1 class="lawyer__header">
               {{ $store.state.allContent.lawyer[$store.state.language] }}
               {{ getLawyerData.fullName[$store.state.language] }}
             </h1>
-          </div>
-        </div>
+          </HeaderItem>
         <div class="lawyer__container">
           <div class="lawyer__text-and-img">
             <img class="lawyer__img" :src="`${$store.state.URL__DATA}${getLawyerData.img}`"
@@ -37,17 +35,17 @@
     <div class="lawyer__contact" :class="[ getLawyerData.id === 'Abraamov_V_V' ?
      'lawyer__contact-abramov': 'lawyer__contact-rudich']">
       <div class="container">
-        <h3 class="lawyer__contact__header">
+        <HeaderItem>
+        <h4>
           {{ $store.state.allContent.contact.header[$store.state.language] }}
-        </h3>
+        </h4>
+      </HeaderItem>
 
         <ul class="lawyer__contact__all">
           <li class="lawyer__contact__item">
-            <span class="lawyer__contact__item__title lawyer__contact__item__tel">
-              {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}:
-            </span>
-            <a class="lawyer__contact__phone-link"
-             :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
+            <span class="lawyer__contact__item__title lawyer__contact__item__address">
+              {{ $store.state.allContent.contact.address[$store.state.language] }}:</span
+            ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
           </li>
           <li class="lawyer__contact__item">
             <span class="lawyer__contact__item__title lawyer__contact__item__email">
@@ -56,9 +54,11 @@
             <a :href="getLawyerData.email">{{ getLawyerData.email }}</a>
           </li>
           <li class="lawyer__contact__item">
-            <span class="lawyer__contact__item__title lawyer__contact__item__address">
-              {{ $store.state.allContent.contact.address[$store.state.language] }}:</span
-            ><a href="">{{ getLawyerData.address[$store.state.language] }}</a>
+            <span class="lawyer__contact__item__title lawyer__contact__item__tel">
+              {{ $store.state.allContent.contact.numberPhone[$store.state.language] }}:
+            </span>
+            <a class="lawyer__contact__phone-link"
+             :href="getLawyerData.telLink">{{ getLawyerData.tel }}</a>
           </li>
           <li class="messenger">
             <div class="whats messenger__item">
@@ -75,9 +75,10 @@
 </template>
 <script>
 import HeaderSlot from '@/components/HeaderSlot.vue';
+import HeaderItem from '@/components/HeaderItem.vue';
 
 export default {
-  components: { HeaderSlot },
+  components: { HeaderSlot, HeaderItem },
   data() {
     return {
       lawyerData: {},
@@ -97,7 +98,7 @@ export default {
 </script>
 <style lang="scss">
 .background {
-  background-color: #fff;
+  background-color: var(--bodyColorTwo);
 }
 .lawyer__container {
   display: flex;
@@ -107,15 +108,6 @@ export default {
   border-radius: 0px 0px 30px 30px;
   padding-bottom: 30px;
 }
-.lawyer__header__background {
-  background-color: var(--twoColor);
-  padding: 8px 27px;
-  transform: skewX(-13deg);
-  border-radius: 10px;
-  display: inline-block;
-  margin-left: 25px;
-  box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.366);
-}
 .lawyer__header__container {
   text-align: center;
   padding-top: calc(var(--index) * 1.75);
@@ -124,7 +116,6 @@ export default {
 .lawyer__header {
   background-color: var(--bodyColor);
   display: block;
-  transform: skewX(13deg);
   border-radius: 5px;
   padding: 5px 25px;
   font-size: 42px;
@@ -150,18 +141,25 @@ export default {
 }
 .educational-publications {
   margin-top: 40px;
-  background-color: var(--bodyColor);
+  background-color: var(--twoColor);
+  background-image: url('../assets/img/educationalBG.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode:multiply;
   border-radius: 30px;
-  padding: 30px;
+  padding: 50px 0px;
 }
 .educational-publications__text {
   margin: 0px;
   font-size: 34px;
+  color: var(--fontColor);
 }
 .educational-publications__text-link {
   display: block;
   margin-top: 20px;
   font-size: 28px;
+  color: var(--fontColor);
 }
 .educational-publications__button {
   display: inline-block;
@@ -188,37 +186,34 @@ export default {
   background-position: 80% 10%;
   background-repeat: no-repeat;
 }
-.lawyer__contact-abramov{
-  background-image: url('../assets/img/contactAbramov.png');
-}
-.lawyer__contact-rudich{
-  background-image: url('../assets/img/contactRudich.png');
-}
-.lawyer__contact__header {
-  color: var(--fontColorTwo);
-  display: block;
-  text-align: center;
-}
+
 .lawyer__contact__all {
-  margin: 0px auto;
-  max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .lawyer__contact__item {
   text-align: left;
-  padding: 20px 25px;
+  padding: 50px 25px;
   font-size: 16px;
   list-style: none;
 }
 .lawyer__contact__item__title {
-  font-size: 20px;
+  font-size: 24px;
   position: relative;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #8F755B;
 }
 .lawyer__contact__item__title::before {
   content: "";
-  left: -40px;
+left: 5%;
+  top: -50px;
   position: absolute;
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -234,11 +229,12 @@ export default {
 }
 .lawyer__contact__item a {
   font-size: 20px;
-  margin-left: 10px;
+  margin-left: 0px;
 }
 .messenger {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .messenger__item a {
@@ -289,6 +285,9 @@ export default {
   {
     font-size: calc(var(--index) * 2);
   }
+  .messenger{
+    flex-direction: row;
+  }
   .lawyer__contact__all
   {
     padding: 0;
@@ -301,13 +300,6 @@ export default {
     margin: 0px 0px 20px 0px;
   }
   .lawyer__menu-block {
-    margin: 0px;
-  }
-  .lawyer__container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .lawyer__header__background {
     margin: 0px;
   }
   .lawyer__contact
@@ -324,7 +316,7 @@ export default {
   }
   .lawyer__contact__item
   {
-    text-align: center;
+
   }
   .messenger
   {

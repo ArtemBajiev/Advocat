@@ -22,6 +22,30 @@ export default createStore({
           rus: 'Объявления',
           eng: 'Advertisements',
         },
+        advantages: [
+          {
+            id: 1,
+            rus: 'тут должен быть текст о качестве, опыте и надежности',
+            eng: 'there should be a text about quality, experience and reliability',
+            img: 'Themis.png',
+          },
+          {
+            id: 2,
+            rus: 'тут должен быть текст о качестве, опыте и надежности',
+            eng: 'there should be a text about quality, experience and reliability',
+            img: 'scales.png',
+          },
+          {
+            id: 3,
+            rus: 'тут должен быть текст о качестве, опыте и надежности',
+            eng: 'there should be a text about quality, experience and reliability',
+            img: 'scales.png',
+          },
+        ],
+        bottomText: {
+          rus: 'Принимая во внимание показатели успешности, консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании прогресса профессионального сообщества. Но базовые сценарии поведения пользователей могут быть рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок. ',
+          eng: 'Taking into account success rates, consultation with a broad asset ensures that a wide range of (specialists) participate in shaping the progress of the professional community. But the basic scenarios of user behavior can be considered exclusively in the context of marketing and financial prerequisites.',
+        },
       },
       lawyer: {
         rus: 'Адвокат',
@@ -45,6 +69,10 @@ export default createStore({
         header: {
           rus: 'Мероприятия',
           eng: 'Events',
+        },
+        moreDetailed: {
+          rus: 'Подробнее',
+          eng: 'More detailed',
         },
       },
       contact: {
@@ -125,7 +153,7 @@ export default createStore({
     },
   },
   actions: {
-    GetData(context) {
+    async GetData(context) {
       axios.get(`${this.state.URL__DATA}api/get`)
         .then((response) => {
           context.commit('updateData', response.data.pages);

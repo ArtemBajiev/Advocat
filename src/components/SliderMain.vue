@@ -17,6 +17,7 @@
      v-for="(slide, index) in $store.state.receivedData.slideEvents.slice().reverse()" :key="slide.id"
      @click="slidePosition = index * -100 "></div>
   </div>
+  <span class="slide-helper"></span>
 </template>
 <script>
 import SlideMain from './SlideMain.vue';
@@ -79,6 +80,29 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+.slide-helper
+{
+  background-image: url('../assets/img/click.svg');
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-size: contain;
+  animation: 4s infinite helper-slide;
+
+}
+@keyframes helper-slide {
+  0%{
+    transform: scale(1) rotate(0deg);
+  }
+  50%{
+    transform: scale(1.2)  rotate(-10deg);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
 .control-btn
 {
   width: 100%;
@@ -136,7 +160,7 @@ justify-content: center;
 }
 .slide-indicator
 {
-    background-color: #977553B2;
+    background-color: #233642b2;
     border-radius: 50%;
     height: 15px;
     width: 15px;
@@ -146,7 +170,7 @@ justify-content: center;
 }
 .slide-indicator:hover
 {
-    background-color:#c0b2a2b2;
+    background-color:#2e4350;
 }
 .indicator-active
 {

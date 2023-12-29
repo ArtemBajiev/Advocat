@@ -53,7 +53,7 @@ export default {
 .footer
 {
     padding: 20px 0px;
-    background-color: #8F755B;
+    background-color: var(--twoColor);
     width: 100%;
     margin-top: 50px;
 }
