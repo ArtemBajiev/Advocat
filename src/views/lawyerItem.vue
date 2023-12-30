@@ -36,9 +36,9 @@
      'lawyer__contact-abramov': 'lawyer__contact-rudich']">
       <div class="container">
         <HeaderItem>
-        <h4>
+        <h3>
           {{ $store.state.allContent.contact.header[$store.state.language] }}
-        </h4>
+        </h3>
       </HeaderItem>
 
         <ul class="lawyer__contact__all">
@@ -112,15 +112,6 @@ export default {
   text-align: center;
   padding-top: calc(var(--index) * 1.75);
   margin-bottom: calc(var(--index) * 2.3);
-}
-.lawyer__header {
-  background-color: var(--bodyColor);
-  display: block;
-  border-radius: 5px;
-  padding: 5px 25px;
-  font-size: 42px;
-  height: 100%;
-  margin: 0;
 }
 .lawyer__container img {
   margin: 5px;
@@ -281,9 +272,17 @@ left: 5%;
   {
     font-size: calc(var(--index) * 2);
   }
+  .educational-publications
+  {
+    padding: 15px;
+  }
   .educational-publications__text
   {
-    font-size: calc(var(--index) * 2);
+    font-size: calc(var(--index) * 1.5);
+  }
+  .educational-publications__text-link
+  {
+    font-size: calc(var(--index) * 1.6);
   }
   .messenger{
     flex-direction: row;
@@ -316,7 +315,7 @@ left: 5%;
   }
   .lawyer__contact__item
   {
-
+    width: 100%;
   }
   .messenger
   {

@@ -22,7 +22,7 @@ export default {};
 {
     max-width: 1350px;
     margin: auto;
-    max-height: 450px;
+
     position: relative;
     background-color: rgba(18, 37, 52, 0.40);
     padding: 20px;
@@ -74,8 +74,12 @@ box-shadow: 5px -8px 22.6px 0px rgba(0, 0, 0, 0.25);
         padding: 0px 5px;
     }
     .main-bottom__img{
-        top: -275px;
+        position: static;
         height: 36vh;
+    }
+    .main-bottom
+    {
+        margin-top: 100px;
     }
 }
 </style>

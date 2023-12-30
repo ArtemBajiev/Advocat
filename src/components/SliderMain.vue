@@ -181,8 +181,9 @@ justify-content: center;
 @media (max-width: 768px) {
   .control-btn *
 {
-  padding:10px;
+  padding:20px;
   margin: 5px;
+  top: -20px;
 
 }
 }

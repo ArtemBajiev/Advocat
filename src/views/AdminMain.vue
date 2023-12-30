@@ -7,12 +7,14 @@
   <div class="container">
     <form @submit.prevent="saveMainCardData" class="admin__main__articles" action="">
     <div class="admin__main__cards">
+      rus
     <div class="admin__main__card-item" v-for="item in mainCardData"
     :key="item.id">
       <textarea class="admin__main__card__input" type="text" v-model="item.text.rus"></textarea>
     </div>
   </div>
     <hr>
+    eng
     <div class="admin__main__cards">
     <div class="admin__main__card-item" v-for="item in mainCardData"
     :key="item.id">
@@ -66,15 +68,19 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .admin__main__articles
 {
   margin-top: 50px;
 }
+.admin__main__card-item
+{
+  width: 100%;
+}
 .admin__main__card__input
 {
-  width: 270px;
-  height: 300px;
+  width: 100%;
+  height: 100px;
   word-wrap: break-word;
   font-size: 18px;
   text-align: center;

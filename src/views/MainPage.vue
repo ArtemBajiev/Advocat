@@ -26,9 +26,25 @@ export default {
   data() {
     return {
       mobil: false,
+
     };
   },
   methods: {
+  },
+  beforeCreate() {
+  // adding title for current view/page using vue-i18n
+    const title = document.querySelector('title');
+    title.innerText = 'SUDURAL';
+
+    // adding og:image
+    const keywords = document.createElement('META');
+    keywords.setAttribute('name', 'keywords');
+    keywords.setAttribute('content', 'Абрамов, Абрамов А.Б., Абрамов Александр Борисович, кандидат юридических наук, адвокат, РФ, Россия, Урал, Екатеринбург, суд, ГК, УК, УПК, АПК, уголовное дело, решение, приговор, консультация, юрист, недорого, стаж, судебное решение, хороший, лучший, гарантия, жалоба, Заявление, Иск, апелляционная, апелляция, кассация, кассационная жалоба, ВС РФ, Верховный суд, Арбитраж, Арбитражный суд, спор, мировое, судья, адвокат Абрамов Александр Борисович, адвокат Абрамов, адвокат Абрамов А.Б. суд, юридическая, помощь,');
+
+    const description = document.createElement('META');
+    description.setAttribute('name', 'description');
+    description.setAttribute('content', 'адвокат Абрамов Александр Борисович, адвокат, адвокат Абрамов А.Б., урал, Екатеринбург, Россия, лучший, Екатеринбург, жалоба, иск,');
+    document.querySelector('head').appendChild(description, keywords);
   },
   created() {
     if (window.innerWidth < 500) {

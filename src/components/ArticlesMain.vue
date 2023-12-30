@@ -1,9 +1,9 @@
 <!-- eslint-disable max-len -->
 <template>
     <div class="articles">
-        <HeaderItem><h4 class="header-articles">
+        <HeaderItem><h3 class="header-articles">
             {{ $store.state.allContent.main.headerArticles[$store.state.language] }}
-        </h4></HeaderItem>
+        </h3></HeaderItem>
         <div class="container" >
             <ul class="all-articles">
                  <ArticleItem  v-for="article in $store.state.receivedData.articles"

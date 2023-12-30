@@ -73,6 +73,29 @@ export default {
     margin: 0px;
     font-family: 'El Messiri';
 }
+
+@media (max-width: 768px) {
+  .header-item h1
+{
+      font-size: 32px;
+}
+.header-item h2
+{
+      font-size: 27px;
+}
+.header-item h3
+{
+      font-size: 26px;
+}
+.header-item h4
+{
+      font-size: 24px;
+}
+.header-item h5
+{
+      font-size: 20px;
+}
+}
 //.header-item::before {
 //  content: "";
 //  position: absolute;

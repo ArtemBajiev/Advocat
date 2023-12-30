@@ -20,6 +20,7 @@
     "core-js": "^3.8.3",
     "vanilla-tilt": "^1.8.1",
     "vue": "^3.3.4",
+    "vue-meta": "^2.4.0",
     "vue-router": "^4.0.3",
     "vuetify": "^3.4.6",
     "vuex": "^4.0.0"

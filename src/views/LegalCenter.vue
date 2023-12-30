@@ -31,7 +31,7 @@ export default {
 @media (max-width: 768px) {
 .legal-center__text
 {
-    font-size: calc(var(--index) * 2) !important;
+    font-size: calc(var(--index) * 1.5) !important;
     margin-top: 40px;
 }
 

@@ -104,7 +104,7 @@ ul{
   bottom: 0;
 }
 .header__menu-item__link__phone {
-  color: #6b5844;
+  color: var(--twoColor);
   font-size: 20px;
   text-align: center;
   display: block;

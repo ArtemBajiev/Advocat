@@ -48,7 +48,7 @@ export default {
 {
     max-width: 600px;
     width: 100%;
-    background-color: #a98d6f4f;
+    background-color: var(--twoColor);
     display: flex;
     flex-direction: column;
     padding: 3%;
@@ -70,6 +70,6 @@ export default {
 }
 .autorization__text
 {
-    color: #8C6843;
+    color: #FFF;
 }
 </style>

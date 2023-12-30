@@ -37,11 +37,10 @@ export default
   background-blend-mode: multiply;
   height: 100%;
   min-width: 100%;
-  background-size: 100% auto;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
   vertical-align: middle;
- background-attachment: fixed;
  transform: translateX();
  position: relative;
 }

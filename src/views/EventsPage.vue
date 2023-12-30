@@ -4,9 +4,9 @@
     <div class="container">
       <!--<button class="btn-go-back" @click="$router.go(-1)"></button>-->
       <HeaderItem>
-        <h4 class="events-page__header">
+        <h3 class="events-page__header">
         {{ $store.state.allContent.EventsPage.header[$store.state.language] }}
-      </h4></HeaderItem>
+      </h3></HeaderItem>
 
         <div class="slider-and-name-slide">
           <div class="events-page__slider__container">

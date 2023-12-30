@@ -9,8 +9,7 @@
         <p class="event-card__discription">{{ item.cardText[$store.state.language] }}</p>
       </div>
       <div class="event-card__details">{{ $store.state.allContent.EventsPage.moreDetailed
-      [$store.state.language] }}
-         <span class="arrow-black"></span></div>
+      [$store.state.language] }}</div>
     </div>
   </template>
 <script>
@@ -19,17 +18,7 @@ export default {
 };
 </script>
   <style lang="scss">
-  .arrow-black
-  {
-    display: inline-block;
-    background-image: url('../assets/img/arrowFFF.svg');
-    background-size: contain;
-    background-position: center;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: 4px;
-  }
+
   .event-card
   {
       background-color:var(--twoColor);
@@ -42,7 +31,7 @@ export default {
   }
   .event-card:hover
   {
-    background-color:#97755352;
+    background-color:#4d616e;
 
   }
   .event-card__header
@@ -76,6 +65,16 @@ export default {
     right: 35px;
     bottom: 15px;
     color: var(--fontColor);
+  }
+  .event-card__details::after{
+    content: "";
+    background-image: url('../assets/img/arrowFFF.svg');
+    background-size: contain;
+    background-position: center;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 4px;
   }
   @media (max-width: 1024px) {
     .event-card__header
